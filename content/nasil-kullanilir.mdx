@@ -1,0 +1,83 @@
+---
+title: "MDX Blog Sistemimiz: Tüm Özel Bileşenleri Kullanım Rehberi"
+date: "2024-12-09"
+description: "Blog sistemimizde geliştirdiğimiz Callout, Video, Karşılaştırma ve Akordiyon bileşenlerini nasıl kullanacağınızı öğrenin. Kod yazmadan zengin içerik oluşturun."
+---
+
+Merhaba Ali Akpoyraz Blog sistemine hoş geldiniz!
+
+Bu yazı, standart Markdown kurallarının ötesine geçerek içeriğimizi daha profesyonel ve etkileşimli hale getiren özel React bileşenlerimizi nasıl kullanacağınızı adım adım göstermektedir. Bu sayede karmaşık HTML kodları yazmak zorunda kalmazsınız.
+
+## 1. Vurgu ve Uyarı Yönetimi (Callout)
+
+`Callout` bileşeni, okuyucunun dikkatini önemli bir noktaya çekmek veya kritik bilgiler vermek için kullanılır.
+
+### 1.1 Dört Farklı Tip Kullanımı
+
+Callout bileşeni dört farklı `type` (tip) niteliği alabilir. Lütfen içeriğe en uygun olanı seçin:
+
+**Bilgi (Info)**
+<Callout type="info" title="İpucu: Performans">
+  Sunucu tarafında (Server Side) ağır işlemler yapmaktan kaçınarak sayfa yüklenme hızınızı artırabilirsiniz. Next.js App Router yapısı bu konuda size büyük avantaj sağlar.
+</Callout>
+
+**Başarı (Success)**
+<Callout type="success" title="Kurulum Tamamlandı">
+  Tebrikler! Tüm bağımlılıkları başarıyla kurdunuz ve projeniz kullanıma hazır. Hemen `npm run dev` ile başlayabilirsiniz.
+</Callout>
+
+**Uyarı (Warning)**
+<Callout type="warning" title="Önemli Dikkat Edin">
+  Bu işlemi yapmadan önce, tüm veritabanı yedeğinizi almayı unutmayın. Yanlış bir komut geri dönülmez hasara yol açabilir.
+</Callout>
+
+**Hata (Danger)**
+<Callout type="danger" title="Acil Hata Giderme">
+  Console'da 500 hatası alıyorsanız, lütfen API anahtarlarınızı kontrol edin. Bu tip hatalar genellikle kimlik doğrulama sorunlarından kaynaklanır.
+</Callout>
+
+***
+
+## 2. Zengin İçerik Bileşenleri
+
+Geleneksel bloglarda zor olan video gömme, karşılaştırma veya gizlenebilir alan oluşturma gibi işlemler, bizim sistemimizde tek satır kodla yapılır.
+
+### 2.1 Video Gömme (YouTubeCard)
+
+Artık YouTube'dan kopyaladığınız uzun `iframe` kodlarını kullanmak zorunda değilsiniz. Linki `<YouTubeCard>` etiketi içine yapıştırmanız yeterli.
+
+<YouTubeCard url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+
+### 2.2 Artıları ve Eksileri Karşılaştırması (ProsCons)
+
+İki farklı teknolojiyi, ürünü veya yaklaşımı karşılaştırmak için şık bir düzen kullanabilirsiniz.
+
+<ProsCons 
+  pros={['Hızlı geliştirme', 'Geniş ekosistem', 'Kullanımı kolay']}
+  cons={['Öğrenme eğrisi dik', 'İlk yükleme boyutu yüksek', 'Sunucu maliyeti olabilir']}
+/>
+
+### 2.3 Görsel ve Açıklamaları Yönetme (CaptionImage)
+
+Normal Markdown görselleri yerine bu bileşeni kullanarak görselinizi koyu temaya uygun bir çerçeveye alabilir ve altına açıklama ekleyebilirsiniz.
+
+<CaptionImage 
+  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" 
+  alt="Geliştirme Ortamı Mimarisi"
+  caption="Şekil 1: Next.js App Router mimarisindeki bileşen akışı gösterilmektedir."
+/>
+
+### 2.4 İçerik Gizleme (Accordion)
+
+Sayfanın akışını bozmak istemediğiniz detayları veya S.S.S. (FAQ) alanlarını gizlemek için kullanılır.
+
+<Accordion title="Bölüm 3: Detaylı Hata Loglarını Aç/Kapa">
+  Burada çok uzun kodlar veya kullanıcının hemen görmesi gerekmeyen detaylar yer alabilir.
+  </Accordion>
+  
+  # Kod bloğu veya metin içeriği
+  echo "Hata yok"
+
+  <Accordion title="Bölüm 1: Detaylı Hata Logları">
+  Burada çok uzun kodlar veya kullanıcının hemen görmesi gerekmeyen detaylar yer alabilir.
+</Accordion>
