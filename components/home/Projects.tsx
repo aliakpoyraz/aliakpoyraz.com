@@ -9,7 +9,9 @@ interface Repo {
     stargazers_count: number;
     forks_count: number;
     language: string;
+    fork: boolean;
 }
+
 
 const GITHUB_USERNAME = "aliakpoyraz";
 
