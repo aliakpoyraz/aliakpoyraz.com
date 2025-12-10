@@ -63,7 +63,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
 
                     {isContentMatch && searchQuery && (
                         <div className="mb-4 text-xs text-indigo-400 font-mono bg-indigo-500/10 px-2 py-1 rounded w-fit border border-indigo-500/20">
-                            ✨ İçerikte "{searchQuery}" geçiyor
+                            ✨ İçerikte &quot;{searchQuery}&quot; geçiyor
                         </div>
                     )}
 
@@ -128,7 +128,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                         {!hasAnyResult && (
                             <div className="flex flex-col items-center justify-center py-20 text-zinc-500 border border-dashed border-zinc-800 rounded-[1.7rem] bg-[#0c0c0e]/50">
                                 <Search size={32} className="mb-3 opacity-30" />
-                                <p className="text-sm">"{searchQuery}" ile eşleşen yazı yok.</p>
+                                <p className="text-sm">&quot;{searchQuery}&quot; ile eşleşen yazı yok.</p>
                             </div>
                         )}
 

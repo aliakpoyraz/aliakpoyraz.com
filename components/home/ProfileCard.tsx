@@ -43,7 +43,7 @@ export default function ProfileCard() {
                     </div>
                     {/* Fotoğrafın altına küçük bir etiket (Opsiyonel) */}
                     <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-zinc-800/90 border border-zinc-700 rounded-full text-[10px] text-zinc-300 whitespace-nowrap shadow-lg">
-                        HackGDG'25 🚀
+                        HackGDG&apos;25 🚀
                     </div>
                 </div>
 

@@ -104,7 +104,7 @@ export default function CVPage() {
                     </h2>
                     <div className="space-y-4 text-sm text-zinc-400">
                         <p><strong>GDSC OSTİMTECH:</strong> Yönetim Kurulu / Yazılım ve Teknoloji Koordinatörlüğü</p>
-                        <p><strong>HackGDG'25:</strong> Mentor ve Organizatör olarak görev alma</p>
+                        <p><strong>HackGDG25:</strong> Mentor ve Organizatör olarak görev alma</p>
                         <p><strong>Eğitmenlik:</strong> SEO Optimizasyonu Eğitmeni</p>
                         <p><strong>Kişisel Projeler:</strong> kisisel-portfolyo.aliakpoyraz.com / basic-portfolio.aliakpoyraz.com</p>
                     </div>
