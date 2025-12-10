@@ -3,14 +3,16 @@ import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, ArrowLeft as ChevronLeft, ArrowRight as ChevronRight } from 'lucide-react'; // İkonları burada tutalım
+import { ArrowLeft, Calendar, Clock, ArrowLeft as ChevronLeft, ArrowRight as ChevronRight } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
 import Script from 'next/script';
 
-
+// Tarih ve zaman kütüphanesi
+import { parse, format } from 'date-fns';
+import { tr } from 'date-fns/locale';
 
 // Bileşenler
 import YouTubeCard from '@/components/blog/YoutubeCard';
@@ -22,7 +24,6 @@ import TableOfContents from '@/components/blog/TableOfContents';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import ShareButtons from '@/components/blog/ShareButtons';
 
-// Gerekli Değişkenler
 const mdxComponents = {
     YouTubeCard,
     Callout,
@@ -30,6 +31,22 @@ const mdxComponents = {
     CaptionImage,
     Accordion,
 };
+
+// GG-AA-YYYY formatındaki dizeyi güvenli bir Date nesnesine çevirir.
+function parseDateString(dateStr: string): Date {
+    const parsedDate = parse(dateStr, 'dd-MM-yyyy', new Date(), { locale: tr });
+
+    if (isNaN(parsedDate.getTime())) {
+        // Hata durumunda varsayılan bir tarih döndürerek uygulamanın çökmesini engeller.
+        return new Date('1970-01-01');
+    }
+    return parsedDate;
+}
+
+// Tarihi Türkçe formatına çevirir (12 Şubat 2025)
+function formatToTurkishDisplay(date: Date): string {
+    return format(date, 'dd MMMM yyyy', { locale: tr });
+}
 
 function getSortedPosts() {
     const contentDir = path.join(process.cwd(), 'content');
@@ -40,14 +57,17 @@ function getSortedPosts() {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data } = matter(fileContent);
 
+        const parsedDate = parseDateString(data.date);
+
         return {
             slug: filename.replace('.mdx', ''),
-            date: new Date(data.date).getTime(), // Tarihi zaman damgasına çevir
+            dateTimestamp: parsedDate.getTime(),
             title: data.title,
         };
     });
-    // En yeniyi (en yüksek date) en başa al
-    return posts.sort((a, b) => b.date - a.date);
+
+    // En yeniyi en başa al
+    return posts.sort((a, b) => b.dateTimestamp - a.dateTimestamp);
 }
 
 function getHeadings(source: string) {
@@ -70,7 +90,17 @@ function getPost(slug: string) {
     try {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data, content } = matter(fileContent);
-        return { frontmatter: data, content };
+
+        const parsedDate = parseDateString(data.date);
+
+        return {
+            frontmatter: {
+                ...data,
+                isoDate: parsedDate.toISOString(),
+                turkishDisplayDate: formatToTurkishDisplay(parsedDate),
+            },
+            content
+        };
     } catch (err) {
         return null;
     }
@@ -111,7 +141,7 @@ export async function generateMetadata({ params }: Props) {
             siteName: 'Ali Akpoyraz Blog',
             locale: 'tr_TR',
             type: 'article',
-            publishedTime: post.frontmatter.date,
+            publishedTime: post.frontmatter.isoDate,
             authors: ['Ali Akpoyraz'],
             images: [
                 {
@@ -148,9 +178,9 @@ export default async function BlogPost({ params }: Props) {
     const sortedPosts = getSortedPosts();
     const currentIndex = sortedPosts.findIndex(p => p.slug === slug);
 
-    // Dizideki bir sonraki eleman kronolojik olarak DAHA ESKİ'dir (Önceki Yazı)
+    // Dizideki bir sonraki eleman kronolojik olarak daha eskidir (Önceki Yazı)
     const prevPost = sortedPosts[currentIndex + 1] || null;
-    // Dizideki bir önceki eleman kronolojik olarak DAHA YENİ'dir (Sonraki Yazı)
+    // Dizideki bir önceki eleman kronolojik olarak daha yenidir (Sonraki Yazı)
     const nextPost = sortedPosts[currentIndex - 1] || null;
 
     // JSON-LD Verisi (Schema Markup)
@@ -160,8 +190,8 @@ export default async function BlogPost({ params }: Props) {
         headline: post.frontmatter.title,
         description: post.frontmatter.description,
         image: post.frontmatter.image ? `${siteUrl}${post.frontmatter.image}` : `${siteUrl}/opengraph-image.png`,
-        datePublished: post.frontmatter.date,
-        dateModified: post.frontmatter.date,
+        datePublished: post.frontmatter.isoDate,
+        dateModified: post.frontmatter.isoDate,
         author: {
             '@type': 'Person',
             name: 'Ali Akpoyraz',
@@ -198,7 +228,7 @@ export default async function BlogPost({ params }: Props) {
                     <div className="flex items-center gap-4 text-sm text-zinc-500 font-mono">
                         <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2 py-1 rounded border border-zinc-800">
                             <Calendar size={14} />
-                            {post.frontmatter.date}
+                            {post.frontmatter.turkishDisplayDate}
                         </div>
                         <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2 py-1 rounded border border-zinc-800">
                             <Clock size={14} />
@@ -244,7 +274,7 @@ export default async function BlogPost({ params }: Props) {
                 />
             </div>
 
-            {/* --- NAVİGASYON BÖLÜMÜ --- */}
+            {/* NAVİGASYON BÖLÜMÜ */}
             <nav className="mt-16 border-t border-zinc-800 pt-8">
                 <div className="flex justify-between gap-4">
 
@@ -262,7 +292,7 @@ export default async function BlogPost({ params }: Props) {
                             </span>
                         </Link>
                     ) : (
-                        <div className="w-full"></div> // Sol tarafta boşluk bırakmak için
+                        <div className="w-full"></div>
                     )}
 
                     {/* SONRAKİ YAZI (Daha Yeni) */}
@@ -279,12 +309,12 @@ export default async function BlogPost({ params }: Props) {
                             </span>
                         </Link>
                     ) : (
-                        <div className="w-full"></div> // Sağ tarafta boşluk bırakmak için
+                        <div className="w-full"></div>
                     )}
 
                 </div>
             </nav>
-            {/* --- NAVİGASYON BÖLÜMÜ BİTİŞİ --- */}
+            {/* NAVİGASYON BÖLÜMÜ BİTİŞİ */}
 
             {/* Paylaşım Alanı (En altta) */}
             <div className="mt-8 border-t border-zinc-800 pt-8">
