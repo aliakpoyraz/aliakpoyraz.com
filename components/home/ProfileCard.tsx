@@ -34,7 +34,7 @@ export default function ProfileCard() {
                 <div className="relative flex-shrink-0">
                     <div className="w-32 h-32 rounded-2xl overflow-hidden border border-white/10 shadow-lg relative group/img">
                         <Image
-                            src="/me.jpg"
+                            src="/uploads/me.jpg"
                             alt="Ali Akpoyraz"
                             fill
                             className="object-cover transition-transform duration-700 group-hover/img:scale-110"
