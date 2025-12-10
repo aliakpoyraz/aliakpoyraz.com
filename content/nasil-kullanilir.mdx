@@ -6,78 +6,91 @@ description: "Blog sistemimizde geliştirdiğimiz Callout, Video, Karşılaştı
 
 Bloga hoş geldiniz!
 
-Bu yazı, standart Markdown kurallarının ötesine geçerek içeriğimizi daha profesyonel ve etkileşimli hale getiren özel React bileşenlerimizi nasıl kullanacağınızı adım adım göstermektedir. Bu sayede karmaşık HTML kodları yazmak zorunda kalmazsınız.
+Bu yazı, standart Markdown kurallarının ötesine geçerek içeriğimizi daha profesyonel ve etkileşimli hale getiren özel React bileşenlerimizi nasıl kullanacağınızı adım adım göstermektedir. **MDX**'in (Markdown + JSX) gücünü kullanarak, karmaşık HTML kodları yazmak zorunda kalmadan zengin içerikler oluşturabilirsiniz.
 
 ## 1. Vurgu ve Uyarı Yönetimi (Callout)
 
-`Callout` bileşeni, okuyucunun dikkatini önemli bir noktaya çekmek veya kritik bilgiler vermek için kullanılır.
+`Callout` bileşeni, blog yazınızın akışını kesintiye uğratmadan okuyucunun dikkatini **önemli bir noktaya çekmek, kritik bilgiler vermek veya bir aksiyon çağrısında bulunmak** için tasarlanmıştır. Bu bileşenin en büyük avantajı, sadece renklerle değil, aynı zamanda semantik anlamlarla da mesajınızı güçlendirmesidir. Her bir Callout, isteğe bağlı olarak bir `title` (başlık) niteliği alabilir.
 
-### 1.1 Dört Farklı Tip Kullanımı
+### 1.1 Dört Farklı Tip Kullanımı ve Semantik Anlamları
 
-Callout bileşeni dört farklı `type` (tip) niteliği alabilir. Lütfen içeriğe en uygun olanı seçin:
+Callout bileşeni, iletmek istediğiniz mesajın duygusal veya önem derecesine göre dört farklı `type` (tip) niteliği alabilir. İçeriğe en uygun olan tipi seçerek mesajınızın amacını netleştirirsiniz:
 
-**Bilgi (Info)**
+**Bilgi (Info)**: **Mavi renk** ile gösterilir. Genellikle ek ipuçları, arka plan bilgileri, öneriler veya daha fazla detay için bir referans sunmak için kullanılır.
+
 <Callout type="info" title="İpucu: Performans">
-  Sunucu tarafında (Server Side) ağır işlemler yapmaktan kaçınarak sayfa yüklenme hızınızı artırabilirsiniz. Next.js App Router yapısı bu konuda size büyük avantaj sağlar.
+  Sunucu tarafında (Server Side) ağır işlemler yapmaktan kaçınarak sayfa yüklenme hızınızı artırabilirsiniz. Next.js App Router yapısı bu konuda size büyük avantaj sağlar.
 </Callout>
 
-**Başarı (Success)**
+**Başarı (Success)**: **Yeşil renk** ile gösterilir. Kurulumun tamamlanması, bir hedefe ulaşılması veya pozitif bir geri bildirim vermek için idealdir.
+
 <Callout type="success" title="Kurulum Tamamlandı">
-  Tebrikler! Tüm bağımlılıkları başarıyla kurdunuz ve projeniz kullanıma hazır. Hemen `npm run dev` ile başlayabilirsiniz.
+  Tebrikler! Tüm bağımlılıkları başarıyla kurdunuz ve projeniz kullanıma hazır. Hemen `npm run dev` ile başlayabilirsiniz.
 </Callout>
 
-**Uyarı (Warning)**
+**Uyarı (Warning)**: **Sarı/Turuncu renk** ile gösterilir. Potansiyel risklere, geri alınamaz adımlara dikkat çekmek veya bir işlem öncesi önlem alınmasını hatırlatmak için kullanılır.
+
 <Callout type="warning" title="Önemli Dikkat Edin">
-  Bu işlemi yapmadan önce, tüm veritabanı yedeğinizi almayı unutmayın. Yanlış bir komut geri dönülmez hasara yol açabilir.
+  Bu işlemi yapmadan önce, tüm veritabanı yedeğinizi almayı unutmayın. Yanlış bir komut geri dönülmez hasara yol açabilir.
 </Callout>
 
-**Hata (Danger)**
+**Hata (Danger)**: **Kırmızı renk** ile gösterilir. Acil çözülmesi gereken sorunları, kritik hataları veya ciddi tehlikeleri belirtmek için kullanılır. Bu tip uyarılar genellikle hemen aksiyon gerektirir.
+
 <Callout type="danger" title="Acil Hata Giderme">
-  Console'da 500 hatası alıyorsanız, lütfen API anahtarlarınızı kontrol edin. Bu tip hatalar genellikle kimlik doğrulama sorunlarından kaynaklanır.
+  Console'da 500 hatası alıyorsanız, lütfen API anahtarlarınızı kontrol edin. Bu tip hatalar genellikle kimlik doğrulama sorunlarından kaynaklanır.
 </Callout>
 
 ***
 
 ## 2. Zengin İçerik Bileşenleri
 
-Geleneksel bloglarda zor olan video gömme, karşılaştırma veya gizlenebilir alan oluşturma gibi işlemler, bizim sistemimizde tek satır kodla yapılır.
+Geleneksel bloglarda uzun ve karmaşık HTML/iframe kodları gerektiren işlemler, bizim sistemimizde tek satırlık basit bileşen kodlarıyla yapılır. Bu, hem yazım hızınızı artırır hem de sitenizin performansını optimize eder.
 
 ### 2.1 Video Gömme (YouTubeCard)
 
-Artık YouTube'dan kopyaladığınız uzun `iframe` kodlarını kullanmak zorunda değilsiniz. Linki `<YouTubeCard>` etiketi içine yapıştırmanız yeterli.
+Bu bileşen, okuyucuyu sayfadan çıkarmadan bir YouTube videosunu blog yazınıza yerleştirmenizi sağlar. Geleneksel `<iframe>` kodlarının aksine, bu kart:
+1.  **Performans Dostudur:** Sayfa yüklenirken videoyu otomatik olarak *lazy-load* (tembel yükleme) eder ve böylece sayfa açılış hızınızı (LCP - Largest Contentful Paint) olumsuz etkilemez.
+2.  **Duyarlıdır (Responsive):** Farklı ekran boyutlarına otomatik olarak uyum sağlayarak mobil cihazlarda kusursuz görünür.
+3.  **Kullanımı Basittir:** Tek yapmanız gereken, YouTube videosunun tam URL'sini `url` niteliği olarak vermektir.
 
 <YouTubeCard url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
 
 ### 2.2 Artıları ve Eksileri Karşılaştırması (ProsCons)
 
-İki farklı teknolojiyi, ürünü veya yaklaşımı karşılaştırmak için şık bir düzen kullanabilirsiniz.
+İki farklı teknolojiyi, ürünü veya yaklaşımı karşılaştırmak, okuyucunun karar verme sürecini hızlandırır. `ProsCons` bileşeni, bu verileri şık, simgesel ve okunabilir bir düzende sunar.
 
-<ProsCons 
-  pros={['Hızlı geliştirme', 'Geniş ekosistem', 'Kullanımı kolay']}
-  cons={['Öğrenme eğrisi dik', 'İlk yükleme boyutu yüksek', 'Sunucu maliyeti olabilir']}
+**Nasıl Kullanılır:** `pros` ve `cons` nitelikleri, birer dizi (array) olarak karşılaştırmak istediğiniz maddeleri alır. En iyi kullanım için karşılaştırmanın amacını belirten isteğe bağlı bir `title` (başlık) da ekleyebilirsiniz.
+
+<ProsCons 
+  title="Geleneksel REST API vs. Modern tRPC"
+  pros={['Hızlı geliştirme', 'Geniş ekosistem', 'Kullanımı kolay']}
+  cons={['Öğrenme eğrisi dik', 'İlk yükleme boyutu yüksek', 'Sunucu maliyeti olabilir']}
 />
 
 ### 2.3 Görsel ve Açıklamaları Yönetme (CaptionImage)
 
-Normal Markdown görselleri yerine bu bileşeni kullanarak görselinizi koyu temaya uygun bir çerçeveye alabilir ve altına açıklama ekleyebilirsiniz.
+Normal Markdown görselleri (`![]()`) sadece temel gösterim yaparken, `CaptionImage` bileşeni ile görsellerinize bağlam ve profesyonellik katarsınız:
+* **Açıklama (Caption):** Görselin ne anlattığını netleştiren, koyu temaya uyumlu bir alt metin ekler.
+* **Erişilebilirlik (Accessibility):** `alt` niteliği zorunlu tutularak görme engelli kullanıcılar için içerik desteklenir.
+* **Tema Uyumu:** Görselinizi koyu temaya uygun bir çerçeveye alarak modern bir görünüm sağlar.
 
-<CaptionImage 
-  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" 
-  alt="Geliştirme Ortamı Mimarisi"
-  caption="Şekil 1: Next.js App Router mimarisindeki bileşen akışı gösterilmektedir."
+<CaptionImage 
+  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" 
+  alt="Geliştirme Ortamı Mimarisi"
+  caption="Şekil 1: Next.js App Router mimarisindeki bileşen akışı gösterilmektedir."
 />
 
 ### 2.4 İçerik Gizleme (Accordion)
 
-Sayfanın akışını bozmak istemediğiniz detayları veya S.S.S. (FAQ) alanlarını gizlemek için kullanılır.
+`Accordion` (Akordiyon), sayfanın genel akışını bozmak istemediğiniz detayları, sıkça sorulan soruları (S.S.S.) veya uzun kod bloklarını gizlemek için kullanılır. Kullanıcı, sadece ilgilendiği başlığa tıklayarak içeriği açar. Bu, özellikle uzun teknik kılavuzlarda veya detaylı log çıktılarında sayfaların daha temiz görünmesini sağlar.
+
+**Kullanım:** Bileşenin içine yerleştirdiğiniz tüm içerik, `title` niteliğinde belirttiğiniz başlık altında gizlenir.
 
 <Accordion title="Bölüm 3: Detaylı Hata Loglarını Aç/Kapa">
-  Burada çok uzun kodlar veya kullanıcının hemen görmesi gerekmeyen detaylar yer alabilir.
-  </Accordion>
-  
-  # Kod bloğu veya metin içeriği
-  echo "Hata yok"
-
-  <Accordion title="Bölüm 1: Detaylı Hata Logları">
-  Burada çok uzun kodlar veya kullanıcının hemen görmesi gerekmeyen detaylar yer alabilir.
+  Burada çok uzun kodlar veya kullanıcının hemen görmesi gerekmeyen detaylar yer alabilir.
 </Accordion>
+ 
+```bash
+# Örnek detaylı log çıktısı
+echo "Hata yok"
+echo "Log: Bağlantı kuruldu (2025-12-10 17:00:00)"

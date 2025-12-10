@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Github, Linkedin, Download } from 'lucide-react';
 
-// public klasörüne yüklediğiniz dosyanın adını buraya yazın
 const CV_FILE_URL = '/uploads/aliakpoyraz-cv.pdf';
 
 export const metadata = {
@@ -61,7 +60,7 @@ export default function CVPage() {
                         </a>
                     </div>
 
-                    {/* Özet kısmı - CV'de bu kısım olmadığı için genel bir özet bıraktım */}
+                    {/* Özet kısmı */}
                     <p className="mt-6 text-zinc-300 leading-relaxed text-base">
                         Yazılım Mühendisliği alanında deneyimli, çok yönlü ve yeni teknolojilere açık bir geliştiriciyim. Özellikle modern web teknolojileri (React) ve siber güvenlik staj deneyimlerimle projelerde değer yaratmayı hedefliyorum.
                     </p>
@@ -162,7 +161,7 @@ export default function CVPage() {
     );
 }
 
-// --- YARDIMCI BİLEŞENLER (Aynı kalacak) ---
+// --- YARDIMCI BİLEŞENLER ---
 
 function ExperienceItem({ title, company, duration, description }: { title: string, company: string, duration: string, description: string }) {
     return (

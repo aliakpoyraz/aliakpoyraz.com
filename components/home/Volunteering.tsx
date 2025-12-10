@@ -29,7 +29,6 @@ export default function Volunteering() {
         <section className="w-full max-w-2xl mx-auto mt-16 px-0 md:px-0">
 
             {/* BAŞLIK */}
-            {/* Ayırıcıyı bozmayacak şekilde başlık alanını px-2 padding ile koruduk. */}
             <div className="flex items-center gap-3 mb-4 px-2">
                 <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
                     <Heart className="text-zinc-400" size={20} />
@@ -38,8 +37,6 @@ export default function Volunteering() {
                     Gönüllülük & Topluluk
                 </h2>
             </div>
-
-            {/* AYIRICI ÇİZGİ: Başlık ve Liste arasında tam genişlikte çizgi */}
             <div className="border-b border-zinc-800 mb-6"></div>
 
 
@@ -48,7 +45,6 @@ export default function Volunteering() {
                 {volunteers.map((item, index) => (
                     <div
                         key={index}
-                        // Önceki kart tasarımı ve hover efektleri aynen korunmuştur.
                         className="group p-5 rounded-2xl bg-zinc-900/20 border border-white/5 hover:border-white/10 hover:bg-zinc-800/40 transition-all duration-300 hover:-translate-y-1 w-full"
                     >
                         {/* Üst Kısım: İkon ve Tarih */}

@@ -37,7 +37,6 @@ export default async function Projects() {
         <section className="w-full max-w-2xl mx-auto mt-16 px-0 md:px-0">
 
             {/* BAŞLIK VE TÜMÜNÜ GÖR BUTONU */}
-            {/* Alt kenarlık kaldırıldı */}
             <div className="flex items-center justify-between mb-4 px-2">
 
                 {/* Sol Taraf: Kutu İkon ve Başlık */}
@@ -60,7 +59,6 @@ export default async function Projects() {
                 </Link>
             </div>
 
-            {/* YENİ AYIRICI ÇİZGİ: Başlık ve Liste arasında tam genişlikte çizgi */}
             <div className="border-b border-zinc-800 mb-6"></div>
 
 

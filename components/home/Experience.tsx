@@ -2,7 +2,6 @@ import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react";
 
 export default function Experience() {
     // DENEYİMLER
-    // NOT: Tüm URL'leri gerçek değerlerle değiştirmeyi unutmayın!
     const experiences = [
         {
             company: "AktifTech (AktifBank A.Ş.)",
@@ -50,7 +49,6 @@ export default function Experience() {
         <section className="w-full max-w-2xl mx-auto mt-16 px-0 md:px-0">
 
             {/* BAŞLIK */}
-            {/* px-2 padding ile başlık kenarlığını koruduk. */}
             <div className="flex items-center gap-3 mb-4 px-2">
                 <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
                     <BriefcaseBusiness className="text-zinc-400" size={20} />
@@ -61,7 +59,6 @@ export default function Experience() {
             </div>
 
             {/* AYIRICI ÇİZGİ: Başlık ve Liste arasında tam genişlikte çizgi */}
-            {/* Bu, Projects bileşeninizdeki stil ile aynıdır. */}
             <div className="border-b border-zinc-800 mb-8"></div>
 
 

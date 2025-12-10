@@ -1,0 +1,93 @@
+---
+title: "Cloudflare Pages, Vercel ve GitHub Pages Kıyaslaması: Blogunuz İçin En İyi Seçenek Nedir?"
+date: "11-12-2025"
+description: "Statik siteler ve Next.js uygulamaları için en popüler üç barındırma çözümünü (Cloudflare Pages, Vercel, GitHub Pages) teknik özellikler, hız ve maliyet açısından detaylıca kıyaslayın."
+---
+
+Blogumun ilk yazısına hoş geldiniz, ilk yazıda kendiminde sıkca sorunlar yaşadığı bir konu olan barındırma (hosting) platformlarını derinlemesine inceleyeceğiz. 
+
+Modern web geliştiriciliği projelerimizi birkaç yıl öncesine göre çok daha hızlı ve verimli bir şekilde dağıtmamızı sağlayan, devrim niteliğinde barındırma (hosting) platformları sayesinde büyük bir kolaylık yaşadı. Artık sunucu yönetimiyle uğraşmak yerine, projenizi doğrudan Git deponuza (repository) bağlayıp, saniyeler içinde global bir ağ üzerinde yayına alabilirsiniz.
+
+Bu yazıda, statik siteler ve sunucusuz (serverless) işlevler için en çok tercih edilen üç devi; **Cloudflare Pages, Vercel** ve **GitHub Pages**'ı derinlemesine inceleyip, projeniz için en doğru seçimi yapmanıza yardımcı olacağız.
+
+## 1. Platformlara Genel Bakış
+
+### 1.1 Vercel: Geliştirici Deneyimine Odaklanma
+
+Next.js'in yaratıcısı olan Vercel, geliştirici deneyimini (DX) merkeze koyarak tasarlanmıştır. Özellikle React, Next.js gibi modern SPA (Tek Sayfa Uygulaması) ve SSR (Sunucu Tarafında Oluşturma) çerçevelerinde benzersiz bir optimizasyon sunar. Otomatik ölçeklenen Sunucusuz Fonksiyonları (Serverless Functions) sayesinde dinamik uygulamalar için mükemmeldir.
+
+<Callout type="success" title="Bizim Tercihimiz: Neden Vercel?">
+ Biz de Mevcut projemizde Vercel'i kullanıyoruz. Özellikle Next.js uygulamaları için, geliştirme ortamından üretim (production) ortamına kadar kusursuz bir entegrasyon, anlık önizleme (instant previews) ve global Edge Network'ü ile en iyi performansı Vercel sunar.
+</Callout>
+
+### 1.2 Cloudflare Pages: Hız ve Fonksiyonellik
+
+Cloudflare Pages, dünya genelindeki devasa CDN (İçerik Dağıtım Ağı) altyapısının gücünü arkanıza almanızı sağlar. Statik site barındırmanın yanı sıra, Cloudflare Workers entegrasyonu sayesinde kodunuzu tüm dünyaya yayılmış sunucularda çalıştırmanıza olanak tanır. Genellikle sınırsız bant genişliği ve cömert ücretsiz katmanıyla öne çıkar.
+
+### 1.3 GitHub Pages: Basitliğin Zirvesi
+
+GitHub Pages, statik bir web sitesini doğrudan GitHub deponuzdaki dosyaları kullanarak yayınlamanın en hızlı ve en ücretsiz yoludur. Basit dokümantasyon, kişisel portföy veya bloglar (çoğunlukla Jekyll ile) için idealdir. Ancak CI/CD (Sürekli Entegrasyon/Sürekli Dağıtım) yetenekleri diğer ikisine göre oldukça sınırlıdır.
+
+<Callout type="warning" title="Önemli Dikkat Edin: GitHub Pages Sınırları">
+  GitHub Pages, dinamik sunucu tarafı işlemlerini (örneğin veritabanı bağlantısı gerektiren API'ler) **desteklemez**. Yalnızca önceden oluşturulmuş statik HTML, CSS ve JavaScript dosyalarını yayınlar. Projeniz API gerektiriyorsa, Vercel veya Cloudflare Pages'ın sunucusuz fonksiyonlarını kullanmanız gerekir.
+</Callout>
+
+## 2. Kapsamlı Karşılaştırma ve Kıyaslama
+
+Üç platform arasındaki temel farklar, genellikle fiyatlandırma, dağıtım (deployment) hızı ve sunucusuz işlevsellik etrafında toplanır.
+
+### 2.1 Teknik Özelliklerin Baş Başa Kıyaslaması
+
+| Özellik | Vercel | Cloudflare Pages | GitHub Pages |
+| :--- | :--- | :--- | :--- |
+| **Özel Alan Adı (Domain)** | Ücretsiz | Ücretsiz | Ücretsiz |
+| **Sunucusuz Fonksiyonlar**| Var (Next.js API Routes/Edge Functions) | Var (Cloudflare Workers) | Yok |
+| **CDN ve Global Ağ** | Kendi Edge Network'ü | Cloudflare'ın Global Ağı | Temel CDN |
+| **CI/CD Entegrasyonu** | Otomatik, Hızlı ve Gelişmiş | Otomatik ve Hızlı | Temel GitHub Actions/Jekyll |
+| **Önizleme Ortamları**| Gelişmiş (Her PR için) | İyi (Dallandırma bazlı) | Yok (manuel kontrol gerekir) |
+
+### 2.2 Vercel ve Cloudflare Pages: Modern Rakipler
+
+Vercel ve Cloudflare Pages, GitHub Pages'in sunduğu basitliğin ötesine geçerek dinamik uygulamaları desteklediği için en büyük rakiplerdir. Aralarındaki seçim, genellikle kullandığınız çerçeveye (framework) ve maliyet hassasiyetinize bağlıdır.
+
+<ProsCons 
+  title="Vercel vs. Cloudflare Pages"
+  pros={[
+    'Next.js ile benzersiz entegrasyon ve optimizasyon', 
+    'Geliştirici deneyimi rakipsizdir', 
+    'Daha gelişmiş önizleme ortamları ve Git entegrasyonu'
+]}
+  cons={[
+    'Next.js dışında kullanıldığında avantajı azalır', 
+    'Ücretsiz katman limitleri Cloudflare’a göre daha kısıtlı olabilir (özellikle bant genişliği/CPU)', 
+    'Daha pahalı kurumsal planlar'
+]}
+/>
+
+### 2.3 Detaylı Fiyat ve Teknik Kıyaslama
+
+Fiyatlandırma ve sınırlarla ilgili daha detaylı bilgilere mi ihtiyacınız var? Sıkıcı detayları buraya gizledik!
+
+<Accordion title="Ücretsiz Planlar ve Bant Genişliği Limitleri (Detaylar)">
+    <Accordion title="Vercel Ücretsiz Planı Limitleri">
+        **Vercel Ücretsiz Planı:** Genellikle 100 GB aylık bant genişliği ve belirli sayıda Sunucusuz Fonksiyon çalıştırma süresi sunar. Ticari kullanım için değil, kişisel, hobi veya öğrenme projeleri için tasarlanmıştır.
+    </Accordion>
+    
+    <Accordion title="Cloudflare Pages Ücretsiz Planı Limitleri">
+        **Cloudflare Pages Ücretsiz Planı:** Çok daha cömerttir. Genellikle sınırsız bant genişliği, sınırsız site ve belirli sayıda Cloudflare Workers (sunucusuz fonksiyon) talebi içerir. Çok yüksek trafikli siteler için başlangıçta daha avantajlı olabilir.
+    </Accordion>
+    
+    <Accordion title="GitHub Pages Ücretsiz Planı Limitleri">
+        **GitHub Pages Ücretsiz Planı:** Tamamen ücretsizdir, ancak aylık bant genişliği 100 GB, dosya boyutu 1 GB ile sınırlıdır ve yalnızca statik dosyaları barındırır.
+    </Accordion>
+</Accordion>
+
+***
+
+## 3. Sonuç
+
+Statik blog sisteminiz için nihai kararınız aşağıdaki durumlara göre şekillenmelidir:
+
+1.  **Sadece Statik İçerik ve Maksimum Basitlik:** Eğer yalnızca Markdown dosyalarından oluşan ve harici API kullanmayan bir site yayınlayacaksanız, **GitHub Pages** en kolay ve risksiz çözümdür.
+2.  **Next.js veya React Uygulaması ve Sunucusuz API İhtiyacı:** Projenizde halihazırda Vercel kullanıyorsunuz ve Next.js'in sunduğu en iyi optimizasyonları hızlı dağıtımı ve üstün geliştirici araçlarını istiyorsanız, **Vercel** tartışmasız en iyi seçimdir. Bu, sizin mevcut durumunuza en uygun yoldur.
+3.  **Yüksek Trafik Workers ile Dinamiklik ve Maliyet Duyarlılığı:** Eğer siteniz çok yüksek trafik alıyorsa ve Cloudflare Workers ile gelişmiş Edge altyapısı kullanmak istiyorsanız, **Cloudflare Pages** mükemmel bir alternatiftir.

@@ -74,7 +74,7 @@ export default function ProfileCard() {
                         Kendimi geliştirirken aynı zamanda öğrendiklerimi başkalarına aktarmayı da önemsiyorum bu yüzden çeşitli blog yazıları yazıyorum, bunlara göz atmak için blog sayfamı ziyaret edebilirsiniz.
                     </p>
 
-                    {/* YENİ: Tech Stack (Teknoloji Rozetleri) */}
+                    {/* Tech Stack (Teknoloji Rozetleri) */}
                     <div className="flex flex-wrap justify-center md:justify-start gap-2">
                         {techStack.map((tech, i) => (
                             <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-zinc-900/50 border border-zinc-800 text-xs text-zinc-400 hover:border-zinc-600 hover:text-zinc-200 transition-colors cursor-default">

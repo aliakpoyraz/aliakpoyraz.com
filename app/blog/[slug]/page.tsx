@@ -9,8 +9,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
 import Script from 'next/script';
-
-// Tarih ve zaman kütüphanesi
 import { parse, format } from 'date-fns';
 import { tr } from 'date-fns/locale';
 

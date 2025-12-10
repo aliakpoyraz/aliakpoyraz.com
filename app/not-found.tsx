@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { Frown } from 'lucide-react';
-// headers() kullanımı, hata verdiği için (Runtime TypeError) import etmiyoruz.
 
 export default function NotFound() {
 
