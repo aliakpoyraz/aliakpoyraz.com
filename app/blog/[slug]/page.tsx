@@ -24,6 +24,15 @@ import TableOfContents from '@/components/blog/TableOfContents';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import ShareButtons from '@/components/blog/ShareButtons';
 
+// TypeScript Arayüzü: Frontmatter'dan beklenen verileri tanımlar
+interface PostFrontmatter {
+    title: string;
+    date: string; // GG-AA-YYYY formatında gelen orijinal tarih
+    description: string;
+    image?: string; // Zorunlu olmayan alanlar için '?' kullanılır
+    [key: string]: any; // Diğer tüm custom alanlara izin verir
+}
+
 const mdxComponents = {
     YouTubeCard,
     Callout,
@@ -32,12 +41,11 @@ const mdxComponents = {
     Accordion,
 };
 
-// GG-AA-YYYY formatındaki dizeyi güvenli bir Date nesnesine çevirir.
+// GG-AA-YYYY formatındaki dizeyi Date nesnesine çevirir.
 function parseDateString(dateStr: string): Date {
     const parsedDate = parse(dateStr, 'dd-MM-yyyy', new Date(), { locale: tr });
 
     if (isNaN(parsedDate.getTime())) {
-        // Hata durumunda varsayılan bir tarih döndürerek uygulamanın çökmesini engeller.
         return new Date('1970-01-01');
     }
     return parsedDate;
@@ -83,6 +91,7 @@ function getHeadings(source: string) {
     });
 }
 
+// TypeScript hatası için PostFrontmatter arayüzü kullanılır.
 function getPost(slug: string) {
     const contentDir = path.join(process.cwd(), 'content');
     const filePath = path.join(contentDir, `${slug}.mdx`);
@@ -91,11 +100,14 @@ function getPost(slug: string) {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data, content } = matter(fileContent);
 
-        const parsedDate = parseDateString(data.date);
+        // Orijinal frontmatter verisine tipi atar
+        const frontmatterData = data as PostFrontmatter;
+
+        const parsedDate = parseDateString(frontmatterData.date);
 
         return {
             frontmatter: {
-                ...data,
+                ...frontmatterData,
                 isoDate: parsedDate.toISOString(),
                 turkishDisplayDate: formatToTurkishDisplay(parsedDate),
             },
@@ -238,7 +250,7 @@ export default async function BlogPost({ params }: Props) {
 
                     <div className="flex items-center gap-2">
                         <span className="text-xs text-zinc-600 font-mono hidden sm:block">Paylaş:</span>
-                        <ShareButtons title={post.frontmatter.title} url={shareUrl} size="sm" />
+                        <ShareButtons title={post.frontmatter.title} url={shareUrl} />
                     </div>
                 </div>
             </header>
