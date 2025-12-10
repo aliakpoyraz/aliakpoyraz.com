@@ -146,7 +146,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                                     <div className="h-px flex-1 bg-zinc-800"></div>
                                     <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
                                         {titleMatches.length === 0
-                                            ? "Başlıkta yok ama içerikte bulundu"
+                                            ? "Başlıkta yok ama içerikte bulundu "
                                             : "Ayrıca içerikte geçenler"}
                                     </span>
                                     <div className="h-px flex-1 bg-zinc-800"></div>
