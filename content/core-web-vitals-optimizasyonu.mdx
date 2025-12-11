@@ -1,0 +1,110 @@
+---
+title: "Core Web Vitals (CWV) Optimizasyonu: Nedir, Neden Önemli?"
+date: "12-12-2025"
+description: "Google'ın temel performans metrikleri olan LCP, INP ve CLS'yi anlamak ve gerçek dünya kod optimizasyon teknikleriyle sitenizin hızını ve kullanıcı deneyimini zirveye taşımak için gerekenler."
+---
+
+### Performans Artık Bir Zorunluluk
+
+Modern internet kullanıcısı sabırsızdır. Bir web sayfasının yüklenmesi bir saniyeden uzun sürdüğünde, kullanıcıların büyük bir yüzdesi siteyi terk eder. Google, 2021'den itibaren **Core Web Vitals (CWV)** metriklerini sıralama faktörü haline getirerek, web performansını resmi olarak SEO'nun (Arama Motoru Optimizasyonu) merkezine yerleştirdi.
+
+CWV, sitenizin kullanıcı deneyimini ölçen üç temel metrikten oluşur:
+
+1.  **LCP** (Largest Contentful Paint): Yüklenme performansı.
+2.  **FID** (First Input Delay) / **INP** (Interaction to Next Paint): Etkileşim performansı.
+3.  **CLS** (Cumulative Layout Shift): Görsel kararlılık.
+
+
+
+Bu yazıda, bu üç metriği nasıl anlayacağımızı ve pratik, gerçek dünya teknikleriyle nasıl mükemmel skorlara ulaşabileceğimizi inceleyeceğiz.
+
+## 1. LCP (Largest Contentful Paint): Yüklenme Performansının Kalbi
+
+LCP, bir sayfa yüklenmeye başladığında, ekranda beliren en büyük metin bloğunun veya görselin yüklenmesi için geçen süredir. İdeal olarak **2.5 saniyenin altında** olmalıdır.
+
+### LCP Nasıl İyileştirilir?
+
+LCP'yi düşürmenin anahtarı, en büyük içeriğe öncelik vermektir.
+
+#### 1.1 Sunucu Cevap Süresini Kısaltma (TTFB)
+
+* **Sorun:** Sunucunuzun ilk baytı göndermesi (TTFB) uzun sürüyorsa, LCP otomatik olarak kötü başlar.
+* **Çözüm:** Hızlı bir hosting platformu kullanın ve veritabanı sorgularınızı optimize edin. CDN'ler (İçerik Dağıtım Ağları) kullanarak içeriği kullanıcıya en yakın noktadan sunun.
+
+#### 1.2 Kritik CSS ve Tembel Yükleme (Lazy Loading)
+
+* **Sorun:** Tarayıcı, sayfanın görünür kısmını göstermeden önce tüm CSS ve JavaScript dosyalarını bekler.
+* **Çözüm:** **Kritik CSS'i** (sayfanın üst kısmını stilize eden) `<head>` etiketine satır içi (inline) yerleştirin. Ekran dışındaki görseller ve CSS/JS dosyaları için **Tembel Yükleme** (Lazy Loading) kullanın.
+
+<Callout type="success" title="İpucu: `fetchpriority` Kullanımı">
+En büyük görseliniz için `loading="eager"` ile birlikte `fetchpriority="high"` özniteliğini kullanmak, tarayıcıya bu görseli diğerlerinden önce yüklemesi gerektiğini söyler. Bu, LCP'yi birkaç yüz milisaniye iyileştirebilir.
+</Callout>
+
+## 2. INP (Interaction to Next Paint): Etkileşim Performansı
+
+FID (First Input Delay) yerine, artık daha kapsamlı olan **INP** (Interaction to Next Paint) metriği odak noktamızdır. INP, kullanıcının bir düğmeye tıklaması veya bir menüyü açması ile tarayıcının ekranda görsel bir güncelleme yapması arasında geçen süreyi ölçer. İdeal olarak **200 milisaniyenin altında** olmalıdır.
+
+### INP Nasıl İyileştirilir?
+
+INP, genellikle ana iş parçacığının (main thread) uzun süren görevlerle meşgul olmasından kaynaklanır.
+
+#### 2.1 Uzun Görevleri Bölme
+
+* **Sorun:** Uzun süren JavaScript görevleri (50 ms'den fazla) ana iş parçacığını bloke eder ve kullanıcı girdisine yanıt vermesini engeller.
+* **Çözüm:** Karmaşık hesaplamaları veya büyük veri işlemeyi daha küçük parçalara (örneğin 4 ms'lik dilimler) ayırın. Bu, tarayıcının aralarına acil kullanıcı girdilerini sıkıştırmasına olanak tanır.
+* **Teknik:** Web Workers kullanmak, ana iş parçacığını serbest bırakmanın en etkili yollarından biridir.
+
+#### 2.2 Üçüncü Parti Komut Dosyaları
+
+* **Sorun:** Google Analytics, reklam veya sosyal medya widget'ları gibi üçüncü taraf betikler, sıklıkla INP'yi kötüleştirir.
+* **Çözüm:** Bu betikleri mümkün olduğunca **`defer`** veya **`async`** öznitelikleriyle yükleyin.
+
+<ProsCons
+  title="Async vs Defer"
+  pros={[
+    '**async:** Senkron yüklemeyi engellemez; dosya indirilir indirilmez çalıştırılır.',
+    '**defer:** Senkron yüklemeyi engellemez; dosya indirilir, ancak DOM tamamen yüklendikten sonra sırayla çalıştırılır. Genellikle daha güvenli bir tercihtir.'
+]}
+  cons={[
+    'Her ikisi de betiklerin çalışma sırasını garanti etmez, bu da bağımlılık sorunlarına yol açabilir.'
+]}
+/>
+
+## 3. CLS (Cumulative Layout Shift): Görsel Kararlılık
+
+CLS, bir sayfa yüklenirken beklenmedik şekilde yer değiştiren öğelerin neden olduğu puanı ölçer. İdeal olarak **0.1'in altında** olmalıdır.
+
+### CLS Nasıl İyileştirilir?
+
+CLS'nin temel nedeni, tarayıcı bir öğenin boyutunu bilmediği için yer tutucu (placeholder) olmadan yüklemesi ve daha sonra boyutunu öğrendiğinde sayfanın kaymasıdır.
+
+
+
+#### 3.1 Görüntü Boyutlarını Belirtme
+
+* **Sorun:** HTML'de `width` ve `height` öznitelikleri belirtilmeyen görseller, tarayıcı tarafından yüklendiğinde ani kaymalara neden olur.
+* **Çözüm:** Tüm `<img />` etiketlerine **mutlaka** boyutlarını ekleyin veya modern CSS teknikleriyle (örneğin `aspect-ratio` kullanarak) yer tutucular tanımlayın.
+
+#### 3.2 İçerik Enjeksiyonundan Kaçınma
+
+* **Sorun:** Sayfa yüklendikten sonra aniden beliren büyük reklamlar veya dinamik olarak enjekte edilen UI öğeleri (örneğin, üst kısımdaki çerez bildirimleri).
+* **Çözüm:** Dinamik içeriğin yükleneceği alanlar için **önceden yeterli boyutta yer ayırın.**
+
+<Accordion title="CLS için Örnek CSS Yer Tutucu Tekniği">
+  <Accordion title="CSS aspect-ratio Kullanımı">
+    Görselin boyutlarını `width` ve `height` ile tanımlamak yerine, CSS'te modern `aspect-ratio` özelliğini kullanabilirsiniz. Örneğin 16:9 bir görsel için:
+    ```css
+    img {
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+    ```
+    Bu, görsel yüklenmeden önce bile tarayıcının doğru alanı ayırmasını sağlar.
+  </Accordion>
+</Accordion>
+
+## Sonuç: Performans Sürekli Bir Yolculuktur
+
+Core Web Vitals mükemmeliyetine ulaşmak bir kerelik bir görev değil, sürekli bir optimizasyon sürecidir. Performans, kullanıcı memnuniyetini artırır ve arama motorlarında daha görünür olmanızı sağlar.
+
+Sitenizin CWV skorlarını düzenli olarak Google **PageSpeed Insights** ve **Lighthouse** ile kontrol etmeyi bir alışkanlık haline getirin. Unutmayın, hızlı bir web sitesi, mutlu bir kullanıcı demektir!
