@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
+import Divider from './Divider';
 
 const GITHUB_USERNAME = "aliakpoyraz";
 
@@ -31,7 +32,7 @@ export default function Footer() {
                         ))}
                     </div>
                 </div>
-                <hr className="border-zinc-800 mb-6" />
+                <Divider />
                 <div className="text-center text-sm text-zinc-600">
                     <p>
                         &copy; {currentYear} Ali Akpoyraz. Tüm hakları saklıdır.
