@@ -1,7 +1,11 @@
+"use client";
+
 import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react";
+import { useScrollAnimation } from "@/lib/useScrollAnimation";
 
 export default function Experience() {
-    // DENEYİMLER
+    const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    
     const experiences = [
         {
             company: "AktifTech (AktifBank A.Ş.)",
@@ -11,7 +15,7 @@ export default function Experience() {
             location: "İstanbul (Uzaktan)",
             description: "Eklenecek...",
             tech: ["Eklenecek..."],
-            current: true, // Bu true ise tarih yeşil görünür
+            current: true,
         },
         {
             company: "Kayısır",
@@ -19,7 +23,7 @@ export default function Experience() {
             role: "Yazılım Geliştirici",
             date: "2023 - Halen",
             location: "Malatya (Uzaktan)",
-            description: "E-ticaret platformu için başlangıçta Wordpress tabanlı bir sistemimiz vardı bunun üzerine geliştirmeler yaparak SEO ve pazarlama süreçlerini yönetiyorum. Ayrıca Trendyol ve diğer pazaryerleri entegrasyonlarını ve yönetimini sağlıyorum. Bunlara ek olarak kendi özel web uygulamamızı geliştiriyorum.",
+            description: "E-ticaret altyapısının uçtan uca yönetimini gerçekleştirmekteyim. Mevcut WordPress tabanlı sistemi baz alarak, kapsamlı SEO optimizasyonu ve dijital pazarlama faaliyetlerini başarıyla yönettim. Ek olarak, Trendyol başta olmak üzere çeşitli pazar yerleri ile tam entegrasyonu kurarak bu kanalların merkezi yönetimini sağlamaktayım. Halihazırda, iş süreçlerini optimize edecek özel bir web uygulaması geliştirme projesini yürütüyorum.",
             tech: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
             current: true, // Bu true ise tarih yeşil görünür
         },
@@ -46,9 +50,16 @@ export default function Experience() {
     ];
 
     return (
-        <section className="w-full max-w-2xl mx-auto mt-16 px-0 md:px-0">
+        <section 
+            ref={ref}
+            className={`w-full max-w-2xl mx-auto mt-16 px-0 md:px-0 transition-all duration-700 ease-out ${
+                isVisible 
+                    ? "opacity-100 translate-y-0" 
+                    : "opacity-0 translate-y-8"
+            }`}
+        >
 
-            {/* BAŞLIK */}
+            {/* Header */}
             <div className="flex items-center gap-3 mb-4 px-2">
                 <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
                     <BriefcaseBusiness className="text-zinc-400" size={20} />
@@ -58,17 +69,16 @@ export default function Experience() {
                 </h2>
             </div>
 
-            {/* AYIRICI ÇİZGİ: Başlık ve Liste arasında tam genişlikte çizgi */}
+            {/* Divider */}
             <div className="border-b border-zinc-800 mb-8"></div>
 
-
-            {/* TIMELINE LİSTESİ */}
+            {/* Timeline */}
             <div className="flex flex-col gap-8">
                 {experiences.map((exp, index) => (
                     <div key={index} className="group relative flex gap-6">
 
                         <div className="flex flex-col items-center">
-                            {/* Nokta (Aktif ise yeşil ve parlayan, değilse gri) */}
+                            {/* Timeline dot */}
                             <div className={`
                 relative z-10 flex h-3 w-3 shrink-0 rounded-full 
                 ${exp.current
@@ -78,13 +88,13 @@ export default function Experience() {
                                 {exp.current && <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75"></div>}
                             </div>
 
-                            {/* Çizgi (Son eleman hariç uzar) */}
+                            {/* Timeline line */}
                             {index !== experiences.length - 1 && (
                                 <div className="h-full w-px bg-zinc-800 my-2 group-hover:bg-zinc-700 transition-colors"></div>
                             )}
                         </div>
 
-                        {/* SAĞ: Kart İçeriği */}
+                        {/* Card content */}
                         <div className="flex-1 pb-2">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
                                 <h3 className="text-lg font-semibold text-zinc-100 group-hover:text-white transition-colors">
@@ -96,7 +106,7 @@ export default function Experience() {
                                 </div>
                             </div>
 
-                            {/* ŞİRKET ADI*/}
+                            {/* Company info */}
                             <div className="flex items-center gap-2 text-sm text-zinc-400 mb-3">
                                 {exp.url ? (
                                     <a
@@ -120,7 +130,7 @@ export default function Experience() {
                                 {exp.description}
                             </p>
 
-                            {/* Tech Stack Rozetleri */}
+                            {/* Tech stack badges */}
                             <div className="flex flex-wrap gap-2">
                                 {exp.tech.map((t, i) => (
                                     <span

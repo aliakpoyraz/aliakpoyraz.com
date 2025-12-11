@@ -10,13 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Ali Akpoyraz",
   description: "Kişisel Website",
-
-  // Favicon ve Cache-Busting Ayarı
   icons: {
     icon: '/favicon.png',
   },
 };
-// -----------------------------
 
 export default function RootLayout({
   children,
@@ -28,7 +25,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <Navbar />
         <ScrollToTop />
-        <main className="flex-1 pt-28 min-h-screen px-4 md:px-0">
+        <main className="flex-1 pt-20 md:pt-28 min-h-screen px-4 md:px-0">
           {children}
         </main>
         <Footer />

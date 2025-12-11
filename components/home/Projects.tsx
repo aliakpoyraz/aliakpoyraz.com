@@ -1,5 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Star, GitFork, ArrowUpRight, Folder } from "lucide-react";
+import { useScrollAnimation } from "@/lib/useScrollAnimation";
 
 interface Repo {
     id: number;
@@ -11,7 +15,6 @@ interface Repo {
     language: string;
     fork: boolean;
 }
-
 
 const GITHUB_USERNAME = "aliakpoyraz";
 
@@ -30,16 +33,27 @@ async function getRepos() {
         .slice(0, 4);
 }
 
-export default async function Projects() {
-    const repos = await getRepos();
+export default function Projects() {
+    const [repos, setRepos] = useState<Repo[]>([]);
+    const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+    useEffect(() => {
+        getRepos().then(setRepos);
+    }, []);
 
     return (
-        <section className="w-full max-w-2xl mx-auto mt-16 px-0 md:px-0">
+        <section 
+            ref={ref}
+            className={`w-full max-w-2xl mx-auto mt-16 px-0 md:px-0 transition-all duration-700 ease-out ${
+                isVisible 
+                    ? "opacity-100 translate-y-0" 
+                    : "opacity-0 translate-y-8"
+            }`}
+        >
 
-            {/* BAŞLIK VE TÜMÜNÜ GÖR BUTONU */}
+            {/* Header */}
             <div className="flex items-center justify-between mb-4 px-2">
 
-                {/* Sol Taraf: Kutu İkon ve Başlık */}
                 <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
                         <Folder className="text-zinc-400" size={20} />
@@ -49,7 +63,6 @@ export default async function Projects() {
                     </h2>
                 </div>
 
-                {/* Sağ Taraf: Link */}
                 <Link
                     href={`https://github.com/${GITHUB_USERNAME}`}
                     target="_blank"
@@ -61,8 +74,7 @@ export default async function Projects() {
 
             <div className="border-b border-zinc-800 mb-6"></div>
 
-
-            {/* LİSTE GÖRÜNÜMÜ */}
+            {/* Project list */}
             <div className="flex flex-col gap-3">
                 {repos.map((repo) => (
                     <Link

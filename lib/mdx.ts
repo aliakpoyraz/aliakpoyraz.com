@@ -6,7 +6,6 @@ import { tr } from 'date-fns/locale';
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
-// Okuma süresi hesaplama fonksiyonu
 function calculateReadingTime(content: string) {
     const wordsPerMinute = 200;
     const words = content.trim().split(/\s+/).length;
@@ -32,14 +31,14 @@ export function getBlogPosts() {
         const parsedDate = parseDateString(data.date);
 
         const formattedDateDisplay = format(parsedDate, 'dd MMMM yyyy', {
-            locale: tr, // Burası Türkçe ay isimlerini kullanmasını sağlar
+            locale: tr,
         });
 
         return {
             slug,
             title: data.title,
             rawDate: parsedDate,
-            date: formattedDateDisplay, // Görüntüleme için (12 Şubat 2025)
+            date: formattedDateDisplay,
             originalDateString: data.date,
             description: data.description || "",
             readingTime: calculateReadingTime(content),

@@ -1,8 +1,6 @@
-// components/YouTubeCard.tsx
 import React from 'react';
 
 const YouTubeCard = ({ url }: { url: string }) => {
-    // Linkten ID'yi çekme işi
     const videoId = url.split('v=')[1]?.split('&')[0];
 
     if (!videoId) return <p className="text-red-500">Hatalı YouTube Linki</p>;

@@ -17,13 +17,11 @@ export default function BlogList({ posts }: { posts: Post[] }) {
     const [searchQuery, setSearchQuery] = useState("");
     const query = searchQuery.toLowerCase();
 
-    // 1. GRUP: Başlık Eşleşmeleri
     const titleMatches = posts.filter((post) =>
         post.title.toLowerCase().includes(query) ||
         post.description.toLowerCase().includes(query)
     );
 
-    // 2. GRUP: Sadece İçerik Eşleşmeleri
     const contentMatches = posts.filter((post) => {
         const inTitle = post.title.toLowerCase().includes(query) || post.description.toLowerCase().includes(query);
         const inContent = post.content.toLowerCase().includes(query);
@@ -32,7 +30,6 @@ export default function BlogList({ posts }: { posts: Post[] }) {
 
     const hasAnyResult = titleMatches.length > 0 || contentMatches.length > 0;
 
-    // Kart Render Fonksiyonu
     const renderPostCard = (post: Post, isContentMatch = false) => (
         <Link
             key={post.slug}
@@ -84,9 +81,9 @@ export default function BlogList({ posts }: { posts: Post[] }) {
     );
 
     return (
-        <section className="w-full max-w-2xl mx-auto mt-32 px-4 mb-20 animate-in fade-in zoom-in duration-700">
+        <section className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20 animate-in fade-in zoom-in duration-700">
 
-            {/* BAŞLIK */}
+            {/* Header */}
             <div className="flex items-center gap-4 mb-10 pb-6 border-b border-zinc-800">
                 <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#0c0c0e] border border-white/5 text-zinc-400 shadow-lg">
                     <BookOpen size={24} />
@@ -96,7 +93,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                 </div>
             </div>
 
-            {/* ARAMA KARTI */}
+            {/* Search card */}
             <div className="relative w-full mb-10 group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 rounded-[2rem] opacity-20 blur group-focus-within:opacity-50 transition duration-500"></div>
                 <div className="relative flex items-center bg-[#0c0c0e] border border-white/5 rounded-[1.7rem] shadow-2xl overflow-hidden">
@@ -114,17 +111,13 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                 </div>
             </div>
 
-            {/* SONUÇ ALANI */}
+            {/* Results */}
             <div className="flex flex-col gap-8">
 
-                {/* --- DURUM 1: ARAMA YOKSA (Varsayılan) --- */}
                 {!searchQuery && posts.map(post => renderPostCard(post))}
 
-
-                {/* --- DURUM 2: ARAMA VARSA --- */}
                 {searchQuery && (
                     <>
-                        {/* 2a. Hiçbir sonuç yoksa */}
                         {!hasAnyResult && (
                             <div className="flex flex-col items-center justify-center py-20 text-zinc-500 border border-dashed border-zinc-800 rounded-[1.7rem] bg-[#0c0c0e]/50">
                                 <Search size={32} className="mb-3 opacity-30" />
@@ -132,14 +125,12 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                             </div>
                         )}
 
-                        {/* 2b. Başlık Eşleşmeleri */}
                         {titleMatches.length > 0 && (
                             <div className="flex flex-col gap-6">
                                 {titleMatches.map(post => renderPostCard(post))}
                             </div>
                         )}
 
-                        {/* 2c. İçerik Eşleşmeleri */}
                         {contentMatches.length > 0 && (
                             <div className="mt-4">
                                 <div className="flex items-center gap-3 mb-6 px-2">

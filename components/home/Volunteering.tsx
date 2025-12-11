@@ -1,13 +1,17 @@
+"use client";
+
 import { Heart, Users, Award, Megaphone } from "lucide-react";
+import { useScrollAnimation } from "@/lib/useScrollAnimation";
 
 export default function Volunteering() {
+    const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
     const volunteers = [
         {
             role: "Core Team Member",
             organization: "Google Developer Student Clubs",
             date: "2024 - 2025",
             description: "2024-2025 Sezonunda 1000+ üyesiyle birlikte okulumuzun en büyük kulübü olan GDSC'nin Yazılım & Teknoloji departmanının core team üyesi olarak görev aldım. Bu kulüpte görev alan arkadaşlarımızla çeşitli projeler, sunumlar ve hackathon gibi etkinlikler düzenleyerek birçok öğrenciye ulaşmayı başardık.",
-            icon: <Users size={20} className="text-blue-400" />, // Özel renk verebilirsin
+            icon: <Users size={20} className="text-blue-400" />,
         },
         {
             role: "Yönetim Kurulu Üyesi",
@@ -26,9 +30,16 @@ export default function Volunteering() {
     ];
 
     return (
-        <section className="w-full max-w-2xl mx-auto mt-16 px-0 md:px-0">
+        <section 
+            ref={ref}
+            className={`w-full max-w-2xl mx-auto mt-16 px-0 md:px-0 transition-all duration-700 ease-out ${
+                isVisible 
+                    ? "opacity-100 translate-y-0" 
+                    : "opacity-0 translate-y-8"
+            }`}
+        >
 
-            {/* BAŞLIK */}
+            {/* Header */}
             <div className="flex items-center gap-3 mb-4 px-2">
                 <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
                     <Heart className="text-zinc-400" size={20} />
@@ -40,14 +51,14 @@ export default function Volunteering() {
             <div className="border-b border-zinc-800 mb-6"></div>
 
 
-            {/* ALT ALTA LİSTE */}
+            {/* Volunteer list */}
             <div className="flex flex-col gap-6">
                 {volunteers.map((item, index) => (
                     <div
                         key={index}
                         className="group p-5 rounded-2xl bg-zinc-900/20 border border-white/5 hover:border-white/10 hover:bg-zinc-800/40 transition-all duration-300 hover:-translate-y-1 w-full"
                     >
-                        {/* Üst Kısım: İkon ve Tarih */}
+                        {/* Header: icon and date */}
                         <div className="flex items-center justify-between mb-3">
                             <div className="p-2 rounded-full bg-zinc-900 border border-zinc-800 group-hover:border-zinc-700 transition-colors">
                                 {item.icon}
@@ -57,7 +68,7 @@ export default function Volunteering() {
                             </span>
                         </div>
 
-                        {/* İçerik */}
+                        {/* Content */}
                         <div>
                             <h3 className="text-base font-semibold text-zinc-200 group-hover:text-white transition-colors">
                                 {item.role}
@@ -65,7 +76,6 @@ export default function Volunteering() {
                             <p className="text-xs text-zinc-500 font-medium mb-2">
                                 {item.organization}
                             </p>
-                            {/* Açıklama (Tam görünür) */}
                             <p className="text-sm text-zinc-400 leading-relaxed">
                                 {item.description}
                             </p>

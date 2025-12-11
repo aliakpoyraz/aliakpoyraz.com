@@ -6,7 +6,7 @@ import { Twitter, Linkedin, Link as LinkIcon, Check } from 'lucide-react';
 interface ShareButtonsProps {
     title: string;
     url: string;
-    size?: 'sm' | 'md'; // Boyut seçeneği ekledik
+    size?: 'sm' | 'md';
 }
 
 export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsProps) {
@@ -34,7 +34,6 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
 
     return (
         <div className="flex items-center gap-2">
-            {/* X (Twitter) */}
             <a
                 href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
                 target="_blank"
@@ -45,7 +44,6 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
                 <Twitter size={iconSize} />
             </a>
 
-            {/* LinkedIn */}
             <a
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
                 target="_blank"
@@ -56,7 +54,6 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
                 <Linkedin size={iconSize} />
             </a>
 
-            {/* Link Kopyala */}
             <button
                 onClick={handleCopy}
                 className={`${baseBtnStyle} hover:border-indigo-500 hover:bg-indigo-500 hover:text-white`}

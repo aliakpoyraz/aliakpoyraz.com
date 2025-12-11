@@ -8,7 +8,6 @@ export default function ScrollToTop() {
 
     useEffect(() => {
         const toggleVisibility = () => {
-            // 300px aşağı inilirse butonu göster
             if (window.scrollY > 300) {
                 setIsVisible(true);
             } else {
@@ -20,7 +19,6 @@ export default function ScrollToTop() {
         return () => window.removeEventListener("scroll", toggleVisibility);
     }, []);
 
-    // Yukarı kaydırma fonksiyonu
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -41,7 +39,7 @@ export default function ScrollToTop() {
         >
             <ArrowUp size={20} />
 
-            {/* Arkadaki Glow Efekti */}
+            {/* Glow effect */}
             <div className="absolute inset-0 -z-10 rounded-full bg-white/5 blur-md group-hover:bg-white/10 transition-colors" />
         </button>
     );

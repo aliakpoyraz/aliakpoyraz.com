@@ -5,7 +5,6 @@ const GITHUB_USERNAME = "aliakpoyraz";
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
-    // Sosyal medya ve Dış Linkler
     const socialLinks = [
         { href: "https://instagram.com/aliakpoyraz", icon: Instagram, label: "Instagram", target: "_blank" },
         { href: "https://linkedin.com/in/aliakpoyraz", icon: Linkedin, label: "LinkedIn", target: "_blank" },

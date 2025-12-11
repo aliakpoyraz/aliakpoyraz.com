@@ -161,8 +161,6 @@ export default function CVPage() {
     );
 }
 
-// --- YARDIMCI BİLEŞENLER ---
-
 function ExperienceItem({ title, company, duration, description }: { title: string, company: string, duration: string, description: string }) {
     return (
         <div>

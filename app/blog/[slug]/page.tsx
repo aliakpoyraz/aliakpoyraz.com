@@ -12,7 +12,6 @@ import Script from 'next/script';
 import { parse, format } from 'date-fns';
 import { tr } from 'date-fns/locale';
 
-// Bileşenler
 import YouTubeCard from '@/components/blog/YoutubeCard';
 import Callout from '@/components/blog/Callout';
 import ProsCons from '@/components/blog/ProsCons';
@@ -39,7 +38,6 @@ const mdxComponents = {
     Accordion,
 };
 
-// GG-AA-YYYY formatındaki dizeyi Date nesnesine çevirir.
 function parseDateString(dateStr: string): Date {
     const parsedDate = parse(dateStr, 'dd-MM-yyyy', new Date(), { locale: tr });
 
@@ -49,7 +47,6 @@ function parseDateString(dateStr: string): Date {
     return parsedDate;
 }
 
-// Tarihi Türkçe formatına çevirir (12 Şubat 2025)
 function formatToTurkishDisplay(date: Date): string {
     return format(date, 'dd MMMM yyyy', { locale: tr });
 }
@@ -72,7 +69,6 @@ function getSortedPosts() {
         };
     });
 
-    // En yeniyi en başa al
     return posts.sort((a, b) => b.dateTimestamp - a.dateTimestamp);
 }
 
@@ -89,7 +85,6 @@ function getHeadings(source: string) {
     });
 }
 
-// TypeScript hatası için PostFrontmatter arayüzü kullanılır.
 function getPost(slug: string) {
     const contentDir = path.join(process.cwd(), 'content');
     const filePath = path.join(contentDir, `${slug}.mdx`);
@@ -98,7 +93,6 @@ function getPost(slug: string) {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data, content } = matter(fileContent);
 
-        // Orijinal frontmatter verisine tipi atar
         const frontmatterData = data as PostFrontmatter;
 
         const parsedDate = parseDateString(frontmatterData.date);
@@ -188,12 +182,9 @@ export default async function BlogPost({ params }: Props) {
     const sortedPosts = getSortedPosts();
     const currentIndex = sortedPosts.findIndex(p => p.slug === slug);
 
-    // Dizideki bir sonraki eleman kronolojik olarak daha eskidir (Önceki Yazı)
     const prevPost = sortedPosts[currentIndex + 1] || null;
-    // Dizideki bir önceki eleman kronolojik olarak daha yenidir (Sonraki Yazı)
     const nextPost = sortedPosts[currentIndex - 1] || null;
 
-    // JSON-LD Verisi (Schema Markup)
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -210,9 +201,8 @@ export default async function BlogPost({ params }: Props) {
     };
 
     return (
-        <article className="w-full max-w-2xl mx-auto mt-32 px-4 mb-20 animate-in fade-in duration-700">
+        <article className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20 animate-in fade-in duration-700">
 
-            {/* JSON-LD Script */}
             <Script
                 id="blog-schema"
                 type="application/ld+json"
@@ -284,11 +274,10 @@ export default async function BlogPost({ params }: Props) {
                 />
             </div>
 
-            {/* NAVİGASYON BÖLÜMÜ */}
+            {/* Navigation */}
             <nav className="mt-16 border-t border-zinc-800 pt-8">
                 <div className="flex justify-between gap-4">
 
-                    {/* ÖNCEKİ YAZI (Daha Eski) */}
                     {prevPost ? (
                         <Link
                             href={`/blog/${prevPost.slug}`}
@@ -305,7 +294,6 @@ export default async function BlogPost({ params }: Props) {
                         <div className="w-full"></div>
                     )}
 
-                    {/* SONRAKİ YAZI (Daha Yeni) */}
                     {nextPost ? (
                         <Link
                             href={`/blog/${nextPost.slug}`}
@@ -324,9 +312,8 @@ export default async function BlogPost({ params }: Props) {
 
                 </div>
             </nav>
-            {/* NAVİGASYON BÖLÜMÜ BİTİŞİ */}
 
-            {/* Paylaşım Alanı (En altta) */}
+            {/* Share section */}
             <div className="mt-8 border-t border-zinc-800 pt-8">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <p className="text-zinc-400 text-sm">
