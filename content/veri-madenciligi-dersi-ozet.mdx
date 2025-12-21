@@ -1,0 +1,140 @@
+---
+title: "Veri Madenciliği YZL312 : Konu Özeti "
+date: "21-12-2025"
+description: "Veri temellerinden derin öğrenmeye, Naive Bayes'ten LLM mimarilerine kadar YZL312 veri madenciliği dersi içeriğinin özetlenmiş bir halidir."
+---
+
+Günümüzde veri, ham bir kaynaktan stratejik bir uzmanlığa dönüşen en değerli varlıktır. Bu yazı temel veri kavramlarından başlayarak modern yapay zeka mimarilerine uzanan geniş bir yelpazeyi teknik derinlikle ele almaktadır. İçerik oluşturulurken yapay zeka kaynaklarından destek alınarak YZL 312 (Veri Madenciliği) dersi içeriği özetlendirilmiştir.
+
+---
+
+## 1. Veri Temelleri ve Sistem Mimarileri
+
+Veri, işlenmemiş bir yığından uzmanlığa giden bir hiyerarşiye sahiptir.
+
+<Callout type="info" title="Veriden Uzmanlığa (DIKW Hiyerarşisi)">
+- **Veri:** Hammaddedir. Sayısal, imge veya ses olabilir. (Örn: "28, 30, 31")
+- **Enformasyon:** Organize edilmiş veridir. (Örn: "Bu sayılar öğrencilerin yaşlarıdır.")
+- **Bilgi (Knowledge):** Çıkarım yapılmış sonuçtur. (Örn: "Bu sınıf genç bir kitleye hitap ediyor.")
+- **Uzmanlık:** Hızlı ve doğru öneri üretebilme yetisidir.
+</Callout>
+
+### Sistem Mimarileri Karşılaştırması
+
+Veri madenciliği operasyonlarının yürütüldüğü altyapılar iki ana grupta incelenir:
+
+| Özellik | Küme (Cluster) Sistemler | Dağıtılmış (Distributed) Sistemler |
+| :--- | :--- | :--- |
+| **Donanım** | Homojen (Aynı tip) | Heterojen (Farklı tip) |
+| **Ağ** | Yüksek hızlı yerel ağ (LAN) | Geniş alan ağı (WAN) / İnternet |
+| **Yönetim** | Merkezi yönetim | Merkezi olmayan / Bağımsız düğümler |
+
+---
+
+## 2. Büyük Veri ve 5V Prensibi
+
+Büyük veri (Big Data) kavramını tanımlayan beş ana kriter bulunmaktadır:
+
+* **Volume (Hacim):** Veri miktarının devasa büyüklüğü.
+* **Velocity (Hız):** Veri akışının ve işlem ihtiyacının yüksek hızı.
+* **Variety (Çeşitlilik):** Yapısal olmayan (video, ses, metin) verilerin çeşitliliği.
+* **Verification (Doğrulama):** Verinin güvenilirliğinin sorgulanması.
+* **Value (Değer):** Veriden elde edilen stratejik fayda.
+
+
+
+---
+
+## 3. Temel Algoritmalar: K-NN ve K-Means
+
+<ProsCons 
+  title="Sınıflandırma (K-NN) vs. Kümeleme (K-Means)"
+  pros={['K-NN: Denetimli öğrenmedir, yeni veriyi etiketli komşularına göre sınıflandırır.', 'K-Means: Denetimsiz öğrenmedir, veriyi benzerliklerine göre gruplara (kümelere) ayırır.']}
+  cons={['K-NN: Büyük veri setlerinde yavaştır çünkü her tahminde mesafe hesaplar.', 'K-Means: Başlangıç noktalarına (centroid) duyarlıdır ve küme sayısı (K) önceden bilinmelidir.']}
+/>
+
+---
+
+## 4. Yapay Sinir Ağları (ANN) ve Derin Öğrenme
+
+Yapay Sinir Ağları, insan beyninin çalışma prensibini matematiksel olarak modeller.
+
+### 4.1 Temel Bileşenler
+- **Ağırlık ($w$):** Girişin önem derecesini belirler.
+- **Bias ($b$):** Modelin esnekliğini artırır, aktivasyon eşiğini kaydırır.
+- **Aktivasyon Fonksiyonu:** Sisteme doğrusal olmayan (**non-linear**) özellik katar.
+
+<Accordion title="Aktivasyon Fonksiyonları Detayları">
+- **ReLU:** $f(x) = \max(0, x)$. Hızlıdır, gizli katmanlarda tercih edilir.
+- **Sigmoid:** Çıktıyı $[0, 1]$ arasına sıkıştırır. İkili sınıflandırma için uygundur.
+</Accordion>
+
+### 4.2 Öğrenme Süreci ve Geri Yayılım
+1.  **İleri Besleme:** Veri katmanlar boyunca ilerler ve tahmin üretilir.
+2.  **Hata Hesaplama:** Tahmin ile gerçek değer arasındaki fark (**Loss**) bulunur.
+3.  **Geri Yayılım (Backpropagation):** Hata, **Zincir Kuralı (Chain Rule)** kullanılarak ağırlıklara dağıtılır.
+4.  **Güncelleme:** Ağırlıklar, **Gradiyent İnişi (Gradient Descent)** ile optimize edilir.
+
+
+
+---
+
+## 5. Evrişimli Sinir Ağları (CNN)
+
+Görüntü işleme için optimize edilmiş CNN, resmin mekansal yapısını korur.
+
+- **Convolutional Layer:** Filtreler (kernels) ile kenar ve köşe tespiti yapar.
+- **Pooling Layer:** Veri boyutunu küçültür ve hesaplama maliyetini düşürür.
+- **Fully Connected (FC):** Çıkarılan tüm özellikleri birleştirerek nihai sınıflandırmayı yapar.
+
+---
+
+## 6. Naive Bayes ve Sınıflandırma
+
+Naive Bayes, olasılık temelli ve oldukça hızlı bir algoritmadır.
+
+<Callout type="warning" title="Kritik Varsayım">
+Naive Bayes, tüm özelliklerin birbirinden **bağımsız** olduğunu varsayar. Bu gerçek hayatta tam sağlanmasa da (Örn: "New" ve "York" kelimeleri bağımlıdır), model metin sınıflandırmada çok başarılıdır.
+</Callout>
+
+**Laplace Smoothing:** Eğitim setinde olmayan bir kelime geldiğinde olasılığın 0 çıkıp tüm sonucu yutmasını engellemek için her frekansa $+1$ eklenmesi işlemidir.
+
+---
+
+## 7. Metin Temsil ve Benzerlik Ölçümü
+
+| Yöntem | Açıklama | Dezavantajı |
+| :--- | :--- | :--- |
+| **Bag of Words (BOW)** | Kelime frekanslarını tutar. | Anlam ve sırayı kaybeder. |
+| **TF-IDF** | Kelime önemi $\times$ Nadirlik. | Bağlamı (context) anlayamaz. |
+
+### Benzerlik Ölçütleri
+- **Kosinüs Benzerliği:** Vektörler arasındaki açıya bakar. Doküman uzunluğundan bağımsız olduğu için NLP'de tercih edilir.
+- **Öklid Uzaklığı:** İki nokta arasındaki geometrik mesafedir. Vektör uzunluğundan (kelime sayısı) çok etkilenir.
+
+
+
+---
+
+## 8. Karar Ağaçları ve Performans Yönetimi
+
+Düğümleri bölmek için **Gini İndeksi** (hızlı) veya **Bilgi Kazancı (Entropy)** kullanılır.
+
+<Callout type="danger" title="Aşırı Uyum (Overfitting)">
+Modelin veriyi ezberlemesidir. Eğitimde başarı yüksek, testte düşüktür.
+**Çözüm:** Budama (Pruning) ve derinlik sınırı koymak.
+</Callout>
+
+---
+
+## 9. Modern Dönem: LLM ve Prompt Engineering
+
+Büyük Dil Modelleri (LLM), **Transformer** mimarisi sayesinde tüm metni aynı anda değerlendirebilir.
+
+<Accordion title="Prompt Teknikleri">
+- **Zero-shot:** Hiç örnek vermeden talimat vermek.
+- **Few-shot:** Birkaç örnek (2-5 arası) vererek modeli yönlendirmek.
+- **Transformer:** Self-Attention mekanizması ile global bağlamı yakalar.
+</Accordion>
+
+---
