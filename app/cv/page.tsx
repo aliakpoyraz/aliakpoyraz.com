@@ -78,8 +78,6 @@ export default function CVPage() {
                             duration="Ocak 2026"
                             description="SDLC & SDTC & Metodolojiler: Yazılım geliştirme yaşam döngüsü adımlarının incelenmesi ve QA süreçlerine entegrasyonu.1. <br /> <br /> Test Yönetimi: Fonksiyonel testlerin yürütülmesi ve hata raporlama süreçleri. <br /> <br /> Çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon."
                         />
-
-                    <div className="space-y-6">
                         <ExperienceItem
                             title="Web Geliştirici, SEO, Marketing (Trendyol/E-Ticaret)"
                             company="KAYISIR / MALATYA"
