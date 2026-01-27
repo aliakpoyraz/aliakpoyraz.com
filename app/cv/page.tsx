@@ -71,6 +71,13 @@ export default function CVPage() {
                     <h2 className="text-2xl font-bold text-white mb-4 border-b border-indigo-500/50 pb-1">
                         İŞ DENEYİMİ
                     </h2>
+                    <div className="space-y-6">
+                        <ExperienceItem
+                            title="Test ve Kalite Yönetimi Stajyeri"
+                            company="AktifTech (AktifBank A.Ş.) / İstanbul"
+                            duration="Ocak 2026"
+                            description="SDLC & SDTC & Metodolojiler: Yazılım geliştirme yaşam döngüsü adımlarının incelenmesi ve QA süreçlerine entegrasyonu.1. <br /> <br /> Test Yönetimi: Fonksiyonel testlerin yürütülmesi ve hata raporlama süreçleri. <br /> <br /> Çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon."
+                        />
 
                     <div className="space-y-6">
                         <ExperienceItem

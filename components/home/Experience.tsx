@@ -10,12 +10,12 @@ export default function Experience() {
         {
             company: "AktifTech (AktifBank A.Ş.)",
             url: "https://www.aktiftech.com",
-            role: "Stajyer Yazılım Mühendisi",
-            date: "Ocak 2026 - Halen",
+            role: "Test ve Kalite Yönetimi Stajyeri",
+            date: "Ocak 2026",
             location: "İstanbul (Uzaktan)",
-            description: "SDLC & SDTC & Metodolojiler: Yazılım geliştirme yaşam döngüsü adımlarının incelenmesi ve QA süreçlerine entegrasyonu.\nTest Yönetimi: Fonksiyonel testlerin yürütülmesi ve hata raporlama süreçleri.\nÇevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon.",
+            description: "SDLC & SDTC & Metodolojiler: Yazılım geliştirme yaşam döngüsü adımlarının incelenmesi ve QA süreçlerine entegrasyonu.1. <br /> <br /> Test Yönetimi: Fonksiyonel testlerin yürütülmesi ve hata raporlama süreçleri. <br /> <br /> Çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon.",
             tech: ["Agile", "SDLC", "SDTC", "QA", "Test Yönetimi"],
-            current: true,
+            current: false,
         },
         {
             company: "Kayısır",
