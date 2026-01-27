@@ -13,8 +13,8 @@ export default function Experience() {
             role: "Stajyer Yazılım Mühendisi",
             date: "Ocak 2026 - Halen",
             location: "İstanbul (Uzaktan)",
-            description: "Eklenecek...",
-            tech: ["Eklenecek..."],
+            description: "SDLC & SDTC & Metodolojiler: Yazılım geliştirme yaşam döngüsü adımlarının incelenmesi ve QA süreçlerine entegrasyonu.\nTest Yönetimi: Fonksiyonel testlerin yürütülmesi ve hata raporlama süreçleri.\nÇevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon.",
+            tech: ["Agile", "SDLC", "SDTC", "QA", "Test Yönetimi"],
             current: true,
         },
         {
