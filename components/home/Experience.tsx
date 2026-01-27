@@ -13,7 +13,7 @@ export default function Experience() {
             role: "Test ve Kalite Yönetimi Stajyeri",
             date: "Ocak 2026",
             location: "İstanbul (Uzaktan)",
-            description: "SDLC & SDTC & Metodolojiler: Yazılım geliştirme yaşam döngüsü adımlarının incelenmesi ve QA süreçlerine entegrasyonu.1. <br /> <br /> Test Yönetimi: Fonksiyonel testlerin yürütülmesi ve hata raporlama süreçleri. <br /> <br /> Çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon.",
+            description: "Yazılım geliştirme yaşam döngüsü (SDLC, SDTC) adımlarını ve metodolojilerini inceleyerek QA süreçlerine entegrasyonuna katkıda bulundum. Fonksiyonel testlerin yürütülmesi, hata raporlarının hazırlanması ve çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon konularında deneyim kazandım.",
             tech: ["Agile", "SDLC", "SDTC", "QA", "Test Yönetimi"],
             current: false,
         },
