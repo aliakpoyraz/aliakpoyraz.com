@@ -16,7 +16,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.556.0",
     "next": "16.0.8",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "rehype-slug": "^6.0.0",
