@@ -269,6 +269,8 @@ export default async function BlogPost({ params }: Props) {
                         mdxOptions: {
                             remarkPlugins: [remarkGfm],
                             rehypePlugins: [rehypeSlug],
+                            // @ts-ignore - blockJS is a valid option in v6 but might not be in types yet
+                            blockJS: false,
                         },
                     }}
                 />

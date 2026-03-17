@@ -1,6 +1,6 @@
 import { Check, X } from 'lucide-react';
 
-export default function ProsCons({ pros, cons }: { pros: string[], cons: string[] }) {
+export default function ProsCons({ pros = [], cons = [] }: { pros?: string[], cons?: string[] }) {
     return (
         <div className="my-8 grid gap-4 md:grid-cols-2">
             {/* Artılar */}
