@@ -6,7 +6,7 @@ const YouTubeCard = ({ url }: { url: string }) => {
     if (!videoId) return <p className="text-red-500">Hatalı YouTube Linki</p>;
 
     return (
-        <div className="my-6 w-full overflow-hidden rounded-xl border border-gray-800 shadow-xl">
+        <div className="my-8 w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/80 backdrop-blur-xl shadow-2xl">
             <div className="relative pb-[56.25%] h-0">
                 <iframe
                     className="absolute top-0 left-0 w-full h-full"

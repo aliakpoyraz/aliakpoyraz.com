@@ -6,7 +6,6 @@ import { Home, FileUser, Mail, BookOpen } from 'lucide-react';
 
 const navItems = [
     { icon: <Home size={22} />, href: "/", label: "Anasayfa" },
-    { icon: <FileUser size={22} />, href: "/cv", label: "CV" },
     { icon: <BookOpen size={22} />, href: "/blog", label: "Blog" },
 ];
 
@@ -16,7 +15,7 @@ export default function Navbar() {
     return (
         <header className="absolute top-6 left-1/2 -translate-x-1/2 z-50 group">
 
-            {/* Glow effect */}
+            {/* Parlama Efekti */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-700 via-zinc-400 to-zinc-700 rounded-full opacity-20 blur-md group-hover:opacity-60 transition duration-500"></div>
 
             <nav className="relative flex items-center gap-2 p-2 rounded-full border border-white/10 bg-zinc-950/95 backdrop-blur-2xl shadow-2xl">
@@ -34,15 +33,15 @@ export default function Navbar() {
                 `}
                                 title={item.label}
                             >
-                                {/* Active indicator */}
+                                {/* Aktif Göstergesi */}
                                 {isActive && (
                                     <span className="absolute inset-0 bg-white/10 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)]"></span>
                                 )}
 
-                                {/* Hover effect */}
+                                {/* Gezinme Efekti */}
                                 <span className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover/item:opacity-100 transition-opacity scale-90 group-hover/item:scale-100"></span>
 
-                                {/* Icon */}
+                                {/* İkon */}
                                 <span className={`relative z-10 block transition-transform duration-300 ${isActive ? "scale-110" : "group-hover/item:scale-110"}`}>
                                     {item.icon}
                                 </span>

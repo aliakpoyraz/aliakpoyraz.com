@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/lib/useScrollAnimation";
 
 export default function Experience() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-    
+
     const experiences = [
         {
             company: "AktifTech (AktifBank A.Ş.)",
@@ -25,7 +25,7 @@ export default function Experience() {
             location: "Malatya (Uzaktan)",
             description: "E-ticaret altyapısının uçtan uca yönetimini gerçekleştirmekteyim. Mevcut WordPress tabanlı sistemi baz alarak, kapsamlı SEO optimizasyonu ve dijital pazarlama faaliyetlerini başarıyla yönettim. Ek olarak, Trendyol başta olmak üzere çeşitli pazar yerleri ile tam entegrasyonu kurarak bu kanalların merkezi yönetimini sağlamaktayım. Halihazırda, iş süreçlerini optimize edecek özel bir web uygulaması geliştirme projesini yürütüyorum.",
             tech: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
-            current: true, // Bu true ise tarih yeşil görünür
+            current: true, // true olursa tarih yeşil renkte gösterilir
         },
         {
             company: "SwordSec Siber Güvenlik",
@@ -50,18 +50,17 @@ export default function Experience() {
     ];
 
     return (
-        <section 
+        <section
             ref={ref}
-            className={`w-full max-w-2xl mx-auto mt-16 px-0 md:px-0 transition-all duration-700 ease-out ${
-                isVisible 
-                    ? "opacity-100 translate-y-0" 
+            className={`w-full max-w-2xl mx-auto mt-16 px-0 md:px-0 transition-all duration-700 ease-out ${isVisible
+                    ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
-            }`}
+                }`}
         >
 
-            {/* Header */}
+            {/* Başlık */}
             <div className="flex items-center gap-3 mb-4 px-2">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
+                <div className="p-2 rounded-xl bg-zinc-950/50 border border-white/10 backdrop-blur-md shadow-lg">
                     <BriefcaseBusiness className="text-zinc-400" size={20} />
                 </div>
                 <h2 className="text-xl font-bold text-white">
@@ -69,44 +68,44 @@ export default function Experience() {
                 </h2>
             </div>
 
-            {/* Divider */}
+            {/* Ayırıcı */}
             <div className="border-b border-zinc-800 mb-8"></div>
 
-            {/* Timeline */}
+            {/* Zaman Çizelgesi */}
             <div className="flex flex-col gap-8">
                 {experiences.map((exp, index) => (
                     <div key={index} className="group relative flex gap-6">
 
                         <div className="flex flex-col items-center">
-                            {/* Timeline dot */}
+                            {/* Zaman noktası */}
                             <div className={`
                 relative z-10 flex h-3 w-3 shrink-0 rounded-full 
                 ${exp.current
-                                    ? "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.6)]"
-                                    : "bg-zinc-700 border border-zinc-600 group-hover:bg-zinc-500 transition-colors"}
+                                    ? "bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.4)]"
+                                    : "bg-zinc-800 border border-white/10 group-hover:bg-zinc-600 transition-colors"}
               `}>
                                 {exp.current && <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75"></div>}
                             </div>
 
-                            {/* Timeline line */}
+                            {/* Zaman çizgisi */}
                             {index !== experiences.length - 1 && (
                                 <div className="h-full w-px bg-zinc-800 my-2 group-hover:bg-zinc-700 transition-colors"></div>
                             )}
                         </div>
 
-                        {/* Card content */}
+                        {/* Kart İçeriği */}
                         <div className="flex-1 pb-2">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
                                 <h3 className="text-lg font-semibold text-zinc-100 group-hover:text-white transition-colors">
                                     {exp.role}
                                 </h3>
-                                <div className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full w-fit ${exp.current ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-zinc-900 border border-zinc-800 text-zinc-500"}`}>
+                                <div className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-lg w-fit backdrop-blur-md ${exp.current ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-white/5 border border-white/5 text-zinc-500"}`}>
                                     <Calendar size={12} />
                                     {exp.date}
                                 </div>
                             </div>
 
-                            {/* Company info */}
+                            {/* Şirket Bilgisi */}
                             <div className="flex items-center gap-2 text-sm text-zinc-400 mb-3">
                                 {exp.url ? (
                                     <a
@@ -130,12 +129,12 @@ export default function Experience() {
                                 {exp.description}
                             </p>
 
-                            {/* Tech stack badges */}
+                            {/* Kullanılan Teknolojiler */}
                             <div className="flex flex-wrap gap-2">
                                 {exp.tech.map((t, i) => (
                                     <span
                                         key={i}
-                                        className="px-2 py-1 text-[10px] sm:text-xs font-medium rounded-md bg-zinc-900 border border-zinc-800 text-zinc-500 group-hover:border-zinc-700 group-hover:text-zinc-300 transition-colors"
+                                        className="px-2 py-1 text-[10px] sm:text-xs font-medium rounded-lg bg-white/5 border border-white/5 text-zinc-500 group-hover:border-white/10 group-hover:text-zinc-300 transition-colors backdrop-blur-sm"
                                     >
                                         {t}
                                     </span>

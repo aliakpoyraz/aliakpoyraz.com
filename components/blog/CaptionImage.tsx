@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function CaptionImage({ src, alt, caption }: { src: string, alt: string, caption?: string }) {
     return (
-        <figure className="my-8 w-full">
-            <div className="flex flex-col overflow-hidden rounded-xl border border-zinc-800 shadow-2xl bg-zinc-950">
+        <figure className="my-10 w-full group">
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-zinc-950/80 backdrop-blur-xl">
                 <img
                     src={src}
                     alt={alt}

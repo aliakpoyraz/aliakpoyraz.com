@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Sabit gezinme menüsü (navbar) için üst boşluk */
+}
+
 :root {
   background-color: #09090b;
   color: #e4e4e7;

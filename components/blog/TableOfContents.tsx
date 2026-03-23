@@ -10,7 +10,7 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
     if (headings.length === 0) return null;
 
     return (
-        <nav className="my-8 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+        <nav className="my-8 rounded-2xl border border-white/10 bg-zinc-950/80 backdrop-blur-xl shadow-2xl p-6">
             <h2 className="mb-4 text-lg font-bold text-white">İçindekiler</h2>
             <ul className="flex flex-col gap-2.5">
                 {headings.map((heading, index) => (

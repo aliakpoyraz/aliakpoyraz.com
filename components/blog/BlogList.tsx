@@ -38,7 +38,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
         >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 rounded-[2rem] opacity-20 blur group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
 
-            <div className="relative h-full flex flex-col p-6 sm:p-8 rounded-[1.7rem] bg-[#0c0c0e] border border-white/5 shadow-2xl overflow-hidden">
+            <div className="relative h-full flex flex-col p-6 sm:p-8 rounded-[1.7rem] bg-zinc-950/80 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden transition-all duration-300 group-hover:bg-zinc-900/40">
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none"></div>
 
                 <div className="relative z-10">
@@ -64,13 +64,13 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                         </div>
                     )}
 
-                    <div className="flex items-center gap-3 text-xs font-medium text-zinc-500 font-mono mt-auto pt-4 border-t border-zinc-800/50 w-full">
-                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2.5 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors">
+                    <div className="flex items-center gap-3 text-xs font-medium text-zinc-500 font-mono mt-auto pt-4 border-t border-zinc-900 w-full">
+                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 hover:border-white/10 transition-colors backdrop-blur-sm">
                             <Calendar size={12} />
                             <span>{post.date}</span>
                         </div>
 
-                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2.5 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors">
+                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 hover:border-white/10 transition-colors backdrop-blur-sm">
                             <Clock size={12} />
                             <span>{post.readingTime}</span>
                         </div>
@@ -83,9 +83,9 @@ export default function BlogList({ posts }: { posts: Post[] }) {
     return (
         <section className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20 animate-in fade-in zoom-in duration-700">
 
-            {/* Header */}
-            <div className="flex items-center gap-4 mb-10 pb-6 border-b border-zinc-800">
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-[#0c0c0e] border border-white/5 text-zinc-400 shadow-lg">
+            {/* Başlık */}
+            <div className="flex items-center gap-4 mb-10 pb-6 border-b border-zinc-800/50">
+                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl text-zinc-400 shadow-lg">
                     <BookOpen size={24} />
                 </div>
                 <div>
@@ -93,10 +93,10 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                 </div>
             </div>
 
-            {/* Search card */}
+            {/* Arama Kartı */}
             <div className="relative w-full mb-10 group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 rounded-[2rem] opacity-20 blur group-focus-within:opacity-50 transition duration-500"></div>
-                <div className="relative flex items-center bg-[#0c0c0e] border border-white/5 rounded-[1.7rem] shadow-2xl overflow-hidden">
+                <div className="relative flex items-center bg-zinc-950/80 border border-white/10 rounded-[1.7rem] backdrop-blur-xl shadow-2xl overflow-hidden">
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none"></div>
                     <div className="pl-6 text-zinc-500 group-focus-within:text-white transition-colors z-10">
                         <Search size={22} />
@@ -111,7 +111,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                 </div>
             </div>
 
-            {/* Results */}
+            {/* Sonuçlar */}
             <div className="flex flex-col gap-8">
 
                 {!searchQuery && posts.map(post => renderPostCard(post))}
@@ -119,7 +119,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                 {searchQuery && (
                     <>
                         {!hasAnyResult && (
-                            <div className="flex flex-col items-center justify-center py-20 text-zinc-500 border border-dashed border-zinc-800 rounded-[1.7rem] bg-[#0c0c0e]/50">
+                            <div className="flex flex-col items-center justify-center py-20 text-zinc-500 border border-dashed border-white/10 rounded-[1.7rem] bg-zinc-950/50 backdrop-blur-xl">
                                 <Search size={32} className="mb-3 opacity-30" />
                                 <p className="text-sm">&quot;{searchQuery}&quot; ile eşleşen yazı yok.</p>
                             </div>

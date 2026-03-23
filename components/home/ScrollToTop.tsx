@@ -39,7 +39,7 @@ export default function ScrollToTop() {
         >
             <ArrowUp size={20} />
 
-            {/* Glow effect */}
+            {/* Parlama Efekti */}
             <div className="absolute inset-0 -z-10 rounded-full bg-white/5 blur-md group-hover:bg-white/10 transition-colors" />
         </button>
     );

@@ -213,24 +213,24 @@ export default async function BlogPost({ params }: Props) {
 
             <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white mb-8 transition-colors group"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm text-zinc-500 hover:text-white mb-8 bg-zinc-950/50 border border-white/5 backdrop-blur-md transition-colors group"
             >
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                 Blog Listesine Dön
             </Link>
 
-            <header className="mb-10 pb-10 border-b border-zinc-800">
+            <header className="mb-10 p-8 rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl shadow-2xl">
                 <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
                     {post.frontmatter.title}
                 </h1>
 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="flex items-center gap-4 text-sm text-zinc-500 font-mono">
-                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2 py-1 rounded border border-zinc-800">
+                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 backdrop-blur-sm">
                             <Calendar size={14} />
                             {post.frontmatter.turkishDisplayDate}
                         </div>
-                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2 py-1 rounded border border-zinc-800">
+                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 backdrop-blur-sm">
                             <Clock size={14} />
                             {readingTime}
                         </div>
@@ -254,7 +254,7 @@ export default async function BlogPost({ params }: Props) {
                 prose-ul:list-disc prose-ul:pl-5 prose-ul:marker:text-zinc-600
                 prose-ol:list-decimal prose-ol:pl-5 prose-ol:marker:text-zinc-600
                 prose-code:text-indigo-200 prose-code:bg-zinc-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-normal
-                prose-pre:bg-[#0c0c0e] prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-xl
+                prose-pre:bg-zinc-950/80 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-2xl prose-pre:backdrop-blur-xl
                 prose-table:border-collapse prose-table:w-full prose-table:my-8
                 prose-thead:border-b prose-thead:border-zinc-700
                 prose-th:text-zinc-200 prose-th:font-semibold prose-th:p-3 prose-th:text-left
@@ -283,9 +283,9 @@ export default async function BlogPost({ params }: Props) {
                     {prevPost ? (
                         <Link
                             href={`/blog/${prevPost.slug}`}
-                            className="flex flex-col rounded-lg border border-zinc-800 p-4 text-left transition-colors hover:bg-zinc-900/50 hover:border-indigo-500/50 w-full"
+                            className="flex flex-col rounded-2xl border border-white/10 bg-zinc-950/80 p-6 text-left backdrop-blur-xl transition-all hover:bg-zinc-900/50 hover:border-indigo-500/50 w-full group shadow-xl"
                         >
-                            <span className="text-xs text-zinc-500 flex items-center gap-1">
+                            <span className="text-xs text-zinc-500 flex items-center gap-1 group-hover:text-zinc-300">
                                 <ChevronLeft size={14} /> Önceki Yazı
                             </span>
                             <span className="text-sm font-semibold text-white mt-1 leading-snug">
@@ -299,9 +299,9 @@ export default async function BlogPost({ params }: Props) {
                     {nextPost ? (
                         <Link
                             href={`/blog/${nextPost.slug}`}
-                            className="flex flex-col rounded-lg border border-zinc-800 p-4 text-right transition-colors hover:bg-zinc-900/50 hover:border-indigo-500/50 w-full"
+                            className="flex flex-col rounded-2xl border border-white/10 bg-zinc-950/80 p-6 text-right backdrop-blur-xl transition-all hover:bg-zinc-900/50 hover:border-indigo-500/50 w-full group shadow-xl"
                         >
-                            <span className="text-xs text-zinc-500 flex items-center justify-end gap-1">
+                            <span className="text-xs text-zinc-500 flex items-center justify-end gap-1 group-hover:text-zinc-300">
                                 Sonraki Yazı <ChevronRight size={14} />
                             </span>
                             <span className="text-sm font-semibold text-white mt-1 leading-snug">

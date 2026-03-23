@@ -13,7 +13,7 @@ export default function CVPage() {
         <main className="w-full mx-auto py-12 px-4 sm:pt-24 mb-24 animate-in fade-in duration-700">
 
             <div className="max-w-4xl mx-auto p-6 sm:p-12 border border-white/10 rounded-3xl bg-zinc-900/50 backdrop-blur-xl shadow-2xl relative overflow-hidden group">
-                {/* Decorative background element */}
+                {/* Dekoratif Arka Plan Elemanı */}
                 <div className="absolute -top-24 -right-24 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl group-hover:bg-indigo-600/20 transition-colors duration-700" />
                 <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl group-hover:bg-blue-600/20 transition-colors duration-700" />
 

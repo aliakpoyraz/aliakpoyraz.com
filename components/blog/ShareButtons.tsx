@@ -24,13 +24,11 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
 
     const encodedTitle = encodeURIComponent(title);
     const encodedUrl = encodeURIComponent(url);
+    const iconSize = size === 'sm' ? 14 : 18;
+    const sizeClasses = size === 'sm' ? 'w-8 h-8' : 'w-10 h-10';
 
     // Boyuta göre sınıf ve ikon büyüklüğü ayarı
-    const sizeClasses = size === 'sm' ? 'h-8 w-8 border-zinc-800' : 'h-10 w-10 border-zinc-800';
-    const iconSize = size === 'sm' ? 14 : 18;
-
-    // Ortak buton stili
-    const baseBtnStyle = `flex items-center justify-center rounded-full border bg-zinc-900 text-zinc-400 transition-all ${sizeClasses}`;
+    const baseBtnStyle = `flex items-center justify-center rounded-xl border bg-zinc-950/80 backdrop-blur-xl text-zinc-400 border-white/5 transition-all ${sizeClasses}`;
 
     return (
         <div className="flex items-center gap-2">
@@ -38,7 +36,7 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
                 href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${baseBtnStyle} hover:border-zinc-700 hover:bg-zinc-800 hover:text-white`}
+                className={`${baseBtnStyle} hover:border-white/20 hover:bg-zinc-900/50 hover:text-white shadow-lg shadow-black/20`}
                 title="Twitter'da Paylaş"
             >
                 <Twitter size={iconSize} />
@@ -48,7 +46,7 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${baseBtnStyle} hover:border-[#0077b5] hover:bg-[#0077b5] hover:text-white`}
+                className={`${baseBtnStyle} hover:border-[#0077b5]/50 hover:bg-[#0077b5]/20 hover:text-[#0077b5] shadow-lg shadow-black/20`}
                 title="LinkedIn'de Paylaş"
             >
                 <Linkedin size={iconSize} />
@@ -56,7 +54,7 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
 
             <button
                 onClick={handleCopy}
-                className={`${baseBtnStyle} hover:border-indigo-500 hover:bg-indigo-500 hover:text-white`}
+                className={`${baseBtnStyle} hover:border-indigo-500/50 hover:bg-indigo-500/20 hover:text-indigo-400 shadow-lg shadow-black/20`}
                 title="Linki Kopyala"
             >
                 {copied ? <Check size={iconSize} /> : <LinkIcon size={iconSize} />}
