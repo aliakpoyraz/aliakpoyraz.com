@@ -3,7 +3,12 @@ import { wrapper, block } from '@keystatic/core/content-components';
 
 export default config({
   storage: {
-    kind: process.env.NODE_ENV === 'development' ? 'local' : 'github',
+    kind: (
+      process.env.NODE_ENV === 'development' || 
+      !process.env.KEYSTATIC_GITHUB_CLIENT_ID || 
+      !process.env.KEYSTATIC_GITHUB_CLIENT_SECRET || 
+      !process.env.KEYSTATIC_SECRET
+    ) ? 'local' : 'github',
     repo: {
       owner: 'aliakpoyraz',
       name: 'aliakpoyraz.com',
