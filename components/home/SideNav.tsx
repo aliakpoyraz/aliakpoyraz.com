@@ -21,15 +21,26 @@ export default function SideNav() {
     const isHome = pathname === "/";
 
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(!entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+
+        const footer = document.getElementById("footer");
+        if (footer) observer.observe(footer);
+
         if (!isHome) {
             if (pathname.startsWith("/blog")) {
                 setActiveSection("blog");
             }
-            return;
+            return () => {
+                if (footer) observer.unobserve(footer);
+            };
         }
 
         const handleScroll = () => {
-            if (!isHome) return;
             const sections = navItems
                 .filter(item => item.id !== "blog")
                 .map(item => document.getElementById(item.id));
@@ -44,20 +55,10 @@ export default function SideNav() {
             }
         };
 
-        // Alt kısım görünürlük kontrolü
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsVisible(!entry.isIntersecting);
-            },
-            { threshold: 0.1 }
-        );
-
-        const footer = document.getElementById("footer");
-        if (footer) observer.observe(footer);
-
         window.addEventListener("scroll", handleScroll);
         // İlk kaydırma kontrolü
         handleScroll();
+        
         return () => {
             window.removeEventListener("scroll", handleScroll);
             if (footer) observer.unobserve(footer);
