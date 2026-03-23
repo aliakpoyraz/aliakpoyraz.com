@@ -5,6 +5,10 @@ export default function NotFound() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center pt-20">
+            {/* Navigasyon barını (/SideNav) 404 sayfasında tamamen gizle */}
+            <style dangerouslySetInnerHTML={{ __html: `
+                #sidenav { display: none !important; }
+            `}} />
 
             <Frown size={64} className="text-zinc-600 mb-4" />
 

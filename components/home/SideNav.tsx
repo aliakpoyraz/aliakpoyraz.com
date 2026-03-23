@@ -75,7 +75,7 @@ export default function SideNav() {
     };
 
     return (
-        <aside className={`fixed bottom-6 left-1/2 -translate-x-1/2 xl:bottom-auto xl:left-[calc(50%-26rem)] xl:top-1/2 xl:-translate-y-1/2 z-50 flex flex-row xl:flex-col gap-3 xl:gap-4 p-2 xl:p-0 rounded-2xl xl:rounded-none bg-zinc-950/80 xl:bg-transparent backdrop-blur-xl xl:backdrop-blur-none border border-white/5 xl:border-none shadow-2xl xl:shadow-none transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}>
+        <aside id="sidenav" className={`fixed bottom-6 left-1/2 -translate-x-1/2 xl:bottom-auto xl:left-[calc(50%-26rem)] xl:top-1/2 xl:-translate-y-1/2 z-50 flex flex-row xl:flex-col gap-3 xl:gap-4 p-2 xl:p-0 rounded-2xl xl:rounded-none bg-zinc-950/80 xl:bg-transparent backdrop-blur-xl xl:backdrop-blur-none border border-white/5 xl:border-none shadow-2xl xl:shadow-none transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}>
             {navItems.map((item) => {
                 const isItemActive = activeSection === item.id;
 
