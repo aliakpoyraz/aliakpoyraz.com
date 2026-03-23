@@ -11,7 +11,7 @@ const activeProjects = [
         status: "Geliştiriliyor",
         statusColor: "text-amber-400 bg-amber-400/10 border-amber-400/20",
         link: "#",
-        tags: ["Swift", "iOS Mobile"]
+        tags: ["Swift", "Supabase"]
     },
     {
         title: "E-Ticaret Platformu",
@@ -20,7 +20,7 @@ const activeProjects = [
 
         statusColor: "text-green-400 bg-green-500/10 border-green-500/20",
         link: "https://e-ticaret.aliakpoyraz.com",
-        tags: ["Next.js", "E-Ticaret"]
+        tags: ["Next.js", "Supabase", "Resend"]
     },
     {
         title: "Kişisel Portfolyo",
