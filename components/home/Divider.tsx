@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 
 export default function Divider() {
     return (
-        <div className="flex items-center justify-center w-full max-w-2xl mx-auto my-8 opacity-20">
+        <div className="flex items-center justify-center w-full max-w-2xl mx-auto my-4 md:my-8 opacity-20">
 
             {/* Sol Çizgi (Sağa doğru koyulaşır) */}
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-zinc-500 to-zinc-500"></div>

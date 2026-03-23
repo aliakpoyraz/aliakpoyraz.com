@@ -7,8 +7,8 @@ import ActiveProjects from "@/components/home/ActiveProjects";
 
 export default function Home() {
   return (
-    <main className="flex min-h-[85vh] flex-col items-center justify-center p-4 md:p-8">
-      <div id="baslangic" className="w-full">
+    <main className="flex flex-col items-center px-2 md:px-8 w-full">
+      <div id="baslangic" className="w-full min-h-[calc(100vh-6rem)] md:min-h-[85vh] flex items-center justify-center">
         <ProfileCard />
       </div>
       <Divider />
