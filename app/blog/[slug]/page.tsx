@@ -20,12 +20,14 @@ import Accordion from '@/components/blog/Accordion';
 import TableOfContents from '@/components/blog/TableOfContents';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import ShareButtons from '@/components/blog/ShareButtons';
+import AiSummary from '@/components/blog/AiSummary';
 
 // TypeScript Arayüzü: Frontmatter'dan beklenen verileri tanımlar
 interface PostFrontmatter {
     title: string;
     date: string; // GG-AA-YYYY formatında gelen orijinal tarih
     description: string;
+    summary?: string;
     image?: string; // Zorunlu olmayan alanlar için '?' kullanılır
     [key: string]: any; // Diğer tüm custom alanlara izin verir
 }
@@ -244,6 +246,8 @@ export default async function BlogPost({ params }: Props) {
             </header>
 
             {headings.length > 0 && <TableOfContents headings={headings} />}
+
+            {post.frontmatter.summary && <AiSummary summary={post.frontmatter.summary} />}
 
             <div className="prose prose-invert prose-zinc max-w-none 
                 prose-headings:scroll-mt-20

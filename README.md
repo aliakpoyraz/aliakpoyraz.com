@@ -21,26 +21,32 @@ Bu projeyi geliştirirken modern web teknolojilerinden faydalandım:
 ## ✨ Öne Çıkan Özellikler
 
 - **Responsive Tasarım**: Telefondan, tabletten veya bilgisayardan girdiğinizde her zaman düzgün görünür.
-![Ana Sayfa Mobil](./public/img/readme/home-mobile.png)
+
+<img src="./public/img/readme/home-mobile.png" alt="Ana Sayfa Mobil" width="250" />
+
 *Tam uyumlu mobil görünüm*
 - **Dinamik Projeler**: GitHub API'sini kullanarak en son güncellediğim repoları otomatik olarak ana sayfaya çeker.
 - **Gelişmiş Blog**: MDX altyapısı sayesinde sadece yazı yazmakla kalmıyor, yazıların içine özel React bileşenleri (video, uyarı kutuları, akordiyon vb.) gömebiliyorum.
-![Blog Callouts](./public/img/readme/blog-callouts.png)
-*Zenginleştirilmiş blog içeriği ve özel bileşenler*
+-**AI Destekli Özet**: Blog içerikleri Gemini API ile otomatik özetleniyor.
 - **DarkMode**: Göz yormayan koyu tema tasarımı.
 - **Performans & SEO**: Next.js'in gücüyle hızlı yüklenen sayfalar ve arama motorları için optimize edilmiş meta etiketler.
 
-## 📁 Proje Yapısı
+## 📝 Blog Yazma Süreci
 
-```text
-/
-├── app/            # Sayfalar, API rotaları ve global stiller
-├── components/     # Tekrar kullanılabilir React bileşenleri
-├── content/        # .mdx formatındaki blog yazıları
-├── lib/            # Yardımcı fonksiyonlar (MDX işleme, animasyonlar vb.)
-├── public/         # Resimler, favicon ve statik dosyalar
-└── tailwind.config.js # Stil yapılandırması
+Blog yazılarımı `content/` klasörü altına `.mdx` dosyaları olarak ekliyorum. Her yazının başında şöyle bir yapı (frontmatter) bulunuyor:
+
+```markdown
+---
+title: "Yazı Başlığı"
+date: "24-03-2026"
+description: "Yazı hakkında kısa bir özet"
+ai_summary: "Yapay zeka tarafından oluşturulan otomatik özet..."
+---
 ```
+
+İçerik kısmında standart Markdown kullanabildiğim gibi, hazırladığım `<Callout>` veya `<YouTubeCard>` gibi özel bileşenleri de kullanabiliyorum. 
+
+Ayrıca blog yazım sürecimi hızlandırmak ve okuyuculara fayda sağlamak için **Gemini API** destekli bir otomasyon tasarladım. Yazımı tamamlayıp Git'e commit attığım anda arka planda çalışan bir script devreye giriyor; yazının kısa ve teknik bir özetini çıkararak dosyanın başındaki `ai_summary` alanına otomatik olarak işliyor. Böylece yazılarımın hemen başında, `<AiSummary />` bileşeni ile okuyuculara şık bir yapay zeka özeti sunabiliyorum.
 
 ## 🚀 Yerelde Çalıştırma
 
@@ -67,23 +73,6 @@ Projeyi kendi bilgisayarınızda çalıştırmak isterseniz şu adımları izley
    ```
 
 Artık tarayıcınızda `http://localhost:3000` adresine giderek siteyi görebilirsiniz.
-
-## 📝 Blog Yazma Süreci
-
-Blog yazılarımı `content/` klasörü altına `.mdx` dosyaları olarak ekliyorum. Her yazının başında şöyle bir yapı (frontmatter) bulunuyor:
-
-```markdown
----
-title: "Yazı Başlığı"
-date: "24-03-2026"
-description: "Yazı hakkında kısa bir özet"
----
-```
-
-İçerik kısmında standart Markdown kullanabildiğim gibi, hazırladığım `<Callout>` veya `<YouTubeCard>` gibi özel bileşenleri de kullanabiliyorum.
-
-![Blog Callouts](./public/img/readme/blog-callouts.png)
-*Zenginleştirilmiş blog içeriği ve özel bileşenler*
 
 ## 🤝 İletişim
 
