@@ -1,10 +1,10 @@
 import { makeRouteHandler } from '@keystatic/next/route-handler';
 import config from '../../../../keystatic.config';
 
-const clientId = process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_CLIENT_ID?.trim();
+const clientId = (process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_CLIENT_ID || process.env.KEYSTATIC_GITHUB_CLIENT_ID)?.trim();
 const clientSecret = process.env.KEYSTATIC_GITHUB_CLIENT_SECRET?.trim();
 const secret = process.env.KEYSTATIC_SECRET?.trim();
-const appSlug = process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG?.trim();
+const appSlug = (process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG || process.env.KEYSTATIC_GITHUB_APP_SLUG)?.trim();
 
 const storageKind = (process.env.NODE_ENV === 'development' || !clientId) ? 'local' : 'github';
 console.error('Determined Storage Kind:', storageKind);
