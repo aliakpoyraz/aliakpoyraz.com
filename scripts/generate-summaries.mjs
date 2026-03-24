@@ -54,7 +54,8 @@ async function generateSummary(title, rawContent) {
     - SADECE özeti döndür, ek açıklama yapma.`;
 
     // Denenecek modeller
-    const models = ["gemini-flash-latest", "gemini-1.5-flash-latest", "gemini-2.0-flash"];
+    // Gemini model isimlerini geçerli sürümlere göre güncelledik.
+    const models = ["gemini-1.5-flash", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash-8b"];
 
     for (const modelName of models) {
         try {
@@ -68,16 +69,16 @@ async function generateSummary(title, rawContent) {
             }
         } catch (error) {
             const errorMsg = error.message || '';
-            const isQuotaExceeded = errorMsg.includes('429') || errorMsg.includes('Quota exceeded');
-            const isNotFound = errorMsg.includes('not found') || errorMsg.includes('404');
+            const isQuotaExceeded = errorMsg.includes('429') || errorMsg.toLowerCase().includes('quota') || errorMsg.toLowerCase().includes('too many requests');
+            const isNotFound = errorMsg.includes('not found') || errorMsg.includes('404') || errorMsg.toLowerCase().includes('invalid');
             
             if (isQuotaExceeded) {
-                console.warn(`⚠️  ${modelName} rate limitine takıldı, sıradaki model deneniyor...`);
-                await sleep(1000); // Kısa bir bekleme
+                console.warn(`⚠️  ${modelName} API limitine takıldı (Rate Limit). Yeni deneme için 15 saniye bekleniyor...`);
+                await sleep(15000); // Ücretsiz katmandaki RPM (Request Per Minute) limitini aşmamak için bekleme süresi artırıldı.
             } else if (isNotFound) {
-                console.warn(`⚠️  ${modelName} bu API key ile kullanılamıyor, sıradaki model deneniyor...`);
+                console.warn(`⚠️  ${modelName} yetkisi yok veya model adı yanlış, sıradaki model deneniyor...`);
             } else {
-                console.error(`❌ ${modelName} hatası: ${errorMsg.substring(0, 100)}...`);
+                console.error(`❌ ${modelName} hatası: ${errorMsg.substring(0, 150)}...`);
                 break; // Beklenmedik bir hatada dur
             }
         }
