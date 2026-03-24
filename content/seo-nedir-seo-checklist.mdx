@@ -1,0 +1,150 @@
+---
+title: "SEO (Arama Motoru Optimizasyonu) Nedir? - SEO Checklist"
+date: "11-12-2025"
+description: "SEO'yu ilk kez duyanlar için Ostim Teknik Üniversitesi Google Developer Groups SEO Eğitimi için hazırlanmış adım adım SEO rehberi ve kontrol listesi."
+---
+
+Bu doküman SEO'yu ilk kez duyan biri için anlaşılır olacak şekilde hazırlanmıştır, Doküman içerisindeki bilgiler **Ostim Teknik Üniversitesi Google Developer Groups SEO Eğitimi** etkinliğinde kullanılması amacıyla oluşturulmuştur.
+Eğitimde kullanılan sunum dosyası paylaşılmıştır, siz de sunumlarınızda credit vererek kullanabilirsiniz.
+Teknik terimlerden korkmadan, adım adım SEO’yu öğrenmek ve uygulamak isteyenler için sade, örnekli ve pratik bir içerik sunar.
+
+---
+
+## SEO Nedir?
+
+**SEO (Search Engine Optimization)** web sitenizin arama motorlarında (Google, Bing vb.) **daha üst sıralarda görünmesini sağlayan** tüm teknik ve içeriksel iyileştirmeleri kapsar.
+
+---
+
+## SEO’nun 4 Ana Kategorisi
+
+### 1. On-Page SEO
+
+Web sitenizin içeriği ve yapısı üzerine yapılan optimizasyonlardır.
+
+- Anahtar kelime araştırması (Google Trends, Keyword Planner)
+- Başlıklar (H1, H2...) düzeni
+- Meta başlık ve açıklama
+- İç linkleme (internal linking)
+- Görsel alt metinleri (alt text)
+- Özgün ve kaliteli içerik üretimi
+
+### 2. Teknik SEO
+
+Web sitenizin altyapısal sağlığını iyileştirir.
+
+- `robots.txt` ve `sitemap.xml` oluşturma
+- Mobil uyumluluk ve sayfa hızı optimizasyonu
+- HTTPS kullanımı (SSL)
+- Core Web Vitals (LCP, FID, CLS)
+- Schema markup (JSON-LD)
+- Canonical etiketler (kopya içerik önleme)
+
+### 3. Off-Page SEO
+
+Sitenizin dış dünyadaki itibarı ve referanslarıyla ilgilidir.
+
+- Kaliteli backlink alma
+- Sosyal medya etkileşimi
+- Marka bilinirliği (bloglar, forumlar, Reddit vb.)
+- Konuk yazarlık, basın bülteni
+
+### 4. Yerel SEO (Local SEO)
+
+Coğrafi konum bazlı aramalarda üst sırada çıkmak için yapılan SEO’dur.
+
+- Google Benim İşletmem profili oluşturma
+- NAP tutarlılığı (Name, Address, Phone)
+- Yerel anahtar kelimeler kullanımı
+- Haritalarda görünürlük
+- Yerel yorumlar ve dizin kayıtları
+
+---
+
+## `robots.txt` Örneği
+
+```txt
+User-agent: *
+Disallow: /admin/
+Allow: /
+Sitemap: https://www.aliakpoyrazcom/sitemap.xml
+```
+
+---
+
+## `sitemap.xml` Örneği
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.aliakpoyraz.com/</loc>
+    <lastmod>2025-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+```
+
+---
+
+## SEO Checklist
+
+**On-Page SEO (İçerik Stratejisi)**
+- Blog yazıları için anahtar kelime araştırması yapıldı (Google Trends, Ubersuggest vb.)
+- MDX içeriklerde H1, H2, H3 başlıkları hiyerarşik yapılandırıldı
+- Yazıların frontmatter'ına `title`, `description` (ve varsa `ai_summary`) eklendi
+- Sitedeki diğer projelere ve blog yazılarına iç linkleme (internal linking) yapıldı
+- Eklenen tüm markdown görsellerine `alt` etiketi girildi (özel bileşenler dahil)
+- Yapay zeka özetleri haricinde içeriğin tamamen kişisel ve özgün olması sağlandı
+
+**Teknik SEO (Next.js Altyapısı)**
+- Next.js `robots.txt` tarama kuralları yapılandırıldı
+- Dinamik veya statik `sitemap.xml` oluşturulup Search Console'a eklendi
+- Kullanılan görseller optimize edildi (mümkünse Next.js Image Component vb. ile)
+- Sayfaların mobil uyumluluğu kontrol edildi ve Vercel/Lighthouse üzerinden hız testi başarıyla geçildi (LCP, FID, CLS)
+- 404 sayfaları `not-found.tsx` ile düzgünce ele (handle) alındı
+
+**Off-Page & İzleme**
+- Yazılan yeni blog yazısı X, LinkedIn, Discord veya Reddit gibi mecralarda paylaşıldı
+- Sektörel bloglarda (Medium, Dev.to vb.) içerik referans gösterilmek üzere paylaşıldı
+- Google Search Console kuruldu, indexleme durumları ve organik tıklamalar takip ediliyor
+- Ziyaretçilerin sitedeki etkileşimleri (hangi projelere daha çok ilgi duyulduğu vs.) analiz ediliyor
+
+---
+
+## SEO Stratejisi ChatGPT ile Nasıl Geliştirilir?
+
+> ChatGPT gibi araçlar ile aşağıdaki promptları kendinize göre düzenleyerek SEO stratejileri üretebilirsiniz:
+
+- Anahtar kelime araştırması: “Moda blogu için düşük rekabetli anahtar kelimeler üret”
+- Blog fikri üretimi: “Yaz aylarında cilt bakımı hakkında blog başlıkları öner”
+- Meta açıklama yazımı: “X içeriği için 160 karakterlik SEO uyumlu açıklama yaz”
+- İçerik genişletme: “Bu yazıyı SEO açısından daha zengin hale getir”
+- Teknik analiz yardımcısı: “robots.txt nasıl optimize edilir?”
+
+---
+
+## Ekstra Kaynaklar
+
+- [Google Search Central](https://developers.google.com/search)  
+- [Ahrefs Blog](https://ahrefs.com/blog/)  
+- [Yoast SEO Rehberleri](https://yoast.com/seo-blog/)  
+- [Screaming Frog SEO Tool](https://www.screamingfrog.co.uk/seo-spider/)
+
+---
+
+## SSS - Sık Sorulan Sorular
+
+### SEO ne kadar sürede sonuç verir?
+
+Genellikle 3-6 ay içinde gözle görülür ilerlemeler başlar. Ancak bu süre sektör, rekabet ve yapılan çalışmaların kalitesine göre değişebilir.
+
+### Ücretsiz SEO aracı var mı?
+
+Evet:  
+- Google Search Console  
+- Google Trends  
+- Ubersuggest  
+- Screaming Frog (lite)
+
