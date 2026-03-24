@@ -4,8 +4,8 @@ import { wrapper, block } from '@keystatic/core/content-components';
 export default config({
   storage: {
     kind: (
-      process.env.NODE_ENV === 'development' ||
-      !process.env.NEXT_PUBLIC_VERCEL_ENV
+      process.env.NODE_ENV === 'development' || 
+      !process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_CLIENT_ID
     ) ? 'local' : 'github',
     repo: {
       owner: 'aliakpoyraz',
