@@ -9,8 +9,6 @@
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
-    "@keystatic/core": "^0.5.49",
-    "@keystatic/next": "^5.0.4",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.6.1",
     "date-fns": "^4.1.0",
