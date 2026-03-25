@@ -93,6 +93,8 @@ export default function ProfileCard() {
                             <Link
                                 key={index}
                                 href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="p-2 md:p-2.5 rounded-xl bg-white/5 border border-white/5 text-zinc-500 hover:text-white hover:border-white/10 hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
                                 title={item.label}
                             >

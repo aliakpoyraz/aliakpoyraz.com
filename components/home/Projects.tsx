@@ -71,7 +71,7 @@ export default function Projects() {
                 </div>
 
                 <Link
-                    href={`https://github.com/{aliakpoyraz}`}
+                    href={`https://github.com/${GITHUB_USERNAME}`}
                     target="_blank"
                     className="text-xs text-zinc-500 hover:text-white flex items-center gap-1 transition-colors bg-white/5 px-3 py-1.5 rounded-full border border-white/5 hover:border-white/10 backdrop-blur-sm"
                 >
