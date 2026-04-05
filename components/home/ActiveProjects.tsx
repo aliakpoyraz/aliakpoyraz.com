@@ -4,41 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight, Activity } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
 
-const activeProjects = [
-    {
-        title: "BorsaApp",
-        description: "Swift kullanılarak geliştirilen, borsa ve finans takibi üzerine odaklanmış yeni iOS mobil uygulama projesi.",
-        status: "Geliştiriliyor",
-        statusColor: "text-amber-400 bg-amber-400/10 border-amber-400/20",
-        link: "#",
-        tags: ["Swift", "Supabase"]
-    },
-    {
-        title: "E-Ticaret Platformu",
-        description: "Modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir e-ticaret uygulaması demosu.",
-        status: "Canlı",
-
-        statusColor: "text-green-400 bg-green-500/10 border-green-500/20",
-        link: "https://e-ticaret.aliakpoyraz.com",
-        tags: ["Next.js", "Supabase", "Resend"]
-    },
-    {
-        title: "Kişisel Portfolyo",
-        description: "Özelleştirilebilir modern ve dinamik kişisel portfolyo sitesi.",
-        status: "Canlı",
-        statusColor: "text-green-400 bg-green-500/10 border-green-500/20",
-        link: "https://kisisel-portfolyo.aliakpoyraz.com",
-        tags: ["React", "Portfolyo"]
-    },
-    {
-        title: "Basic Portfolyo",
-        description: "Daha minimal sade ve yüksek performanslı bir portfolyo site alternatifi.",
-        status: "Canlı",
-        statusColor: "text-green-400 bg-green-500/10 border-green-500/20",
-        link: "https://basic-portfolio.aliakpoyraz.com",
-        tags: ["HTML/CSS", "Minimal"]
-    }
-];
+import { activeProjects } from "@/lib/projects";
 
 export default function ActiveProjects() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -76,8 +42,7 @@ export default function ActiveProjects() {
                 {activeProjects.map((project, index) => (
                     <Link
                         key={index}
-                        href={project.link}
-                        target={project.link !== "#" ? "_blank" : undefined}
+                        href={`/projeler/${project.slug}`}
                         className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-4 p-5 rounded-2xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl hover:border-white/20 hover:bg-zinc-900/40 transition-all duration-300 shadow-xl"
                     >
                         <div className="flex-1 min-w-0 pr-0 sm:pr-4 w-full">
