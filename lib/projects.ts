@@ -21,6 +21,16 @@ export const activeProjects: Project[] = [
         tags: ["Swift", "Supabase"]
     },
     {
+        slug: "DevCleaner",
+        title: "DevCleaner",
+        description: "Geliştiriciler için CleanMyMac uygulaması alternatifi. Kullanılmayan xcode cacheleri, docker image, node_modules dosyaları gibi daha önceden geliştirdiğiniz ancak cachelerinin bilgisayarınızda tutulmaya devam ettiği dosyaları birkaç tıklamayla silmenize yarayan MacOS uygulaması.",
+        status: "Geliştirildi",
+        statusColor: "text-green-400 bg-green-500/10 border-green-500/20",
+        githubRepo: "aliakpoyraz/DevCleaner",
+        demoLink: "https://github.com/aliakpoyraz/DevCleaner/releases/tag/v1.0.0",
+        tags: ["Swift"]
+    },
+    {
         slug: "e-ticaret-platformu",
         title: "E-Ticaret Platformu",
         description: "Modern web teknolojileri kullanılarak geliştirilmiş, bir e-ticaret sitesi için ihtiyaç olan bütün senaryoları (ürün listeleme, sepet, ödeme, üyelik, sipariş takibi, iletişim, mail onay, sipariş mail bildirimleri vb.) barındıran bir e-ticaret platformu.",
