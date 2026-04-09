@@ -9,7 +9,7 @@ export default function ProfileCard() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
     const socialLinks = [
         { icon: <Mail size={18} />, href: "mailto:aliakpoyraz@gmail.com", label: "Email" },
-        { icon: <FileText size={18} />, href: "/cv", label: "CV" },
+        { icon: <FileText size={18} />, href: "/uploads/cv.pdf", label: "CV" },
         { icon: <Linkedin size={18} />, href: "https://linkedin.com/in/aliakpoyraz", label: "LinkedIn" },
         { icon: <Github size={18} />, href: "https://github.com/aliakpoyraz", label: "GitHub" },
     ];
@@ -72,7 +72,7 @@ export default function ProfileCard() {
 
                     {/* Biyografi */}
                     <p className="text-zinc-500 leading-relaxed text-xs md:text-sm">
-                        Merhaba! Ben Ali Akpoyraz Yazılım Mühendisliği 3. Sınıf öğrencisiyim. Yeni teknolojiler öğrenmeyi ve projeler geliştirmeyi seviyorum. Kariyerime Full Stack Yazılım Geliştirme alanında devam etmeyi planlıyorum ve bu alanda kendimi sürekli geliştirmeye çalışıyorum.
+                        Merhaba! Ben Ali Akpoyraz Yazılım Mühendisliği 3. Sınıf öğrencisiyim. Yeni teknolojiler öğrenmeyi ve projeler geliştirmeyi seviyorum. Kariyerime Mobil uygulama geliştirme ve backend alanlarında devam etmeyi planlıyorum ve bu alanda kendimi sürekli geliştirmeye çalışıyorum.
                         <span className="block h-2 md:h-4"></span>
                         Kendimi geliştirirken aynı zamanda öğrendiklerimi başkalarına aktarmayı da önemsiyorum bu yüzden çeşitli blog yazıları yazıyorum, bunlara göz atmak için blog sayfamı ziyaret edebilirsiniz.
                     </p>
