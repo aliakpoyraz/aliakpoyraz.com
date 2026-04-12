@@ -1,13 +1,32 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* ============================================================
+   🎨 ACCENT COLOR DEFINITION
+   ============================================================ */
+:root {
+  --accent: 251 113 133; /* Rose-400 */
+}
+
+@theme {
+  --color-accent: rgb(var(--accent));
+  --color-accent-60: rgb(var(--accent) / 0.6);
+  --color-accent-30: rgb(var(--accent) / 0.3);
+  --color-accent-10: rgb(var(--accent) / 0.1);
+}
+
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* Sabit gezinme menüsü (navbar) için üst boşluk */
+  scroll-behavior: auto !important;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  scroll-behavior: auto !important;
+  background-color: #080808 !important;
 }
 
 :root {
-  background-color: #09090b;
+  background-color: #080808;
   color: #e4e4e7;
 }
 
@@ -15,3 +34,40 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent));
+}
+
+/* Cleanup all ambient glow effects */
+.bg-ambient {
+  background: #080808 !important;
+  background-image: none !important;
+}
+
+/* Fail-Safe Experience Hover */
+.experience-item:hover .company-name {
+  color: rgb(var(--accent)) !important;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover .timeline-dot {
+  background-color: rgba(var(--accent) / 0.5) !important;
+  border-color: rgb(var(--accent)) !important;
+}
+
+/* Accent Utilities */
+.text-accent { color: rgb(var(--accent)); }
+.bg-accent { background-color: rgb(var(--accent)); }
+.border-accent { border-color: rgb(var(--accent)); }

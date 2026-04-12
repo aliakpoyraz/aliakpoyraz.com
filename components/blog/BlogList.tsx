@@ -34,71 +34,75 @@ export default function BlogList({ posts }: { posts: Post[] }) {
         <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group relative w-full block"
+            className="group relative w-full block py-6 sm:py-8 border-b border-white/5 last:border-none"
         >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 rounded-[2rem] opacity-20 blur group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-
-            <div className="relative h-full flex flex-col p-6 sm:p-8 rounded-[1.7rem] bg-zinc-950/80 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden transition-all duration-300 group-hover:bg-zinc-900/40">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none"></div>
-
-                <div className="relative z-10">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                        <h2 className="text-xl font-bold text-white group-hover:text-zinc-200 transition-colors leading-snug">
+            <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 transition-all duration-300">
+                
+                {/* Sol Taraf: Metin İçerik */}
+                <div className="flex-1">
+                    <div className="flex items-start justify-between gap-4 mb-2">
+                        <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-rose-400 transition-colors leading-tight">
                             {post.title}
                         </h2>
                         <ArrowUpRight
                             size={22}
-                            className="text-zinc-600 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0"
+                            className="text-zinc-600 md:hidden group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0 mt-1"
                         />
                     </div>
 
                     {post.description && (
-                        <p className="text-base text-zinc-500 leading-relaxed line-clamp-2 mb-6 group-hover:text-zinc-400 transition-colors">
+                        <p className="text-base text-zinc-500 leading-relaxed line-clamp-2 md:line-clamp-3 mb-4 group-hover:text-zinc-400 transition-colors">
                             {post.description}
                         </p>
                     )}
 
                     {isContentMatch && searchQuery && (
-                        <div className="mb-4 text-xs text-indigo-400 font-mono bg-indigo-500/10 px-2 py-1 rounded w-fit border border-indigo-500/20">
+                        <div className="mb-4 text-xs font-semibold text-rose-400 bg-rose-500/10 px-2.5 py-1.5 rounded-lg w-fit border border-rose-500/20">
                             ✨ İçerikte &quot;{searchQuery}&quot; geçiyor
                         </div>
                     )}
 
-                    <div className="flex items-center gap-3 text-xs font-medium text-zinc-500 font-mono mt-auto pt-4 border-t border-zinc-900 w-full">
-                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 hover:border-white/10 transition-colors backdrop-blur-sm">
-                            <Calendar size={12} />
+                    <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-zinc-500 font-mono mt-2">
+                        <div className="flex items-center gap-1.5 hover:text-rose-400 transition-colors">
+                            <Calendar size={14} className="group-hover:text-rose-400 transition-colors" />
                             <span>{post.date}</span>
                         </div>
 
-                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 hover:border-white/10 transition-colors backdrop-blur-sm">
-                            <Clock size={12} />
+                        <span className="text-zinc-700">•</span>
+
+                        <div className="flex items-center gap-1.5 hover:text-rose-400 transition-colors">
+                            <Clock size={14} className="group-hover:text-rose-400 transition-colors" />
                             <span>{post.readingTime}</span>
                         </div>
                     </div>
                 </div>
+
+                {/* Sağ Taraf: İkon (Masaüstü için) */}
+                <div className="hidden md:flex flex-shrink-0 mt-1">
+                    <ArrowUpRight
+                        size={28}
+                        className="text-zinc-700 group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                    />
+                </div>
+
             </div>
         </Link>
     );
 
     return (
-        <section className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20 animate-in fade-in zoom-in duration-700">
+        <section className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20">
 
             {/* Başlık */}
-            <div className="flex items-center gap-4 mb-10 pb-6 border-b border-zinc-800/50">
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl text-zinc-400 shadow-lg">
-                    <BookOpen size={24} />
-                </div>
+            <div className="flex items-center gap-4 mb-12 pb-6 border-b border-white/5">
                 <div>
-                    <h1 className="text-3xl font-bold text-white tracking-tight">Blog</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Blog</h1>
                 </div>
             </div>
 
-            {/* Arama Kartı */}
-            <div className="relative w-full mb-10 group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 rounded-[2rem] opacity-20 blur group-focus-within:opacity-50 transition duration-500"></div>
-                <div className="relative flex items-center bg-zinc-950/80 border border-white/10 rounded-[1.7rem] backdrop-blur-xl shadow-2xl overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none"></div>
-                    <div className="pl-6 text-zinc-500 group-focus-within:text-white transition-colors z-10">
+            {/* Minimal Arama Input */}
+            <div className="relative w-full mb-12 group">
+                <div className="relative flex items-center border-b border-zinc-700 pb-2 transition-all duration-300 focus-within:border-rose-500/50 hover:border-zinc-500">
+                    <div className="pl-1 text-zinc-500 group-focus-within:text-rose-400 transition-colors z-10">
                         <Search size={22} />
                     </div>
                     <input
@@ -106,43 +110,42 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                         placeholder="Yazı başlığı veya içeriği ara..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full h-16 bg-transparent border-none text-lg text-zinc-200 placeholder:text-zinc-600 px-4 outline-none z-10 relative"
+                        className="w-full h-12 bg-transparent border-none text-zinc-200 placeholder:text-zinc-600 px-4 outline-none z-10 relative text-sm sm:text-base font-medium"
                     />
                 </div>
             </div>
 
             {/* Sonuçlar */}
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col">
 
                 {!searchQuery && posts.map(post => renderPostCard(post))}
 
                 {searchQuery && (
                     <>
                         {!hasAnyResult && (
-                            <div className="flex flex-col items-center justify-center py-20 text-zinc-500 border border-dashed border-white/10 rounded-[1.7rem] bg-zinc-950/50 backdrop-blur-xl">
-                                <Search size={32} className="mb-3 opacity-30" />
-                                <p className="text-sm">&quot;{searchQuery}&quot; ile eşleşen yazı yok.</p>
+                            <div className="flex flex-col items-center justify-center py-20 text-zinc-500 bg-transparent">
+                                <Search size={32} className="mb-4 opacity-30 text-rose-400" />
+                                <p className="text-sm tracking-wide">&quot;{searchQuery}&quot; ile eşleşen yazı yok.</p>
                             </div>
                         )}
 
                         {titleMatches.length > 0 && (
-                            <div className="flex flex-col gap-6">
+                            <div className="flex flex-col">
                                 {titleMatches.map(post => renderPostCard(post))}
                             </div>
                         )}
 
                         {contentMatches.length > 0 && (
-                            <div className="mt-4">
-                                <div className="flex items-center gap-3 mb-6 px-2">
-                                    <div className="h-px flex-1 bg-zinc-800"></div>
-                                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
+                            <div className="mt-12">
+                                <div className="flex items-center gap-3 mb-4 px-2">
+                                    <span className="text-xs font-semibold text-rose-400/70 tracking-widest uppercase">
                                         {titleMatches.length === 0
-                                            ? "Başlıkta yok ama içerikte bulundu"
-                                            : "Ayrıca içerikte geçenler"}
+                                            ? "BAŞLIKTA YOK AMA İÇERİKTE BULUNDU"
+                                            : "AYRICA İÇERİKTE GEÇENLER"}
                                     </span>
-                                    <div className="h-px flex-1 bg-zinc-800"></div>
+                                    <div className="h-px flex-1 bg-white/5"></div>
                                 </div>
-                                <div className="flex flex-col gap-6 opacity-90">
+                                <div className="flex flex-col">
                                     {contentMatches.map(post => renderPostCard(post, true))}
                                 </div>
                             </div>
@@ -153,4 +156,4 @@ export default function BlogList({ posts }: { posts: Post[] }) {
             </div>
         </section>
     );
-} 
+}

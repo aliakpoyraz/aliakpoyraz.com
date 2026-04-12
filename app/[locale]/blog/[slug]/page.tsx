@@ -203,7 +203,7 @@ export default async function BlogPost({ params }: Props) {
     };
 
     return (
-        <article className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20 animate-in fade-in duration-700">
+        <article className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20">
 
             <Script
                 id="blog-schema"
@@ -215,25 +215,25 @@ export default async function BlogPost({ params }: Props) {
 
             <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm text-zinc-500 hover:text-white mb-8 bg-zinc-950/50 border border-white/5 backdrop-blur-md transition-colors group"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-500 hover:text-rose-400 mb-10 bg-zinc-900/50 border border-zinc-800 hover:border-rose-500/30 hover:bg-rose-500/5 transition-all duration-300 group"
             >
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                 Blog Listesine Dön
             </Link>
 
-            <header className="mb-10 p-8 rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl shadow-2xl">
-                <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
+            <header className="mb-10 pb-10 border-b border-white/5">
+                <h1 className="text-3xl sm:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
                     {post.frontmatter.title}
                 </h1>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div className="flex items-center gap-4 text-sm text-zinc-500 font-mono">
-                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 backdrop-blur-sm">
-                            <Calendar size={14} />
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-8">
+                    <div className="flex items-center gap-3 text-xs font-semibold text-zinc-500 font-mono">
+                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2.5 py-1.5 rounded-lg border border-zinc-800 backdrop-blur-sm hover:border-rose-500/30 transition-colors">
+                            <Calendar size={14} className="text-rose-400" />
                             {post.frontmatter.turkishDisplayDate}
                         </div>
-                        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 backdrop-blur-sm">
-                            <Clock size={14} />
+                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2.5 py-1.5 rounded-lg border border-zinc-800 backdrop-blur-sm hover:border-rose-500/30 transition-colors">
+                            <Clock size={14} className="text-rose-400" />
                             {readingTime}
                         </div>
                     </div>
@@ -249,22 +249,26 @@ export default async function BlogPost({ params }: Props) {
 
             {post.frontmatter.summary && <AiSummary summary={post.frontmatter.summary} />}
 
+            {post.frontmatter.summary && (
+                <div className="w-full h-px bg-white/5 mb-8" />
+            )}
+
             <div className="prose prose-invert prose-zinc max-w-none 
                 prose-headings:scroll-mt-20
-                prose-a:!text-indigo-400 prose-a:!font-bold prose-a:!no-underline 
+                prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:underline
                 prose-headings:font-bold prose-headings:text-white 
-                prose-p:text-zinc-400 prose-p:leading-relaxed
-                prose-strong:text-white prose-strong:font-semibold
+                prose-p:text-zinc-500 prose-p:leading-relaxed
+                prose-strong:text-zinc-300 prose-strong:font-semibold
                 prose-ul:list-disc prose-ul:pl-5 prose-ul:marker:text-zinc-600
                 prose-ol:list-decimal prose-ol:pl-5 prose-ol:marker:text-zinc-600
-                prose-code:text-indigo-200 prose-code:bg-zinc-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-normal
-                prose-pre:bg-zinc-950/80 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-2xl prose-pre:backdrop-blur-xl
+                prose-code:text-rose-300 prose-code:bg-rose-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-lg prose-code:font-normal
+                prose-pre:bg-transparent prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-2xl
                 prose-table:border-collapse prose-table:w-full prose-table:my-8
-                prose-thead:border-b prose-thead:border-zinc-700
-                prose-th:text-zinc-200 prose-th:font-semibold prose-th:p-3 prose-th:text-left
+                prose-thead:border-b prose-thead:border-zinc-800
+                prose-th:text-zinc-300 prose-th:font-semibold prose-th:p-3 prose-th:text-left
                 prose-tr:border-b prose-tr:border-zinc-800/50 hover:prose-tr:bg-zinc-900/30
-                prose-td:text-zinc-400 prose-td:p-3
-                prose-blockquote:border-l-4 prose-blockquote:border-zinc-700 prose-blockquote:bg-zinc-900/20 prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:not-italic prose-blockquote:text-zinc-300
+                prose-td:text-zinc-500 prose-td:p-3
+                prose-blockquote:border-l-2 prose-blockquote:border-zinc-700 prose-blockquote:bg-transparent prose-blockquote:px-5 prose-blockquote:py-2 prose-blockquote:not-italic prose-blockquote:text-zinc-400
             ">
                 <MDXRemote
                     source={post.content}
@@ -287,12 +291,12 @@ export default async function BlogPost({ params }: Props) {
                     {prevPost ? (
                         <Link
                             href={`/blog/${prevPost.slug}`}
-                            className="flex flex-col rounded-2xl border border-white/10 bg-zinc-950/80 p-6 text-left backdrop-blur-xl transition-all hover:bg-zinc-900/50 hover:border-indigo-500/50 w-full group shadow-xl"
+                            className="flex flex-col p-4 text-left transition-all w-full group"
                         >
-                            <span className="text-xs text-zinc-500 flex items-center gap-1 group-hover:text-zinc-300">
-                                <ChevronLeft size={14} /> Önceki Yazı
+                            <span className="text-xs font-semibold uppercase tracking-widest text-zinc-600 flex items-center gap-1 group-hover:text-rose-400 transition-colors">
+                                <ChevronLeft size={16} /> Önceki
                             </span>
-                            <span className="text-sm font-semibold text-white mt-1 leading-snug">
+                            <span className="text-base font-bold text-zinc-400 mt-2 leading-relaxed group-hover:text-white transition-colors">
                                 {prevPost.title}
                             </span>
                         </Link>
@@ -303,12 +307,12 @@ export default async function BlogPost({ params }: Props) {
                     {nextPost ? (
                         <Link
                             href={`/blog/${nextPost.slug}`}
-                            className="flex flex-col rounded-2xl border border-white/10 bg-zinc-950/80 p-6 text-right backdrop-blur-xl transition-all hover:bg-zinc-900/50 hover:border-indigo-500/50 w-full group shadow-xl"
+                            className="flex flex-col p-4 text-right transition-all w-full group"
                         >
-                            <span className="text-xs text-zinc-500 flex items-center justify-end gap-1 group-hover:text-zinc-300">
-                                Sonraki Yazı <ChevronRight size={14} />
+                            <span className="text-xs font-semibold uppercase tracking-widest text-zinc-600 flex items-center justify-end gap-1 group-hover:text-rose-400 transition-colors">
+                                Sonraki <ChevronRight size={16} />
                             </span>
-                            <span className="text-sm font-semibold text-white mt-1 leading-snug">
+                            <span className="text-base font-bold text-zinc-400 mt-2 leading-relaxed group-hover:text-white transition-colors">
                                 {nextPost.title}
                             </span>
                         </Link>

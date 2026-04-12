@@ -5,7 +5,8 @@
     "gonulluluk": "Gönüllülük",
     "aktif-calismalar": "Aktif Çalışmalar",
     "son-projeler": "Herkese Açık Projeler",
-    "blog": "Blog"
+    "blog": "Blog",
+    "projeler": "Projeler"
   },
   "ProfileCard": {
     "title": "Yazılım Mühendisi",
@@ -49,7 +50,7 @@
     "seo_desc": "GDSC OSTİMTECH kulübü bünyesinde düzenlenen SEO eğitimlerinde gönüllü eğitmen olarak görev aldım. Temel SEO kavramları, araçları ve stratejileri üzerine öğrencilere eğitim verdim."
   },
   "ActiveProjects": {
-    "title": "Aktif Çalışmalar",
+    "title": "Projeler",
     "view_project": "Projeyi İncele",
     "view_repo": "Repoyu İncele"
   },

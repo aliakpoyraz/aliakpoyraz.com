@@ -6,13 +6,15 @@ interface UseScrollAnimationOptions {
   threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
+  delay?: number;
 }
 
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const {
     threshold = 0.1,
-    rootMargin = "0px 0px -100px 0px",
+    rootMargin = "0px 0px -80px 0px",
     triggerOnce = true,
+    delay = 0,
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +27,11 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          if (delay > 0) {
+            setTimeout(() => setIsVisible(true), delay);
+          } else {
+            setIsVisible(true);
+          }
           if (triggerOnce) {
             observer.unobserve(element);
           }
@@ -46,7 +52,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
         observer.unobserve(element);
       }
     };
-  }, [threshold, rootMargin, triggerOnce]);
+  }, [threshold, rootMargin, triggerOnce, delay]);
 
   return { ref, isVisible };
 }

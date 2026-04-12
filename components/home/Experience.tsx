@@ -54,80 +54,77 @@ export default function Experience() {
     return (
         <section
             ref={ref}
-            className={`w-full max-w-2xl mx-auto mt-6 md:mt-16 px-0 md:px-0 transition-all duration-700 ease-out ${isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+            className={`w-full max-w-2xl mx-auto mt-12 md:mt-24 transition-all duration-700 ease-out ${isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
                 }`}
         >
-
-            {/* Başlık */}
-            <div className="flex items-center gap-3 mb-4 px-2">
-                <div className="p-2 rounded-xl bg-zinc-950/50 border border-white/10 backdrop-blur-md shadow-lg">
-                    <BriefcaseBusiness className="text-zinc-400" size={20} />
-                </div>
-                <h2 className="text-xl font-bold text-white">
+            <div className="mb-10 text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
                     {t("title")}
                 </h2>
+                <div className="h-1 w-10 bg-rose-500 rounded-full mx-auto md:mx-0 mt-2 opacity-60"></div>
             </div>
 
-            {/* Ayırıcı */}
-            <div className="border-b border-zinc-800 mb-8"></div>
-
             {/* Zaman Çizelgesi */}
-            <div className="flex flex-col gap-8">
+            <div className="relative flex flex-col gap-12">
+                {/* Sürekli Dikey Çizgi */}
+                <div className="absolute left-[7px] top-6 bottom-8 w-px bg-zinc-800/60 z-0"></div>
+
                 {experiences.map((exp, index) => (
-                    <div key={index} className="group relative flex gap-6">
-
-                        <div className="flex flex-col items-center">
-                            {/* Zaman noktası */}
+                    <div
+                        key={index}
+                        className="group experience-item relative flex gap-6 md:gap-8 items-start"
+                        style={{
+                            opacity: isVisible ? 1 : 0,
+                            transform: isVisible ? "translateY(0)" : "translateY(16px)",
+                            transition: `opacity 0.5s ease ${index * 120}ms, transform 0.5s ease ${index * 120}ms`,
+                        }}
+                    >
+                        {/* Zaman Noktası */}
+                        <div className="relative z-10 flex flex-col items-center mt-1.5">
                             <div className={`
-                relative z-10 flex h-3 w-3 shrink-0 rounded-full 
-                ${exp.current
-                                    ? "bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.4)]"
-                                    : "bg-zinc-800 border border-white/10 group-hover:bg-zinc-600 transition-colors"}
-              `}>
-                                {exp.current && <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75"></div>}
+                                timeline-dot relative flex h-3.5 w-3.5 shrink-0 rounded-full transition-all duration-500
+                                ${exp.current
+                                    ? "bg-rose-500 shadow-[0_0_15px_rgba(251,113,133,0.5)] scale-110"
+                                    : "bg-zinc-800 border-2 border-zinc-700"}
+                            `}>
+                                {exp.current && <div className="absolute inset-0 rounded-full bg-rose-400 animate-ping opacity-75"></div>}
                             </div>
-
-                            {/* Zaman çizgisi */}
-                            {index !== experiences.length - 1 && (
-                                <div className="h-full w-px bg-zinc-800 my-2 group-hover:bg-zinc-700 transition-colors"></div>
-                            )}
                         </div>
 
                         {/* Kart İçeriği */}
-                        <div className="flex-1 pb-2">
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
-                                <h3 className="text-lg font-semibold text-zinc-100 group-hover:text-white transition-colors">
+                        <div className="flex-1 pb-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                                <h3 className="text-lg md:text-xl font-bold text-zinc-100 group-hover:text-white transition-colors">
                                     {exp.role}
                                 </h3>
-                                <div className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-lg w-fit backdrop-blur-md ${exp.current ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-white/5 border border-white/5 text-zinc-500"}`}>
-                                    <Calendar size={12} />
+                                <div className={`flex items-center gap-1.5 text-[10px] md:text-xs font-semibold px-3 py-1 rounded-full w-fit backdrop-blur-md transition-all ${exp.current ? "bg-rose-500/10 text-rose-400 border border-rose-500/20" : "bg-zinc-900 border border-zinc-800 text-zinc-500 group-hover:text-zinc-300"}`}>
+                                    <Calendar size={12} className={exp.current ? "text-rose-400" : "text-zinc-600"} />
                                     {exp.date}
                                 </div>
                             </div>
 
                             {/* Şirket Bilgisi */}
-                            <div className="flex items-center gap-2 text-sm text-zinc-400 mb-3">
+                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm mb-4">
                                 {exp.url ? (
                                     <a
                                         href={exp.url}
                                         target="_blank"
                                         rel="noopener noreferrer nofollow"
-                                        className="font-medium text-zinc-300 hover:text-indigo-400 transition-colors underline-offset-4 hover:underline"
+                                        className="company-name font-bold text-zinc-400 transition-all duration-300"
                                     >
                                         {exp.company}
                                     </a>
                                 ) : (
-                                    <span className="font-medium text-zinc-300">{exp.company}</span>
+                                    <span className="company-name font-bold text-zinc-400 transition-all duration-300">{exp.company}</span>
                                 )}
-                                <span className="w-1 h-1 rounded-full bg-zinc-600"></span>
-                                <span className="flex items-center gap-1 text-zinc-500">
-                                    <MapPin size={12} /> {exp.location}
+                                <span className="flex items-center gap-1.5 text-zinc-500 font-medium">
+                                    <MapPin size={14} className="text-zinc-600" /> {exp.location}
                                 </span>
                             </div>
 
-                            <p className="text-sm text-zinc-400 leading-relaxed mb-4 group-hover:text-zinc-300 transition-colors">
+                            <p className="text-sm md:text-base text-zinc-500 leading-relaxed mb-5 group-hover:text-zinc-400 transition-colors">
                                 {exp.description}
                             </p>
 
@@ -136,14 +133,13 @@ export default function Experience() {
                                 {exp.tech.map((t, i) => (
                                     <span
                                         key={i}
-                                        className="px-2 py-1 text-[10px] sm:text-xs font-medium rounded-lg bg-white/5 border border-white/5 text-zinc-500 group-hover:border-white/10 group-hover:text-zinc-300 transition-colors backdrop-blur-sm"
+                                        className="px-2.5 py-1 text-[10px] md:text-xs font-medium rounded-md bg-zinc-900/50 border border-zinc-800 text-zinc-500 group-hover:border-zinc-700 group-hover:text-zinc-400 transition-all backdrop-blur-sm"
                                     >
                                         {t}
                                     </span>
                                 ))}
                             </div>
                         </div>
-
                     </div>
                 ))}
             </div>

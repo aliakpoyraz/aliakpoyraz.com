@@ -31,12 +31,12 @@ export default function ProfileCard() {
                 : "opacity-0 translate-y-8"
                 }`}
         >
-            {/* Kart Taşıyıcısı */}
-            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-5 md:gap-8 p-6 md:p-8 rounded-[1.7rem] bg-zinc-950/80 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden">
+            {/* Şeffaf ve Minimal Profil Başlığı */}
+            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 pb-10 border-b border-white/5">
 
                 {/* Profil Fotoğrafı */}
                 <div className="relative flex-shrink-0">
-                    <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden border border-white/10 shadow-lg relative group/img">
+                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border border-rose-500/30 shadow-[0_0_30px_rgba(251,113,133,0.15)] relative group/img">
                         <Image
                             src="/uploads/me.jpg"
                             alt="Ali Akpoyraz"
@@ -46,43 +46,38 @@ export default function ProfileCard() {
                         />
                     </div>
                     {/* Rozet */}
-                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 md:px-3 md:py-1 bg-zinc-800/90 border border-zinc-700 rounded-full text-[9px] md:text-[10px] text-zinc-300 whitespace-nowrap shadow-lg">
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 md:px-4 md:py-1.5 bg-zinc-900 border border-rose-500/30 rounded-full text-[10px] md:text-xs text-rose-400 whitespace-nowrap shadow-xl">
                         {t("badge")}
                     </div>
                 </div>
 
                 {/* İçerik */}
-                <div className="flex-1 text-center md:text-left space-y-4 md:space-y-5 z-10 w-full">
+                <div className="flex-1 text-center md:text-left space-y-4 md:space-y-5 z-10 w-full pt-2">
 
                     {/* Başlık */}
                     <div className="space-y-1">
                         <div className="flex items-center justify-center md:justify-start gap-3">
-                            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
+                            <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white">
                                 Ali AKPOYRAZ
                             </h1>
-                            {/* Durum Göstergesi */}
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
                         </div>
 
-                        <p className="text-zinc-400 text-xs md:text-sm font-medium">
-                            {t("title")} <span className="text-zinc-600 mx-1">•</span> {t("subtitle_student")}
+                        <p className="text-zinc-500 text-sm md:text-base font-light mt-1">
+                            <span className="text-rose-400">{t("title")}</span> <span className="text-rose-500/60 mx-2">•</span> {t("subtitle_student")}
                         </p>
                     </div>
 
                     {/* Biyografi */}
-                    <p className="text-zinc-500 leading-relaxed text-xs md:text-sm">
+                    <p className="text-zinc-500 leading-relaxed text-sm md:text-base">
                         {t("bio_1")}
                         <span className="block h-2 md:h-4"></span>
                         {t("bio_2")}
                     </p>
 
                     {/* Teknolojiler */}
-                    <div className="flex flex-wrap justify-center md:justify-start gap-1.5 md:gap-2">
+                    <div className="flex flex-wrap justify-center md:justify-start gap-2">
                         {techStack.map((tech, i) => (
-                            <div key={i} className="flex items-center gap-1 md:gap-1.5 px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg bg-white/5 border border-white/5 text-[11px] md:text-xs text-zinc-400 hover:border-white/10 hover:text-zinc-200 transition-colors cursor-default backdrop-blur-sm">
+                            <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-xs text-rose-400 hover:bg-rose-500/20 hover:border-rose-500/40 transition-colors cursor-default">
                                 {tech.icon}
                                 <span>{tech.name}</span>
                             </div>
@@ -90,14 +85,14 @@ export default function ProfileCard() {
                     </div>
 
                     {/* Sosyal Medya */}
-                    <div className="pt-1 flex justify-center md:justify-start gap-2 md:gap-3">
+                    <div className="pt-2 flex justify-center md:justify-start gap-3">
                         {socialLinks.map((item, index) => (
                             <Link
                                 key={index}
                                 href={item.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="p-2 md:p-2.5 rounded-xl bg-white/5 border border-white/5 text-zinc-500 hover:text-white hover:border-white/10 hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
+                                className="p-2.5 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-500 hover:text-rose-400 hover:border-rose-500/30 hover:bg-rose-500/10 transition-all duration-300"
                                 title={item.label}
                             >
                                 {item.icon}

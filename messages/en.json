@@ -5,7 +5,8 @@
     "gonulluluk": "Volunteering",
     "aktif-calismalar": "Active Projects",
     "son-projeler": "Public Projects",
-    "blog": "Blog"
+    "blog": "Blog",
+    "projeler": "Projects"
   },
   "ProfileCard": {
     "title": "Software Engineer",
@@ -49,7 +50,7 @@
     "seo_desc": "I served as a volunteer instructor in SEO trainings organized by the GDSC OSTİMTECH club. I trained students on fundamental SEO concepts, tools, and strategies."
   },
   "ActiveProjects": {
-    "title": "Active Projects",
+    "title": "Projects",
     "view_project": "View Project",
     "view_repo": "View Repo"
   },

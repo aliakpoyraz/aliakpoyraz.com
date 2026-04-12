@@ -23,7 +23,7 @@ export default function NotFound() {
             <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                     href="/"
-                    className="flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold rounded-lg bg-indigo-600 text-white transition-colors hover:bg-indigo-500 shadow-md"
+                    className="flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold rounded-lg bg-rose-500 text-white transition-colors hover:bg-rose-400 shadow-md"
                 >
                     Ana Sayfaya Dön
                 </Link>

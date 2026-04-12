@@ -54,7 +54,7 @@ export default function ShareButtons({ title, url, size = 'md' }: ShareButtonsPr
 
             <button
                 onClick={handleCopy}
-                className={`${baseBtnStyle} hover:border-indigo-500/50 hover:bg-indigo-500/20 hover:text-indigo-400 shadow-lg shadow-black/20`}
+                className={`${baseBtnStyle} hover:border-rose-500/50 hover:bg-rose-500/20 hover:text-rose-400 shadow-lg shadow-black/20`}
                 title="Linki Kopyala"
             >
                 {copied ? <Check size={iconSize} /> : <LinkIcon size={iconSize} />}

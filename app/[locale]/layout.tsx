@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import MainLayout from "../../components/layout/MainLayout";
@@ -8,7 +8,7 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/routing";
 import { notFound } from "next/navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aliakpoyraz.com"),
@@ -67,7 +67,7 @@ export default async function RootLayout({
 
   return (
     <html lang={resolvedParams.locale}>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${spaceGrotesk.className} antialiased min-h-screen bg-ambient`}>
         <NextIntlClientProvider messages={messages}>
           <MainLayout>{children}</MainLayout>
         </NextIntlClientProvider>

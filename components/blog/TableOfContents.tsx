@@ -10,18 +10,18 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
     if (headings.length === 0) return null;
 
     return (
-        <nav className="my-8 rounded-2xl border border-white/10 bg-zinc-950/80 backdrop-blur-xl shadow-2xl p-6">
-            <h2 className="mb-4 text-lg font-bold text-white">İçindekiler</h2>
-            <ul className="flex flex-col gap-2.5">
+        <nav className="my-8 pl-4 border-l border-rose-500/30">
+            <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-zinc-500">İçindekiler</h2>
+            <ul className="flex flex-col gap-2">
                 {headings.map((heading, index) => (
                     <li
                         key={index}
-                        className={`text-sm transition-colors hover:text-indigo-400 ${heading.level === 3 ? 'ml-4 text-zinc-500' : 'text-zinc-300'
+                        className={`text-sm transition-colors duration-200 hover:text-rose-400 ${heading.level === 3 ? 'ml-3 text-zinc-600' : 'text-zinc-400'
                             }`}
                     >
                         <a
                             href={`#${heading.slug}`}
-                            className="block no-underline hover:underline"
+                            className="block no-underline"
                         >
                             {heading.text}
                         </a>
