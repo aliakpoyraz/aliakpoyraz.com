@@ -1,82 +1,113 @@
-# aliakpoyraz.com 🚀
+# aliakpoyraz.com
 
-Merhaba! Burası benim internetteki küçük köşem. Bir bilgisayar mühendisliği öğrencisi olarak kendimi geliştirmek, öğrendiklerimi paylaşmak ve projelerimi sergilemek için hazırladığım kişisel web sitemin kaynak kodlarını burada bulabilirsiniz.
-
-Sade, hızlı ve modern bir yapı kurmaya çalıştım. Hem bir blog sayfası hem de dijital bir özgeçmiş (CV) olarak işlev görüyor.
-
-![Ana Sayfa Masaüstü](./public/img/readme/home-desktop.png)
-*Modern ve temiz ana sayfa tasarımı*
-
-## 🛠 Neler Kullandım?
-
-Bu projeyi geliştirirken modern web teknolojilerinden faydalandım:
-
-- **Next.js 15** (App Router): React tabanlı, performanslı bir framework.
-- **React 19**: En güncel React özellikleri ile UI geliştirme.
-- **Tailwind CSS 4**: Modern ve hızlı stil yönetimi.
-- **Lucide React**: Minimalist ve şık ikon kütüphanesi.
-- **MDX**: Markdown dosyalarını React bileşenleri gibi kullanabilmek için.
-- **Framer Motion** & **Intersection Observer**: Sayfa içi akıcı animasyonlar için.
-
-## ✨ Öne Çıkan Özellikler
-
-- **Responsive Tasarım**: Telefondan, tabletten veya bilgisayardan girdiğinizde her zaman düzgün görünür.
-
-<img src="./public/img/readme/home-mobile.png" alt="Ana Sayfa Mobil" width="250" />
-
-*Tam uyumlu mobil görünüm*
-- **Dinamik Projeler**: GitHub API'sini kullanarak en son güncellediğim repoları otomatik olarak ana sayfaya çeker.
-- **Gelişmiş Blog**: MDX altyapısı sayesinde sadece yazı yazmakla kalmıyor, yazıların içine özel React bileşenleri (video, uyarı kutuları, akordiyon vb.) gömebiliyorum.
--**AI Destekli Özet**: Blog içerikleri Gemini API ile otomatik özetleniyor.
-- **DarkMode**: Göz yormayan koyu tema tasarımı.
-- **Performans & SEO**: Next.js'in gücüyle hızlı yüklenen sayfalar ve arama motorları için optimize edilmiş meta etiketler.
-
-## 📝 Blog Yazma Süreci
-
-Blog yazılarımı `content/` klasörü altına `.mdx` dosyaları olarak ekliyorum. Her yazının başında şöyle bir yapı (frontmatter) bulunuyor:
-
-```markdown
 ---
-title: "Yazı Başlığı"
-date: "24-03-2026"
-description: "Yazı hakkında kısa bir özet"
-ai_summary: "Yapay zeka tarafından oluşturulan otomatik özet..."
----
-```
 
-İçerik kısmında standart Markdown kullanabildiğim gibi, hazırladığım `<Callout>` veya `<YouTubeCard>` gibi özel bileşenleri de kullanabiliyorum. 
+### [EN] English
 
-Ayrıca blog yazım sürecimi hızlandırmak ve okuyuculara fayda sağlamak için **Gemini API** destekli bir otomasyon tasarladım. Yazımı tamamlayıp Git'e commit attığım anda arka planda çalışan bir script devreye giriyor; yazının kısa ve teknik bir özetini çıkararak dosyanın başındaki `ai_summary` alanına otomatik olarak işliyor. Böylece yazılarımın hemen başında, `<AiSummary />` bileşeni ile okuyuculara şık bir yapay zeka özeti sunabiliyorum.
+Welcome! This is my personal portfolio website, where I showcase my projects and share my knowledge through blog posts. As a Software Engineering student, I built this space using modern technologies to maintain a fast, minimalist, and premium aesthetic.
 
-## 🚀 Yerelde Çalıştırma
+![Home Desktop - EN](./public/img/readme/home-en.png)
+*Modern and premium landing page design*
 
-Projeyi kendi bilgisayarınızda çalıştırmak isterseniz şu adımları izleyebilirsiniz:
+## Tech Stack
 
-1. Bu depoyu klonlayın:
+I utilized high-performance modern web technologies for this project:
+
+- **Next.js 16** (App Router): High-performance React framework.
+- **React 19**: Utilizing the latest React features.
+- **Tailwind CSS 4**: Next-gen utility-first styling.
+- **Next-Intl**: Robust multi-language support (TR/EN).
+- **MDX**: Enhanced Markdown for dynamic blog content.
+- **Lucide React**: Elegant icon system.
+
+## Key Features
+
+- **Performance & SEO**: Optimized for speed and search engine visibility.
+- **Bilingual Interface**: Seamlessly switch between Turkish and English.
+- **GitHub Activity Calendar**: Custom-themed daily contribution graph.
+- **AI-Powered Blog**: Automated technical summaries using the Gemini API.
+
+![Projects Section - EN](./public/img/readme/projects-en.png)
+*Responsive projects showcase*
+
+## Running Locally
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/aliakpoyraz/aliakpoyraz.com.git
    ```
-
-2. Proje dizinine girin:
-   ```bash
-   cd aliakpoyraz.com
-   ```
-
-3. Bağımlılıkları yükleyin:
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-4. Geliştirme sunucusunu başlatın:
+3. Start development server:
    ```bash
    npm run dev
    ```
+Access via `http://localhost:3000`.
 
-Artık tarayıcınızda `http://localhost:3000` adresine giderek siteyi görebilirsiniz.
+## Contact
 
-## 🤝 İletişim
-
-Sorularınız veya önerileriniz için benimle GitHub üzerinden veya web sitesindeki sosyal medya linklerim aracılığıyla iletişime geçebilirsiniz.
+Reach out via GitHub or the social links on the website.
 
 ---
-⭐ Eğer bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
+If you find this project useful, please give it a star!
+
+<br />
+<br />
+
+---
+
+### [TR] Türkçe
+
+Merhaba! Burası benim kişisel portfolyo sitem. Bir Yazılım Mühendisliği öğrencisi olarak projelerimi sergilemek ve öğrendiklerimi blog yazılarımla paylaşmak için hazırladığım bu alanı, modern teknolojilerle hızlı ve minimalist bir yapıda kurguladım.
+
+![Ana Sayfa - TR](./public/img/readme/home-tr.png)
+*Modern ve premium ana sayfa tasarımı*
+
+## Kullanılan Teknolojiler
+
+Bu projede yüksek performanslı ve güncel teknolojiler tercih ettim:
+
+- **Next.js 16** (App Router): Yüksek performanslı React framework.
+- **React 19**: En güncel React özellikleri.
+- **Tailwind CSS 4**: Yeni nesil hızlı stil yönetimi.
+- **Next-Intl**: Tam çoklu dil desteği (TR/EN).
+- **MDX**: Markdown dosyalarını React bileşenleri gibi kullanabilme.
+- **Lucide React**: Minimalist ikon sistemi.
+
+## Öne Çıkan Özellikler
+
+- **Performans & SEO**: Hızlı yükleme süreleri ve optimize edilmiş meta etiketler.
+- **Çoklu Dil Desteği**: Türkçe ve İngilizce arasında kesintisiz geçiş.
+- **GitHub Aktivite Takvimi**: Kişiselleştirilmiş rose temalı katkı çizelgesi.
+- **AI Destekli Blog**: Gemini API ile otomatik oluşturulan teknik özetler.
+
+![Projeler Bölümü - TR](./public/img/readme/projects-tr.png)
+*Mobil uyumlu projeler listesi*
+
+![Blog Sayfası - TR](./public/img/readme/blog-tr.png)
+*İçerik odaklı blog yapısı*
+
+## Yerelde Çalıştırma
+
+1. Depoyu klonlayın:
+   ```bash
+   git clone https://github.com/aliakpoyraz/aliakpoyraz.com.git
+   ```
+2. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
+3. Sunucuyu başlatın:
+   ```bash
+   npm run dev
+   ```
+`http://localhost:3000` adresinden erişebilirsiniz.
+
+## İletişim
+
+Sorularınız için GitHub veya web sitesindeki sosyal medya linklerimden bana ulaşabilirsiniz.
+
+---
+Eğer bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
