@@ -7,7 +7,6 @@
 Welcome! This is my personal portfolio website, where I showcase my projects and share my knowledge through blog posts. As a Software Engineering student, I built this space using modern technologies to maintain a fast, minimalist, and premium aesthetic.
 
 ![Home Desktop - EN](./public/img/readme/home-en.png)
-*Modern and premium landing page design*
 
 ## Tech Stack
 
@@ -28,7 +27,6 @@ I utilized high-performance modern web technologies for this project:
 - **AI-Powered Blog**: Automated technical summaries using the Gemini API.
 
 ![Projects Section - EN](./public/img/readme/projects-en.png)
-*Responsive projects showcase*
 
 ## Running Locally
 
@@ -63,7 +61,6 @@ If you find this project useful, please give it a star!
 Merhaba! Burası benim kişisel portfolyo sitem. Bir Yazılım Mühendisliği öğrencisi olarak projelerimi sergilemek ve öğrendiklerimi blog yazılarımla paylaşmak için hazırladığım bu alanı, modern teknolojilerle hızlı ve minimalist bir yapıda kurguladım.
 
 ![Ana Sayfa - TR](./public/img/readme/home-tr.png)
-*Modern ve premium ana sayfa tasarımı*
 
 ## Kullanılan Teknolojiler
 
@@ -84,10 +81,8 @@ Bu projede yüksek performanslı ve güncel teknolojiler tercih ettim:
 - **AI Destekli Blog**: Gemini API ile otomatik oluşturulan teknik özetler.
 
 ![Projeler Bölümü - TR](./public/img/readme/projects-tr.png)
-*Mobil uyumlu projeler listesi*
 
 ![Blog Sayfası - TR](./public/img/readme/blog-tr.png)
-*İçerik odaklı blog yapısı*
 
 ## Yerelde Çalıştırma
 
