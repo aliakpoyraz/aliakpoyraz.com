@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { ArrowUpRight, Activity } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
+import { useTranslations } from "next-intl";
 
-import { activeProjects } from "@/lib/projects";
+import { useActiveProjects } from "@/lib/projects";
 
 export default function ActiveProjects() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    const t = useTranslations("ActiveProjects");
+    const activeProjects = useActiveProjects();
 
     return (
         <section
@@ -25,7 +28,7 @@ export default function ActiveProjects() {
                     </div>
                     <div className="flex items-center gap-3">
                         <h2 className="text-xl font-bold text-white">
-                            Aktif Çalışmalar
+                            {t("title")}
                         </h2>
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>

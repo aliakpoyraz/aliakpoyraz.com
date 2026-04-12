@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Star, GitFork, ArrowUpRight, Github } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
+import { useTranslations } from "next-intl";
 
 interface Repo {
     id: number;
@@ -44,6 +45,7 @@ async function getRepos() {
 export default function Projects() {
     const [repos, setRepos] = useState<Repo[]>([]);
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    const t = useTranslations("Projects");
 
     useEffect(() => {
         getRepos().then(setRepos);
@@ -66,7 +68,7 @@ export default function Projects() {
                         <Github className="text-zinc-400" size={20} />
                     </div>
                     <h2 className="text-xl font-bold text-white">
-                        Herkese Açık Projeler
+                        {t("title")}
                     </h2>
                 </div>
 
@@ -75,7 +77,7 @@ export default function Projects() {
                     target="_blank"
                     className="text-xs text-zinc-500 hover:text-white flex items-center gap-1 transition-colors bg-white/5 px-3 py-1.5 rounded-full border border-white/5 hover:border-white/10 backdrop-blur-sm"
                 >
-                    Tümünü Gör <ArrowUpRight size={12} />
+                    {t("view_all")} <ArrowUpRight size={12} />
                 </Link>
             </div>
 
@@ -99,7 +101,7 @@ export default function Projects() {
                             </div>
 
                             <p className="text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors mt-2 text-balance leading-relaxed">
-                                {repo.description || "Açıklama yok."}
+                                {repo.description || t("no_description")}
                             </p>
                         </div>
 

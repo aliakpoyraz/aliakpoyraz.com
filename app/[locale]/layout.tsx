@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import "./globals.css";
-import MainLayout from "../components/layout/MainLayout";
+import "../globals.css";
+import MainLayout from "../../components/layout/MainLayout";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { routing } from "@/routing";
+import { notFound } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://aliakpoyraz.com"),
   title: "Ali Akpoyraz | Yazılım Mühendisi",
@@ -42,15 +47,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const resolvedParams = await params;
+  if (!routing.locales.includes(resolvedParams.locale as any)) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+
   return (
-    <html lang="tr">
+    <html lang={resolvedParams.locale}>
       <body className={`${inter.className} antialiased`}>
-        <MainLayout>{children}</MainLayout>
+        <NextIntlClientProvider messages={messages}>
+          <MainLayout>{children}</MainLayout>
+        </NextIntlClientProvider>
         <Analytics />
       </body>
     </html>

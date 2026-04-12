@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import { getProjectBySlug, activeProjects } from '@/lib/projects';
+import { getTranslations } from 'next-intl/server';
 
 // Tech stack için renk haritası
 const techColors: Record<string, string> = {
@@ -108,10 +109,17 @@ export async function generateMetadata({ params }: Props) {
 export default async function ProjectPage({ params }: Props) {
     const { slug } = await params;
     const project = getProjectBySlug(slug);
+    const t = await getTranslations("ProjectDetails");
+    const tData = await getTranslations("ProjectData");
+    const tProjects = await getTranslations("Projects");
 
     if (!project) {
         notFound();
     }
+    
+    const translatedTitle = tData(`${project.slug}.title` as any) || project.title;
+    const translatedDesc = tData(`${project.slug}.desc` as any) || project.description;
+    const translatedStatus = project.status === "Canlı" ? tProjects("status_canli") : tProjects("status_gelistirildi");
 
     const [repoData, languagesData] = await Promise.all([
         getGithubRepo(project.githubRepo),
@@ -141,24 +149,24 @@ export default async function ProjectPage({ params }: Props) {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm text-zinc-500 hover:text-white mb-8 bg-zinc-950/50 border border-white/5 backdrop-blur-md transition-colors group"
             >
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                Ana Sayfaya Dön
+                {t("back_to_home")}
             </Link>
 
             <header className="mb-10 p-8 rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl shadow-2xl">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-6">
                     <div>
                         <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 leading-tight">
-                            {project.title}
+                            {translatedTitle}
                         </h1>
                         <p className="text-zinc-400 text-lg">
-                            {project.description}
+                            {translatedDesc}
                         </p>
                     </div>
 
                     <div className="flex flex-col items-start sm:items-end gap-3 flex-shrink-0">
                         <div className="flex items-center gap-2">
                             <span className={`text-xs font-semibold px-2.5 py-1 rounded-lg border ${project.statusColor}`}>
-                                {project.status}
+                                {translatedStatus}
                             </span>
                             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold">
                                 <Star size={14} className="text-yellow-500 fill-yellow-500" />
@@ -176,7 +184,7 @@ export default async function ProjectPage({ params }: Props) {
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm text-zinc-400 hover:text-white bg-zinc-950/50 border border-white/5 backdrop-blur-md transition-all group"
                     >
                         <Github size={16} className="group-hover:text-white transition-colors" />
-                        <span>GitHub Reposu</span>
+                        <span>{t("github_repo")}</span>
                     </a>
 
                     {project.demoLink && (
@@ -187,14 +195,14 @@ export default async function ProjectPage({ params }: Props) {
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm text-zinc-400 hover:text-white bg-zinc-950/50 border border-white/5 backdrop-blur-md transition-all group"
                         >
                             <ExternalLink size={16} className="group-hover:text-white transition-colors" />
-                            <span>Canlı Önizleme</span>
+                            <span>{t("live_preview")}</span>
                         </a>
                     )}
                 </div>
 
                 {allTechStack.length > 0 && (
                     <div className="mt-8 pt-6 border-t border-white/5">
-                        <h3 className="text-xs font-semibold text-zinc-500 mb-3 uppercase tracking-wider">Kullanılan Teknolojiler</h3>
+                        <h3 className="text-xs font-semibold text-zinc-500 mb-3 uppercase tracking-wider">{t("tech_used")}</h3>
                         <div className="flex flex-wrap items-center gap-2">
                             {allTechStack.map((tech) => (
                                 <span key={tech} className={`px-3 py-1.5 text-xs font-semibold border rounded-lg backdrop-blur-sm ${getTechColor(tech)}`}>
@@ -243,7 +251,7 @@ export default async function ProjectPage({ params }: Props) {
                     </div>
                 ) : (
                     <div className="text-zinc-500 py-10 text-center">
-                        README dosyası bulunamadı veya bir hata oluştu.
+                        {t("readme_error")}
                     </div>
                 )}
             </div>

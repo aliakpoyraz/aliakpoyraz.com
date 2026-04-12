@@ -2,29 +2,32 @@
 
 import { Heart, Users, Award, Megaphone } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
+import { useTranslations } from "next-intl";
 
 export default function Volunteering() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    const t = useTranslations("Volunteering");
+
     const volunteers = [
         {
-            role: "Core Team Member",
-            organization: "Google Developer Student Clubs",
-            date: "2024 - 2025",
-            description: "2024-2025 Sezonunda 1000+ üyesiyle birlikte okulumuzun en büyük kulübü olan GDSC'nin Yazılım & Teknoloji departmanının core team üyesi olarak görev aldım. Bu kulüpte görev alan arkadaşlarımızla çeşitli projeler, sunumlar ve hackathon gibi etkinlikler düzenleyerek birçok öğrenciye ulaşmayı başardık.",
+            role: t("gdg_role"),
+            organization: t("gdg_org"),
+            date: t("gdg_date"),
+            description: t("gdg_desc"),
             icon: <Users size={20} className="text-blue-400" />,
         },
         {
-            role: "Yönetim Kurulu Üyesi",
-            organization: "Gezi Kulübü",
-            date: "2024 - 2026",
-            description: "Okulumuzun gezi kulübünde yönetim kurulu üyesi olarak görev aldım. Bu kulüp aracılığıyla çeşitli şehir içi ve şehir dışı geziler düzenleyerek öğrencilere yeni yerler keşfetme fırsatı sunduk.",
+            role: t("gezi_role"),
+            organization: t("gezi_org"),
+            date: t("gezi_date"),
+            description: t("gezi_desc"),
             icon: <Megaphone size={20} className="text-yellow-400" />,
         },
         {
-            role: "Gönüllü Eğitmen",
-            organization: "SEO Eğitmenliği",
-            date: "Mart 2025",
-            description: "GDSC OSTİMTECH kulübü bünyesinde düzenlenen SEO eğitimlerinde gönüllü eğitmen olarak görev aldım. Temel SEO kavramları, araçları ve stratejileri üzerine öğrencilere eğitim verdim.",
+            role: t("seo_role"),
+            organization: t("seo_org"),
+            date: t("seo_date"),
+            description: t("seo_desc"),
             icon: <Heart size={20} className="text-red-400" />,
         },
     ];
@@ -44,7 +47,7 @@ export default function Volunteering() {
                     <Heart className="text-zinc-400" size={20} />
                 </div>
                 <h2 className="text-xl font-bold text-white">
-                    Gönüllülük & Topluluk
+                    {t("title")}
                 </h2>
             </div>
             <div className="border-b border-zinc-800 mb-6"></div>

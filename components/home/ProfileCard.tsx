@@ -4,9 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Github, Linkedin, Mail, FileText, Code2, Terminal, Database, Cpu } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
+import { useTranslations } from "next-intl";
 
 export default function ProfileCard() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    const t = useTranslations("ProfileCard");
     const socialLinks = [
         { icon: <Mail size={18} />, href: "mailto:aliakpoyraz@gmail.com", label: "Email" },
         { icon: <FileText size={18} />, href: "/uploads/cv.pdf", label: "CV" },
@@ -45,7 +47,7 @@ export default function ProfileCard() {
                     </div>
                     {/* Rozet */}
                     <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 md:px-3 md:py-1 bg-zinc-800/90 border border-zinc-700 rounded-full text-[9px] md:text-[10px] text-zinc-300 whitespace-nowrap shadow-lg">
-                        HackGDG&apos;25 🚀
+                        {t("badge")}
                     </div>
                 </div>
 
@@ -66,15 +68,15 @@ export default function ProfileCard() {
                         </div>
 
                         <p className="text-zinc-400 text-xs md:text-sm font-medium">
-                            Yazılım Mühendisi <span className="text-zinc-600 mx-1">•</span> Öğrenci
+                            {t("title")} <span className="text-zinc-600 mx-1">•</span> {t("subtitle_student")}
                         </p>
                     </div>
 
                     {/* Biyografi */}
                     <p className="text-zinc-500 leading-relaxed text-xs md:text-sm">
-                        Merhaba! Ben Ali Akpoyraz Yazılım Mühendisliği 3. Sınıf öğrencisiyim. Yeni teknolojiler öğrenmeyi ve projeler geliştirmeyi seviyorum. Kariyerime Mobil uygulama geliştirme ve backend alanlarında devam etmeyi planlıyorum ve bu alanda kendimi sürekli geliştirmeye çalışıyorum.
+                        {t("bio_1")}
                         <span className="block h-2 md:h-4"></span>
-                        Kendimi geliştirirken aynı zamanda öğrendiklerimi başkalarına aktarmayı da önemsiyorum bu yüzden çeşitli blog yazıları yazıyorum, bunlara göz atmak için blog sayfamı ziyaret edebilirsiniz.
+                        {t("bio_2")}
                     </p>
 
                     {/* Teknolojiler */}

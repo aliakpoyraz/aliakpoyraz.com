@@ -2,48 +2,50 @@
 
 import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
+import { useTranslations } from "next-intl";
 
 export default function Experience() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    const t = useTranslations("Experience");
 
     const experiences = [
         {
             company: "AktifTech (AktifBank A.Ş.)",
             url: "https://www.aktiftech.com",
-            role: "Test ve Kalite Yönetimi Stajyeri",
-            date: "Ocak 2026",
-            location: "İstanbul (Uzaktan)",
-            description: "Yazılım geliştirme yaşam döngüsü (SDLC, SDTC) adımlarını ve metodolojilerini inceleyerek QA süreçlerine entegrasyonuna katkıda bulundum. Fonksiyonel testlerin yürütülmesi, hata raporlarının hazırlanması ve çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon konularında deneyim kazandım.",
+            role: t("aktif_tech_role"),
+            date: t("aktif_tech_date"),
+            location: t("aktif_tech_location"),
+            description: t("aktif_tech_desc"),
             tech: ["Agile", "SDLC", "SDTC", "QA", "Test Yönetimi"],
             current: false,
         },
         {
             company: "Kayısır",
             url: "https://www.kayisir.com",
-            role: "Yazılım Geliştirici",
-            date: "2023 - Halen",
-            location: "Malatya (Uzaktan)",
-            description: "E-ticaret altyapısının uçtan uca yönetimini gerçekleştirmekteyim. Mevcut WordPress tabanlı sistemi baz alarak, kapsamlı SEO optimizasyonu ve dijital pazarlama faaliyetlerini başarıyla yönettim. Ek olarak, Trendyol başta olmak üzere çeşitli pazar yerleri ile tam entegrasyonu kurarak bu kanalların merkezi yönetimini sağlamaktayım. Halihazırda, iş süreçlerini optimize edecek özel bir web uygulaması geliştirme projesini yürütüyorum.",
+            role: t("kayisir_role"),
+            date: t("kayisir_date"),
+            location: t("kayisir_location"),
+            description: t("kayisir_desc"),
             tech: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
-            current: true, // true olursa tarih yeşil renkte gösterilir
+            current: true,
         },
         {
             company: "SwordSec Siber Güvenlik",
             url: "https://www.swordsec.com",
-            role: "Stajyer Yazılım Mühendisi",
-            date: "Haziran 2025 - Temmuz 2025",
-            location: "Ankara (Hybrid)",
-            description: "Siber güvenlik alanında sızma testleri, Nmap, Burpsuite, Metasploit gibi araçların kullanımı üzerine deneyim kazandım. Gerçek dünya senaryolarında güvenlik açıklarını tespit edip raporladım.",
+            role: t("swordsec_role"),
+            date: t("swordsec_date"),
+            location: t("swordsec_location"),
+            description: t("swordsec_desc"),
             tech: ["Python", "Nmap", "Burpsuite", "Metasploit"],
             current: false,
         },
         {
             company: "Toya Yazılım (ToyaPOS)",
             url: "https://www.toyayazilim.com.tr",
-            role: "Stajyer Yazılım Mühendisi",
-            date: "Ocak 2025 - Şubat 2025",
-            location: "Ankara (Hybrid)",
-            description: "Toya Pos Sistemleri ve ERP çözümleri üzerinde çalıştım. Web geliştirme projelerinde yer aldım ve ekip ile birlikte yazılım süreçlerine katkıda bulundum.",
+            role: t("toya_role"),
+            date: t("toya_date"),
+            location: t("toya_location"),
+            description: t("toya_desc"),
             tech: ["JavaScript", "HTML", "CSS"],
             current: false,
         },
@@ -64,7 +66,7 @@ export default function Experience() {
                     <BriefcaseBusiness className="text-zinc-400" size={20} />
                 </div>
                 <h2 className="text-xl font-bold text-white">
-                    İş & Staj Deneyimi
+                    {t("title")}
                 </h2>
             </div>
 

@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 export type Project = {
     slug: string;
     title: string;
@@ -9,7 +11,6 @@ export type Project = {
     tags: string[];
 };
 
-// statusColor: "text-amber-400 bg-amber-400/10 border-amber-400/20" TURUNCU RENK KODU
 export const activeProjects: Project[] = [
     {
         slug: "borsa-app",
@@ -64,4 +65,20 @@ export const activeProjects: Project[] = [
 
 export function getProjectBySlug(slug: string): Project | undefined {
     return activeProjects.find((project) => project.slug === slug);
+}
+
+export function useActiveProjects() {
+    const t = useTranslations("Projects");
+    const tData = useTranslations("ProjectData");
+    
+    // We only translate status text and maybe description here if they were provided in JSON.
+    // For now we will translate the status text to respect locale for tags.
+    // E.g., 'Geliştirildi', 'Canlı'
+    
+    return activeProjects.map(project => ({
+        ...project,
+        title: tData(`${project.slug}.title` as any) || project.title,
+        description: tData(`${project.slug}.desc` as any) || project.description,
+        status: project.status === "Canlı" ? t("status_canli") : t("status_gelistirildi")
+    }));
 }

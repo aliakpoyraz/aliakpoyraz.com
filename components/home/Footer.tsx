@@ -1,10 +1,12 @@
 import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
 import Divider from './Divider';
+import { useTranslations } from "next-intl";
 
 const GITHUB_USERNAME = "aliakpoyraz";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const t = useTranslations("Footer");
 
     const socialLinks = [
         { href: "https://instagram.com/aliakpoyraz", icon: Instagram, label: "Instagram", target: "_blank", hoverClass: "hover:text-[#E1306C] hover:border-[#E1306C]/30 hover:bg-[#E1306C]/10" },
@@ -37,7 +39,7 @@ export default function Footer() {
                 
                 <div className="text-center text-sm text-zinc-600 mt-6 flex flex-col items-center gap-2">
                     <p>
-                        &copy; {currentYear} Ali Akpoyraz. Tüm hakları saklıdır.
+                        &copy; {currentYear} Ali Akpoyraz. {t("copyright").split("Ali Akpoyraz.")[1]?.trim() || "Tüm hakları saklıdır."}
                     </p>
                 </div>
             </div>

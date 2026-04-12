@@ -1,0 +1,100 @@
+{
+  "SideNav": {
+    "baslangic": "Başlangıç",
+    "deneyim": "Deneyim",
+    "gonulluluk": "Gönüllülük",
+    "aktif-calismalar": "Aktif Çalışmalar",
+    "son-projeler": "Herkese Açık Projeler",
+    "blog": "Blog"
+  },
+  "ProfileCard": {
+    "title": "Yazılım Mühendisi",
+    "subtitle_student": "Öğrenci",
+    "bio_1": "Merhaba! Ben Ali Akpoyraz Yazılım Mühendisliği 3. Sınıf öğrencisiyim. Yeni teknolojiler öğrenmeyi ve projeler geliştirmeyi seviyorum. Kariyerime Mobil uygulama geliştirme ve backend alanlarında devam etmeyi planlıyorum ve bu alanda kendimi sürekli geliştirmeye çalışıyorum.",
+    "bio_2": "Kendimi geliştirirken aynı zamanda öğrendiklerimi başkalarına aktarmayı da önemsiyorum bu yüzden çeşitli blog yazıları yazıyorum, bunlara göz atmak için blog sayfamı ziyaret edebilirsiniz.",
+    "badge": "HackGDG'25 🚀"
+  },
+  "Experience": {
+    "title": "İş & Staj Deneyimi",
+    "aktif_tech_role": "Test ve Kalite Yönetimi Stajyeri",
+    "aktif_tech_desc": "Yazılım geliştirme yaşam döngüsü (SDLC, SDTC) adımlarını ve metodolojilerini inceleyerek QA süreçlerine entegrasyonuna katkıda bulundum. Fonksiyonel testlerin yürütülmesi, hata raporlarının hazırlanması ve çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon konularında deneyim kazandım.",
+    "aktif_tech_date": "Ocak 2026",
+    "aktif_tech_location": "İstanbul (Uzaktan)",
+    "kayisir_role": "Yazılım Geliştirici",
+    "kayisir_date": "2023 - Halen",
+    "kayisir_location": "Malatya (Uzaktan)",
+    "kayisir_desc": "E-ticaret altyapısının uçtan uca yönetimini gerçekleştirmekteyim. Mevcut WordPress tabanlı sistemi baz alarak, kapsamlı SEO optimizasyonu ve dijital pazarlama faaliyetlerini başarıyla yönettim. Ek olarak, Trendyol başta olmak üzere çeşitli pazar yerleri ile tam entegrasyonu kurarak bu kanalların merkezi yönetimini sağlamaktayım. Halihazırda, iş süreçlerini optimize edecek özel bir web uygulaması geliştirme projesini yürütüyorum.",
+    "swordsec_role": "Stajyer Yazılım Mühendisi",
+    "swordsec_date": "Haziran 2025 - Temmuz 2025",
+    "swordsec_location": "Ankara (Hybrid)",
+    "swordsec_desc": "Siber güvenlik alanında sızma testleri, Nmap, Burpsuite, Metasploit gibi araçların kullanımı üzerine deneyim kazandım. Gerçek dünya senaryolarında güvenlik açıklarını tespit edip raporladım.",
+    "toya_role": "Stajyer Yazılım Mühendisi",
+    "toya_date": "Ocak 2025 - Şubat 2025",
+    "toya_location": "Ankara (Hybrid)",
+    "toya_desc": "Toya Pos Sistemleri ve ERP çözümleri üzerinde çalıştım. Web geliştirme projelerinde yer aldım ve ekip ile birlikte yazılım süreçlerine katkıda bulundum."
+  },
+  "Volunteering": {
+    "title": "Gönüllülük & Topluluk",
+    "gdg_role": "Core Team Member",
+    "gdg_org": "Google Developer Student Clubs",
+    "gdg_date": "2024 - 2025",
+    "gdg_desc": "2024-2025 Sezonunda 1000+ üyesiyle birlikte okulumuzun en büyük kulübü olan GDSC'nin Yazılım & Teknoloji departmanının core team üyesi olarak görev aldım. Bu kulüpte görev alan arkadaşlarımızla çeşitli projeler, sunumlar ve hackathon gibi etkinlikler düzenleyerek birçok öğrenciye ulaşmayı başardık.",
+    "gezi_role": "Yönetim Kurulu Üyesi",
+    "gezi_org": "Gezi Kulübü",
+    "gezi_date": "2024 - 2026",
+    "gezi_desc": "Okulumuzun gezi kulübünde yönetim kurulu üyesi olarak görev aldım. Bu kulüp aracılığıyla çeşitli şehir içi ve şehir dışı geziler düzenleyerek öğrencilere yeni yerler keşfetme fırsatı sunduk.",
+    "seo_role": "Gönüllü Eğitmen",
+    "seo_org": "SEO Eğitmenliği",
+    "seo_date": "Mart 2025",
+    "seo_desc": "GDSC OSTİMTECH kulübü bünyesinde düzenlenen SEO eğitimlerinde gönüllü eğitmen olarak görev aldım. Temel SEO kavramları, araçları ve stratejileri üzerine öğrencilere eğitim verdim."
+  },
+  "ActiveProjects": {
+    "title": "Aktif Çalışmalar",
+    "view_project": "Projeyi İncele",
+    "view_repo": "Repoyu İncele"
+  },
+  "Projects": {
+    "title": "Herkese Açık Projeler",
+    "view_all": "Tümünü Gör",
+    "view_project": "Canlı Demo",
+    "view_repo": "Kaynak Kod",
+    "no_description": "Açıklama yok.",
+    "status_gelistirildi": "Geliştirildi",
+    "status_canli": "Canlı"
+  },
+  "ProjectDetails": {
+    "not_found": "Proje Bulunamadı",
+    "back_to_home": "Ana Sayfaya Dön",
+    "tech_used": "Kullanılan Teknolojiler",
+    "github_repo": "GitHub Reposu",
+    "live_preview": "Canlı Önizleme",
+    "readme_error": "README dosyası bulunamadı veya bir hata oluştu."
+  },
+  "ProjectData": {
+    "borsa-app": {
+      "title": "BorsaApp",
+      "desc": "Swift kullanılarak geliştirilen, borsa ve finans takibi üzerine odaklanmış Binance ve Yahoo API entegrasyonuyla birlikte anlık olarak kripto ve bist verilerini takip edebileceğiniz, favorilere ekleyerek widget üzerinden veya varlıklarınızı ekleyerek anlık olarak portföyünüzü takip edebileceğiniz bir mobil uygulama."
+    },
+    "DevCleaner": {
+      "title": "DevCleaner",
+      "desc": "Geliştiriciler için CleanMyMac uygulaması alternatifi. Kullanılmayan xcode cacheleri, docker image, node_modules dosyaları gibi daha önceden geliştirdiğiniz ancak cachelerinin bilgisayarınızda tutulmaya devam ettiği dosyaları birkaç tıklamayla silmenize yarayan MacOS uygulaması."
+    },
+    "e-ticaret-platformu": {
+      "title": "E-Ticaret Platformu",
+      "desc": "Modern web teknolojileri kullanılarak geliştirilmiş, bir e-ticaret sitesi için ihtiyaç olan bütün senaryoları (ürün listeleme, sepet, ödeme, üyelik, sipariş takibi, iletişim, mail onay, sipariş mail bildirimleri vb.) barındıran bir e-ticaret platformu."
+    },
+    "kisisel-portfolyo": {
+      "title": "Kişisel Portfolyo",
+      "desc": "Özelleştirilebilir modern ve dinamik kişisel portfolyo sitesi."
+    },
+    "basic-portfolio": {
+      "title": "Basic Portfolyo",
+      "desc": "Daha minimal sade ve yüksek performanslı bir portfolyo site alternatifi."
+    }
+  },
+  "Footer": {
+    "copyright": "© 2026 Ali Akpoyraz. Tüm hakları saklıdır.",
+    "made_with": "ile geliştirildi. kaynak kodları",
+    "github_link_text": "GitHub"
+  }
+}

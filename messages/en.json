@@ -1,0 +1,100 @@
+{
+  "SideNav": {
+    "baslangic": "Home",
+    "deneyim": "Experience",
+    "gonulluluk": "Volunteering",
+    "aktif-calismalar": "Active Projects",
+    "son-projeler": "Public Projects",
+    "blog": "Blog"
+  },
+  "ProfileCard": {
+    "title": "Software Engineer",
+    "subtitle_student": "Student",
+    "bio_1": "Hello! I am Ali Akpoyraz, a 3rd-year Software Engineering student. I love learning new technologies and developing projects. I plan to continue my career in Mobile app development and backend fields, constantly improving myself.",
+    "bio_2": "While improving myself, I also care about sharing what I learn with others, which is why I write various blog posts. You can visit my blog page to check them out.",
+    "badge": "HackGDG'25 🚀"
+  },
+  "Experience": {
+    "title": "Work & Internship Experience",
+    "aktif_tech_role": "Test and Quality Management Intern",
+    "aktif_tech_desc": "I contributed to the integration of Software Development Life Cycle (SDLC, SDTC) steps and methodologies into QA processes. I gained experience in executing functional tests, preparing bug reports, and team communication and coordination in an Agile work environment.",
+    "aktif_tech_date": "January 2026",
+    "aktif_tech_location": "Istanbul (Remote)",
+    "kayisir_role": "Software Developer",
+    "kayisir_date": "2023 - Present",
+    "kayisir_location": "Malatya (Remote)",
+    "kayisir_desc": "I manage the end-to-end e-commerce infrastructure. Based on the existing WordPress system, I successfully managed comprehensive SEO optimization and digital marketing activities. Additionally, I established full integration with various marketplaces, especially Trendyol, ensuring centralized management of these channels. Currently, I am leading a custom web application development project to optimize business processes.",
+    "swordsec_role": "Software Engineering Intern",
+    "swordsec_date": "June 2025 - July 2025",
+    "swordsec_location": "Ankara (Hybrid)",
+    "swordsec_desc": "I gained experience in penetration testing and using tools like Nmap, Burpsuite, and Metasploit in the cybersecurity field. I identified and reported security vulnerabilities in real-world scenarios.",
+    "toya_role": "Software Engineering Intern",
+    "toya_date": "January 2025 - February 2025",
+    "toya_location": "Ankara (Hybrid)",
+    "toya_desc": "I worked on Toya Pos Systems and ERP solutions. I took part in web development projects and contributed to software processes alongside the team."
+  },
+  "Volunteering": {
+    "title": "Volunteering & Community",
+    "gdg_role": "Core Team Member",
+    "gdg_org": "Google Developer Student Clubs",
+    "gdg_date": "2024 - 2025",
+    "gdg_desc": "I served as a core team member of the Software & Technology department of GDSC, the largest club of our school with 1000+ members in the 2024-2025 season. Together with our club members, we organized various projects, presentations, and events like hackathons, reaching out to many students.",
+    "gezi_role": "Board Member",
+    "gezi_org": "Travel Club",
+    "gezi_date": "2024 - 2026",
+    "gezi_desc": "I served as a board member in our school's travel club. Through this club, we organized various trips in and out of the city, offering students the opportunity to discover new places.",
+    "seo_role": "Volunteer Instructor",
+    "seo_org": "SEO Training",
+    "seo_date": "March 2025",
+    "seo_desc": "I served as a volunteer instructor in SEO trainings organized by the GDSC OSTİMTECH club. I trained students on fundamental SEO concepts, tools, and strategies."
+  },
+  "ActiveProjects": {
+    "title": "Active Projects",
+    "view_project": "View Project",
+    "view_repo": "View Repo"
+  },
+  "Projects": {
+    "title": "Public Projects",
+    "view_all": "View All",
+    "view_project": "Live Demo",
+    "view_repo": "Source Code",
+    "no_description": "No description available.",
+    "status_gelistirildi": "Developed",
+    "status_canli": "Live"
+  },
+  "ProjectDetails": {
+    "not_found": "Project Not Found",
+    "back_to_home": "Back to Home",
+    "tech_used": "Technologies Used",
+    "github_repo": "GitHub Repository",
+    "live_preview": "Live Preview",
+    "readme_error": "README file not found or an error occurred."
+  },
+  "ProjectData": {
+    "borsa-app": {
+      "title": "BorsaApp",
+      "desc": "A mobile application developed using Swift, focused on stock market and finance tracking with Binance and Yahoo API integration. It allows you to track crypto and bist data in real-time, and track your portfolio instantly by adding to favorites via widget or adding your assets."
+    },
+    "DevCleaner": {
+      "title": "DevCleaner",
+      "desc": "A CleanMyMac application alternative for developers. A MacOS application that allows you to delete files such as unused Xcode caches, Docker images, node_modules files that you previously developed but whose caches continue to be kept on your computer with a few clicks."
+    },
+    "e-ticaret-platformu": {
+      "title": "E-Commerce Platform",
+      "desc": "An e-commerce platform developed using modern web technologies, containing all the scenarios needed for an e-commerce site (product listing, cart, payment, membership, order tracking, communication, email confirmation, order email notifications, etc.)."
+    },
+    "kisisel-portfolyo": {
+      "title": "Personal Portfolio",
+      "desc": "Customizable modern and dynamic personal portfolio site."
+    },
+    "basic-portfolio": {
+      "title": "Basic Portfolio",
+      "desc": "A more minimal, simple, and high-performance portfolio site alternative."
+    }
+  },
+  "Footer": {
+    "copyright": "© 2025 Ali Akpoyraz. All rights reserved.",
+    "made_with": "built with. source code is open on",
+    "github_link_text": "GitHub."
+  }
+}

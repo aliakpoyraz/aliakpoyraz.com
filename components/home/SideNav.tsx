@@ -1,24 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/routing";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Home, Briefcase, Heart, Github, BookOpen, Activity } from "lucide-react";
-
-const navItems = [
-    { id: "baslangic", label: "Başlangıç", icon: <Home size={18} />, href: "/#baslangic" },
-    { id: "deneyim", label: "Deneyim", icon: <Briefcase size={18} />, href: "/#deneyim" },
-    { id: "gonulluluk", label: "Gönüllülük", icon: <Heart size={18} />, href: "/#gonulluluk" },
-    { id: "aktif-calismalar", label: "Aktif Çalışmalar", icon: <Activity size={18} />, href: "/#aktif-calismalar" },
-    { id: "son-projeler", label: "Herkese Açık Projeler", icon: <Github size={18} />, href: "/#son-projeler" },
-    { id: "blog", label: "Blog", icon: <BookOpen size={18} />, href: "/blog" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function SideNav() {
+    const t = useTranslations("SideNav");
+    
+    const navItems = [
+        { id: "baslangic", label: t("baslangic"), icon: <Home size={18} />, href: "/#baslangic" },
+        { id: "deneyim", label: t("deneyim"), icon: <Briefcase size={18} />, href: "/#deneyim" },
+        { id: "gonulluluk", label: t("gonulluluk"), icon: <Heart size={18} />, href: "/#gonulluluk" },
+        { id: "aktif-calismalar", label: t("aktif-calismalar"), icon: <Activity size={18} />, href: "/#aktif-calismalar" },
+        { id: "son-projeler", label: t("son-projeler"), icon: <Github size={18} />, href: "/#son-projeler" },
+        { id: "blog", label: t("blog"), icon: <BookOpen size={18} />, href: "/blog" },
+    ];
+
     const [activeSection, setActiveSection] = useState("baslangic");
     const [isVisible, setIsVisible] = useState(true);
     const pathname = usePathname();
-    const isHome = pathname === "/";
+    const isHome = pathname === "/" || pathname === "/en" || pathname === "/tr";
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -32,7 +36,7 @@ export default function SideNav() {
         if (footer) observer.observe(footer);
 
         if (!isHome) {
-            if (pathname.startsWith("/blog")) {
+            if (pathname?.includes("/blog")) {
                 setActiveSection("blog");
             }
             return () => {
@@ -76,14 +80,20 @@ export default function SideNav() {
     };
 
     return (
-        <aside id="sidenav" className={`fixed bottom-6 left-1/2 -translate-x-1/2 xl:bottom-auto xl:left-[calc(50%-26rem)] xl:top-1/2 xl:-translate-y-1/2 z-50 flex flex-row xl:flex-col gap-3 xl:gap-4 p-2 xl:p-0 rounded-2xl xl:rounded-none bg-zinc-950/80 xl:bg-transparent backdrop-blur-xl xl:backdrop-blur-none border border-white/5 xl:border-none shadow-2xl xl:shadow-none transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}>
+        <aside id="sidenav" className={`fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 xl:bottom-auto xl:left-[calc(50%-26rem)] xl:top-[55%] xl:-translate-y-1/2 z-50 flex flex-row xl:flex-col gap-1.5 sm:gap-3 xl:gap-4 p-1.5 sm:p-2 xl:p-0 rounded-2xl xl:rounded-none bg-zinc-950/80 xl:bg-transparent backdrop-blur-xl xl:backdrop-blur-none border border-white/5 xl:border-none shadow-2xl xl:shadow-none transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}>
+            
+            <LanguageSwitcher />
+            
+            {/* Ayırıcı Çizgi */}
+            <div className="w-[1px] xl:w-full h-8 xl:h-[1px] bg-white/10 rounded-full mx-1 xl:mx-0 xl:my-1 flex-shrink-0" />
+
             {navItems.map((item) => {
                 const isItemActive = activeSection === item.id;
 
                 return (
                     <Link
                         key={item.id}
-                        href={item.href}
+                        href={item.href as any}
                         onClick={(e) => scrollToSection(e, item.id)}
                         className="group relative flex items-center gap-4 transition-all duration-300"
                     >
@@ -99,7 +109,7 @@ export default function SideNav() {
 
                         {/* İkon Taşıyıcısı */}
                         <div className={`
-                            relative flex items-center justify-center w-10 h-10 xl:w-11 xl:h-11 rounded-xl border transition-all duration-300
+                            relative flex items-center justify-center w-[34px] h-[34px] sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl border transition-all duration-300
                             ${isItemActive
                                 ? "bg-white/10 border-white/20 text-white shadow-[0_0_25px_rgba(255,255,255,0.1)] scale-110"
                                 : "bg-zinc-950/50 border-white/5 text-zinc-500 hover:text-zinc-200 hover:border-white/10 hover:bg-zinc-900/50"}

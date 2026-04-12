@@ -1,4 +1,4 @@
-import ProfileCard from "../components/home/ProfileCard";
+import ProfileCard from "@/components/home/ProfileCard";
 import Projects from "@/components/home/Projects";
 import Experience from "@/components/home/Experience";
 import Volunteering from "@/components/home/Volunteering";
