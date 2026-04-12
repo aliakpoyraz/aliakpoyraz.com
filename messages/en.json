@@ -86,7 +86,7 @@
     },
     "kisisel-portfolyo": {
       "title": "Personal Portfolio",
-      "desc": "Customizable modern and dynamic personal portfolio site."
+      "desc": "This is the current site you are browsing; built with Next.js 16 and Tailwind v4. It runs on Vercel + GitHub infrastructure, operating entirely without a database for maximum performance in a 'database-less' architecture."
     },
     "basic-portfolio": {
       "title": "Basic Portfolio",

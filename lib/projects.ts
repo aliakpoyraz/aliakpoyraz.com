@@ -13,6 +13,16 @@ export type Project = {
 
 export const activeProjects: Project[] = [
     {
+        slug: "kisisel-portfolyo",
+        title: "Kişisel Portfolyo",
+        description: "Şu an incelediğiniz bu site; Next.js 16 ve Tailwind v4 ile geliştirildi. Vercel + GitHub altyapısıyla, veritabanına ihtiyaç duymadan tamamen performans odaklı ve 'database-less' bir yapıda çalışmaktadır.",
+        status: "Canlı",
+        statusColor: "text-rose-400 bg-rose-500/10 border-rose-500/20",
+        githubRepo: "aliakpoyraz/aliakpoyraz.com",
+        demoLink: "https://aliakpoyraz.com",
+        tags: ["Next.js", "Tailwind 4", "i18n"]
+    },
+    {
         slug: "borsa-app",
         title: "BorsaApp",
         description: "Swift kullanılarak geliştirilen, borsa ve finans takibi üzerine odaklanmış Binance ve Yahoo API entegrasyonuyla birlikte anlık olarak kripto ve bist verilerini takip edebileceğiniz, favorilere ekleyerek widget üzerinden veya varlıklarınızı ekleyerek anlık olarak portföyünüzü takip edebileceğiniz bir mobil uygulama.",
@@ -50,11 +60,8 @@ export function getProjectBySlug(slug: string): Project | undefined {
 export function useActiveProjects() {
     const t = useTranslations("Projects");
     const tData = useTranslations("ProjectData");
-    
-    // We only translate status text and maybe description here if they were provided in JSON.
-    // For now we will translate the status text to respect locale for tags.
-    // E.g., 'Geliştirildi', 'Canlı'
-    
+
+
     return activeProjects.map(project => ({
         ...project,
         title: tData(`${project.slug}.title` as any) || project.title,

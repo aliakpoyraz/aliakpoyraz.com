@@ -86,7 +86,7 @@
     },
     "kisisel-portfolyo": {
       "title": "Kişisel Portfolyo",
-      "desc": "Özelleştirilebilir modern ve dinamik kişisel portfolyo sitesi."
+      "desc": "Şu an incelediğiniz bu site; Next.js 16 ve Tailwind v4 ile geliştirildi. Vercel + GitHub altyapısıyla, veritabanına ihtiyaç duymadan tamamen performans odaklı ve 'database-less' bir yapıda çalışmaktadır."
     },
     "basic-portfolio": {
       "title": "Basic Portfolyo",
