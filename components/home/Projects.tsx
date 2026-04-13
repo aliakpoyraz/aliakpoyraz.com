@@ -45,10 +45,10 @@ export default function Projects() {
                         {/* İçerik */}
                         <div className="flex-1 pb-4">
                             <div className="flex items-center gap-2 mb-3">
-                                <h3 className="text-lg md:text-xl font-bold text-zinc-100 group-hover:text-white transition-colors">
+                                <h3 className="text-lg md:text-xl font-bold text-zinc-100 group-hover:text-rose-400 transition-colors">
                                     {project.title}
                                 </h3>
-                                <ArrowUpRight size={16} className="text-zinc-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                <ArrowUpRight size={16} className="text-zinc-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-rose-400 transition-all duration-300" />
                             </div>
                             
                             <p className="text-sm md:text-base text-zinc-500 group-hover:text-zinc-400 transition-colors mb-5 text-balance leading-relaxed">
