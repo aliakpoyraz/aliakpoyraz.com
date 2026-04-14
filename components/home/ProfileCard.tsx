@@ -11,7 +11,7 @@ export default function ProfileCard() {
     const t = useTranslations("ProfileCard");
     const socialLinks = [
         { icon: <Mail size={18} />, href: "mailto:aliakpoyraz@gmail.com", label: "Email" },
-        { icon: <FileText size={18} />, href: "/uploads/cv.pdf", label: "CV" },
+        { icon: <FileText size={18} />, href: "/cv.pdf", label: "CV" },
         { icon: <Linkedin size={18} />, href: "https://linkedin.com/in/aliakpoyraz", label: "LinkedIn" },
         { icon: <Github size={18} />, href: "https://github.com/aliakpoyraz", label: "GitHub" },
     ];
