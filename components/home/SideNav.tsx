@@ -98,8 +98,8 @@ export default function SideNav() {
                     >
                         {/* Menü Etiketi */}
                         <span className={`
-                            absolute left-full ml-4 px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 
-                            text-xs font-medium text-zinc-400 whitespace-nowrap backdrop-blur-md
+                            absolute left-full ml-4 px-3 py-1.5 rounded-lg bg-surface border border-border-main 
+                            text-xs font-medium text-muted whitespace-nowrap backdrop-blur-md
                             opacity-0 -translate-x-2 pointer-events-none hidden xl:block
                             group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-rose-400 group-hover:border-rose-500/20 transition-all duration-300
                         `}>
@@ -111,7 +111,7 @@ export default function SideNav() {
                             relative flex items-center justify-center w-[34px] h-[34px] sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl transition-all duration-300
                             ${isItemActive
                                 ? "bg-rose-500/10 border border-rose-500/20 text-rose-400 shadow-[0_0_25px_rgba(251,113,133,0.2)] scale-110"
-                                : "bg-transparent border border-transparent text-zinc-500 hover:text-rose-400 hover:border-white/5 hover:bg-white/5"}
+                                : "bg-transparent border border-transparent text-muted hover:text-rose-400 hover:border-border-main hover:bg-surface"}
                         `}>
                             {item.icon}
                         </div>
