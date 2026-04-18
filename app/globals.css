@@ -92,3 +92,12 @@ a {
   background-color: rgba(var(--accent) / 0.5) !important;
   border-color: rgb(var(--accent)) !important;
 }
+
+/* Scrollbar Hide Utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
