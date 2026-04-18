@@ -13,7 +13,11 @@
     "subtitle_student": "Student",
     "bio_1": "Hello! I am Ali Akpoyraz, a 3rd-year Software Engineering student. I love learning new technologies and developing projects. I plan to continue my career in Mobile app development and backend fields, constantly improving myself.",
     "bio_2": "While improving myself, I also care about sharing what I learn with others, which is why I write various blog posts. You can visit my blog page to check them out.",
-    "badge": "HackGDG'25 🚀"
+    "social_email": "Send Email",
+    "social_cv": "View CV",
+    "social_linkedin": "View LinkedIn",
+    "social_github": "View GitHub",
+    "greeting": "Hi, I'm"
   },
   "Experience": {
     "title": "Work & Internship Experience",

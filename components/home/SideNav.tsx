@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { Link } from "@/routing";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Home, Briefcase, Heart, Github, BookOpen, Activity } from "lucide-react";
+import { Home, Briefcase, Heart, Github, BookOpen } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeToggle from "./ThemeToggle";
 
 export default function SideNav() {
     const t = useTranslations("SideNav");
-    
+
     const navItems = [
         { id: "baslangic", label: t("baslangic"), icon: <Home size={18} />, href: "/#baslangic" },
         { id: "deneyim", label: t("deneyim"), icon: <Briefcase size={18} />, href: "/#deneyim" },
@@ -61,7 +62,7 @@ export default function SideNav() {
         window.addEventListener("scroll", handleScroll);
         // İlk kaydırma kontrolü
         handleScroll();
-        
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
             if (footer) observer.unobserve(footer);
@@ -71,20 +72,19 @@ export default function SideNav() {
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         if (isHome && id !== "blog") {
             e.preventDefault();
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: "auto" });
+            if (id === "baslangic") {
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            } else {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
             }
         }
     };
 
     return (
-        <aside id="sidenav" className={`fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 xl:bottom-auto xl:left-[calc(50%-28rem)] 2xl:left-[calc(50%-30rem)] xl:top-[55%] xl:-translate-y-1/2 z-50 flex flex-row xl:flex-col gap-1.5 sm:gap-3 xl:gap-4 p-1.5 sm:p-2 xl:p-0 rounded-2xl xl:rounded-none bg-zinc-950/80 xl:bg-transparent backdrop-blur-xl xl:backdrop-blur-none border border-white/5 xl:border-none shadow-2xl xl:shadow-none transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}>
-            
-            <LanguageSwitcher />
-            
-            {/* Ayırıcı Çizgi */}
-            <div className="w-[1px] xl:w-full h-8 xl:h-[1px] bg-white/10 rounded-full mx-1 xl:mx-0 xl:my-1 flex-shrink-0" />
+        <aside id="sidenav" className={`fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 xl:bottom-auto xl:left-[calc(50%-28rem)] 2xl:left-[calc(50%-30rem)] xl:top-[55%] xl:-translate-y-1/2 z-50 flex flex-row xl:flex-col items-center gap-1.5 sm:gap-3 xl:gap-4 p-1.5 sm:p-2 xl:p-0 rounded-2xl xl:rounded-none bg-surface/80 xl:bg-transparent backdrop-blur-xl xl:backdrop-blur-none border border-border-main xl:border-none shadow-2xl xl:shadow-none transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}>
 
             {navItems.map((item) => {
                 const isItemActive = activeSection === item.id;
@@ -94,7 +94,7 @@ export default function SideNav() {
                         key={item.id}
                         href={item.href as any}
                         onClick={(e) => scrollToSection(e, item.id)}
-                        className="group relative flex items-center justify-center transition-all duration-300"
+                        className="group relative flex items-center justify-center transition-all duration-300 w-full"
                     >
                         {/* Menü Etiketi */}
                         <span className={`
@@ -118,6 +118,14 @@ export default function SideNav() {
                     </Link>
                 );
             })}
+
+            {/* Ayırıcı Çizgi */}
+            <div className="w-[1px] xl:w-6 h-6 xl:h-[1px] bg-fg/20 rounded-full mx-2 xl:mx-0 xl:my-3 flex-shrink-0" />
+
+            <div className="flex flex-row xl:flex-col items-center justify-center gap-1.5 sm:gap-2">
+                <ThemeToggle />
+                <LanguageSwitcher />
+            </div>
         </aside>
     );
 }

@@ -6,7 +6,7 @@ import Volunteering from "@/components/home/Volunteering";
 export default function Home() {
   return (
     <main className="flex flex-col items-center px-2 md:px-8 w-full pb-24">
-      <div id="baslangic" className="w-full min-h-[calc(100vh-6rem)] md:min-h-[85vh] flex items-center justify-center mb-20 md:mb-32">
+      <div id="baslangic" className="w-full min-h-[calc(100vh-6rem)] md:min-h-[85vh] flex items-center justify-center mb-6 md:mb-12">
         <ProfileCard />
       </div>
 

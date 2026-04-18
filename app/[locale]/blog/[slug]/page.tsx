@@ -215,31 +215,31 @@ export default async function BlogPost({ params }: Props) {
 
             <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-500 hover:text-rose-400 mb-10 bg-zinc-900/50 border border-zinc-800 hover:border-rose-500/30 hover:bg-rose-500/5 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 mb-10 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-accent-10 transition-all duration-300 group"
             >
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                 Blog Listesine Dön
             </Link>
 
-            <header className="mb-10 pb-10 border-b border-white/5">
-                <h1 className="text-3xl sm:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
+            <header className="mb-10 pb-10 border-b border-border-main">
+                <h1 className="text-3xl sm:text-5xl font-bold text-fg mb-6 leading-tight tracking-tight transition-colors">
                     {post.frontmatter.title}
                 </h1>
 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-8">
-                    <div className="flex items-center gap-3 text-xs font-semibold text-zinc-500 font-mono">
-                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2.5 py-1.5 rounded-lg border border-zinc-800 backdrop-blur-sm hover:border-rose-500/30 transition-colors">
+                    <div className="flex items-center gap-3 text-xs font-semibold text-muted font-mono">
+                        <div className="flex items-center gap-1.5 bg-surface px-2.5 py-1.5 rounded-lg border border-border-main backdrop-blur-sm hover:border-accent-30 transition-colors">
                             <Calendar size={14} className="text-rose-400" />
                             {post.frontmatter.turkishDisplayDate}
                         </div>
-                        <div className="flex items-center gap-1.5 bg-zinc-900/50 px-2.5 py-1.5 rounded-lg border border-zinc-800 backdrop-blur-sm hover:border-rose-500/30 transition-colors">
+                        <div className="flex items-center gap-1.5 bg-surface px-2.5 py-1.5 rounded-lg border border-border-main backdrop-blur-sm hover:border-accent-30 transition-colors">
                             <Clock size={14} className="text-rose-400" />
                             {readingTime}
                         </div>
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <span className="text-xs text-zinc-600 font-mono hidden sm:block">Paylaş:</span>
+                        <span className="text-xs text-muted/60 font-mono hidden sm:block">Paylaş:</span>
                         <ShareButtons title={post.frontmatter.title} url={shareUrl} />
                     </div>
                 </div>
@@ -250,25 +250,26 @@ export default async function BlogPost({ params }: Props) {
             {post.frontmatter.summary && <AiSummary summary={post.frontmatter.summary} />}
 
             {post.frontmatter.summary && (
-                <div className="w-full h-px bg-white/5 mb-8" />
+                <div className="w-full h-px bg-border-main mb-8" />
             )}
 
-            <div className="prose prose-invert prose-zinc max-w-none 
+            <div className="prose dark:prose-invert prose-zinc max-w-none 
                 prose-headings:scroll-mt-20
                 prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:underline
-                prose-headings:font-bold prose-headings:text-white 
-                prose-p:text-zinc-500 prose-p:leading-relaxed
-                prose-strong:text-zinc-300 prose-strong:font-semibold
-                prose-ul:list-disc prose-ul:pl-5 prose-ul:marker:text-zinc-600
-                prose-ol:list-decimal prose-ol:pl-5 prose-ol:marker:text-zinc-600
-                prose-code:text-rose-300 prose-code:bg-rose-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-lg prose-code:font-normal
-                prose-pre:bg-transparent prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-2xl
+                prose-headings:font-bold prose-headings:text-fg 
+                prose-p:text-fg/90 prose-p:leading-relaxed
+                prose-strong:text-fg prose-strong:font-bold
+                prose-ul:list-disc prose-ul:pl-5 prose-ul:marker:text-rose-500/50
+                prose-ol:list-decimal prose-ol:pl-5 prose-ol:marker:text-rose-500/50
+                prose-li:text-fg/90
+                prose-code:text-rose-500 prose-code:bg-accent-10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-lg prose-code:font-semibold
+                prose-pre:bg-transparent prose-pre:border prose-pre:border-border-main prose-pre:rounded-2xl
                 prose-table:border-collapse prose-table:w-full prose-table:my-8
-                prose-thead:border-b prose-thead:border-zinc-800
-                prose-th:text-zinc-300 prose-th:font-semibold prose-th:p-3 prose-th:text-left
-                prose-tr:border-b prose-tr:border-zinc-800/50 hover:prose-tr:bg-zinc-900/30
-                prose-td:text-zinc-500 prose-td:p-3
-                prose-blockquote:border-l-2 prose-blockquote:border-zinc-700 prose-blockquote:bg-transparent prose-blockquote:px-5 prose-blockquote:py-2 prose-blockquote:not-italic prose-blockquote:text-zinc-400
+                prose-thead:border-b prose-thead:border-border-main
+                prose-th:text-fg prose-th:font-bold prose-th:p-3 prose-th:text-left
+                prose-tr:border-b prose-tr:border-border-main/50 hover:prose-tr:bg-surface/30
+                prose-td:text-fg/90 prose-td:p-3
+                prose-blockquote:border-l-4 prose-blockquote:border-rose-400/50 prose-blockquote:bg-accent-10/20 prose-blockquote:px-6 prose-blockquote:py-3 prose-blockquote:not-italic prose-blockquote:text-fg/80 transition-colors
             ">
                 <MDXRemote
                     source={post.content}
@@ -277,15 +278,14 @@ export default async function BlogPost({ params }: Props) {
                         mdxOptions: {
                             remarkPlugins: [remarkGfm],
                             rehypePlugins: [rehypeSlug],
-                            // @ts-ignore - blockJS is a valid option in v6 but might not be in types yet
                             blockJS: false,
                         },
                     }}
                 />
             </div>
 
-            {/* Navigation */}
-            <nav className="mt-16 border-t border-zinc-800 pt-8">
+            {/* Yönlendirme (Navigasyon) */}
+            <nav className="mt-16 border-t border-border-main pt-8">
                 <div className="flex justify-between gap-4">
 
                     {prevPost ? (
@@ -293,10 +293,10 @@ export default async function BlogPost({ params }: Props) {
                             href={`/blog/${prevPost.slug}`}
                             className="flex flex-col p-4 text-left transition-all w-full group"
                         >
-                            <span className="text-xs font-semibold uppercase tracking-widest text-zinc-600 flex items-center gap-1 group-hover:text-rose-400 transition-colors">
+                            <span className="text-xs font-semibold uppercase tracking-widest text-muted/60 flex items-center gap-1 group-hover:text-rose-400 transition-colors">
                                 <ChevronLeft size={16} /> Önceki
                             </span>
-                            <span className="text-base font-bold text-zinc-400 mt-2 leading-relaxed group-hover:text-white transition-colors">
+                            <span className="text-base font-bold text-muted group-hover:text-fg transition-colors mt-2 leading-relaxed">
                                 {prevPost.title}
                             </span>
                         </Link>
@@ -309,10 +309,10 @@ export default async function BlogPost({ params }: Props) {
                             href={`/blog/${nextPost.slug}`}
                             className="flex flex-col p-4 text-right transition-all w-full group"
                         >
-                            <span className="text-xs font-semibold uppercase tracking-widest text-zinc-600 flex items-center justify-end gap-1 group-hover:text-rose-400 transition-colors">
+                            <span className="text-xs font-semibold uppercase tracking-widest text-muted/60 flex items-center justify-end gap-1 group-hover:text-rose-400 transition-colors">
                                 Sonraki <ChevronRight size={16} />
                             </span>
-                            <span className="text-base font-bold text-zinc-400 mt-2 leading-relaxed group-hover:text-white transition-colors">
+                            <span className="text-base font-bold text-muted group-hover:text-fg transition-colors mt-2 leading-relaxed">
                                 {nextPost.title}
                             </span>
                         </Link>
@@ -323,10 +323,10 @@ export default async function BlogPost({ params }: Props) {
                 </div>
             </nav>
 
-            {/* Share section */}
-            <div className="mt-8 border-t border-zinc-800 pt-8">
+            {/* Paylaşım Alanı */}
+            <div className="mt-8 border-t border-border-main pt-8">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <p className="text-zinc-400 text-sm">
+                    <p className="text-muted text-sm transition-colors">
                         Bu yazıyı faydalı bulduysanız paylaşabilirsiniz:
                     </p>
                     <ShareButtons title={post.frontmatter.title} url={shareUrl} />

@@ -40,22 +40,22 @@ async function getGithubLanguages(repoStr: string) {
     }
 }
 
-// Helper to self-close void HTML tags and fix relative image URLs
+// Boş HTML etiketlerini otomatik kapatmak ve göreceli görsel URL'lerini düzeltmek için yardımcı işlev
 function fixMdxHtml(content: string, repoStr: string, branch: string): string {
     const rawBaseUrl = `https://raw.githubusercontent.com/${repoStr}/${branch}/`;
 
     return content
-        // Self-close void elements
+        // Boş elementleri (void elements) kendi kendine kapat
         .replace(/<img\s+([^>]*[^\/])>/gi, '<img $1 />')
         .replace(/<br\s*([^>]*[^\/])?>/gi, '<br $1 />')
         .replace(/<hr\s*([^>]*[^\/])?>/gi, '<hr $1 />')
-        // Fix relative image tags: <img src="relative/path"... />
+        // Göreceli görsel etiketlerini düzelt: <img src="relative/path"... />
         .replace(/<img([^>]*)src=["'](?!http|https|data:)([^"']+)["']([^>]*)>/gi, `<img$1src="${rawBaseUrl}$2"$3>`)
-        // Fix relative Markdown images: ![alt](relative/path)
+        // Göreceli Markdown görsellerini düzelt: ![alt](relative/path)
         .replace(/!\[([^\]]*)\]\((?!http|https|#)([^)]+)\)/g, `![$1](${rawBaseUrl}$2)`);
 }
 
-// Fetch the README.md content from GitHub
+// GitHub üzerinden README.md içeriğini çek
 async function getGithubReadme(repoStr: string, branch: string) {
     try {
         const res = await fetch(`https://api.github.com/repos/${repoStr}/readme`, {

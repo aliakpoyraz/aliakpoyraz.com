@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
-import MainLayout from "../../components/layout/MainLayout";
+import MainLayout from "@/components/layout/MainLayout";
+import ThemeProvider from "@/components/layout/ThemeProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/routing";
@@ -69,7 +70,9 @@ export default async function RootLayout({
     <html lang={resolvedParams.locale}>
       <body className={`${spaceGrotesk.className} antialiased min-h-screen bg-ambient`}>
         <NextIntlClientProvider messages={messages}>
-          <MainLayout>{children}</MainLayout>
+          <ThemeProvider>
+            <MainLayout>{children}</MainLayout>
+          </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
       </body>

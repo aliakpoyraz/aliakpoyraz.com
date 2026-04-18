@@ -2,10 +2,27 @@
 @plugin "@tailwindcss/typography";
 
 /* ============================================================
-   🎨 ACCENT COLOR DEFINITION
+   🎨 THEME SYSTEM
    ============================================================ */
 :root {
+  /* Common */
   --accent: 251 113 133; /* Rose-400 */
+  
+  /* Light Mode Defaults */
+  --bg: #ffffff;
+  --fg: #18181b; /* zinc-900 */
+  --surface: #f4f4f5; /* zinc-100 */
+  --border: rgba(0, 0, 0, 0.08);
+  --muted: #52525b; /* zinc-600 */
+}
+
+.dark {
+  /* Dark Mode Overrides */
+  --bg: #080808;
+  --fg: #e4e4e7; /* zinc-200 */
+  --surface: #18181b; /* zinc-900 */
+  --border: rgba(255, 255, 255, 0.05);
+  --muted: #d4d4d8; /* zinc-300 */
 }
 
 @theme {
@@ -13,21 +30,25 @@
   --color-accent-60: rgb(var(--accent) / 0.6);
   --color-accent-30: rgb(var(--accent) / 0.3);
   --color-accent-10: rgb(var(--accent) / 0.1);
+  
+  /* Semantic Colors Mapping */
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-surface: var(--surface);
+  --color-border-main: var(--border);
+  --color-muted: var(--muted);
 }
 
 html {
   scroll-behavior: auto !important;
   scroll-padding-top: 5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   scroll-behavior: auto !important;
-  background-color: #080808 !important;
-}
-
-:root {
-  background-color: #080808;
-  color: #e4e4e7;
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
 }
 
 a {
@@ -40,19 +61,24 @@ a {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: var(--surface);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(var(--accent));
 }
 
-/* Cleanup all ambient glow effects */
+/* Accent Utilities */
+.text-accent { color: rgb(var(--accent)); }
+.bg-accent { background-color: rgb(var(--accent)); }
+.border-accent { border-color: rgb(var(--accent)); }
+
+/* Cleanup ambient glow */
 .bg-ambient {
-  background: #080808 !important;
+  background-color: var(--bg) !important;
   background-image: none !important;
 }
 
@@ -66,8 +92,3 @@ a {
   background-color: rgba(var(--accent) / 0.5) !important;
   border-color: rgb(var(--accent)) !important;
 }
-
-/* Accent Utilities */
-.text-accent { color: rgb(var(--accent)); }
-.bg-accent { background-color: rgb(var(--accent)); }
-.border-accent { border-color: rgb(var(--accent)); }

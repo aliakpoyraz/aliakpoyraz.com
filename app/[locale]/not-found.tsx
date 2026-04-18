@@ -10,13 +10,13 @@ export default function NotFound() {
                 #sidenav { display: none !important; }
             `}} />
 
-            <Frown size={64} className="text-zinc-600 mb-4" />
+            <Frown size={64} className="text-muted/40 mb-4" />
 
-            <h1 className="text-6xl font-extrabold text-white mb-4">
+            <h1 className="text-6xl font-extrabold text-fg mb-4 transition-colors">
                 404
             </h1>
 
-            <p className="text-lg text-zinc-400 mb-6 max-w-md">
+            <p className="text-lg text-muted mb-6 max-w-md transition-colors">
                 Üzgünüz, aradığınız sayfa bulunamadı. Lütfen adresi kontrol edin.
             </p>
 

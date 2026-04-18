@@ -1,10 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import SideNav from "../home/SideNav";
-import ScrollToTop from "../home/ScrollToTop";
-import Footer from "../home/Footer";
-import Background from "../home/Background";
+import SideNav from "@/components/home/SideNav";
+import ScrollToTop from "@/components/home/ScrollToTop";
+import Footer from "@/components/home/Footer";
+import Background from "@/components/home/Background";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();

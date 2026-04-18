@@ -31,8 +31,8 @@ export default function ScrollToTop() {
             onClick={scrollToTop}
             className={`
         fixed bottom-24 right-4 xl:bottom-8 xl:right-8 z-50 p-3 rounded-full 
-        bg-zinc-900/80 border border-white/10 text-white shadow-xl backdrop-blur-md
-        transition-all duration-500 hover:bg-zinc-800 hover:scale-110 hover:-translate-y-1
+        bg-surface/80 border border-border-main text-fg shadow-xl backdrop-blur-md
+        transition-all duration-500 hover:bg-accent-10 hover:text-rose-400 hover:scale-110 hover:-translate-y-1
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}
       `}
             aria-label="Yukarı Çık"
@@ -40,7 +40,7 @@ export default function ScrollToTop() {
             <ArrowUp size={20} />
 
             {/* Parlama Efekti */}
-            <div className="absolute inset-0 -z-10 rounded-full bg-white/5 blur-md group-hover:bg-white/10 transition-colors" />
+            <div className="absolute inset-0 -z-10 rounded-full bg-accent-10 blur-md group-hover:bg-accent-20 transition-colors" />
         </button>
     );
 }

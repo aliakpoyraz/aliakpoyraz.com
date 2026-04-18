@@ -11,9 +11,13 @@
   "ProfileCard": {
     "title": "Yazılım Mühendisi",
     "subtitle_student": "Öğrenci",
-    "bio_1": "Merhaba! Ben Ali Akpoyraz Yazılım Mühendisliği 3. Sınıf öğrencisiyim. Yeni teknolojiler öğrenmeyi ve projeler geliştirmeyi seviyorum. Kariyerime Mobil uygulama geliştirme ve backend alanlarında devam etmeyi planlıyorum ve bu alanda kendimi sürekli geliştirmeye çalışıyorum.",
+    "bio_1": "Yazılım Mühendisliği 3. Sınıf öğrencisiyim. Yeni teknolojiler öğrenmeyi ve projeler geliştirmeyi seviyorum. Kariyerime Mobil uygulama geliştirme ve backend alanlarında devam etmeyi planlıyorum ve bu alanda kendimi sürekli geliştirmeye çalışıyorum.",
     "bio_2": "Kendimi geliştirirken aynı zamanda öğrendiklerimi başkalarına aktarmayı da önemsiyorum bu yüzden çeşitli blog yazıları yazıyorum, bunlara göz atmak için blog sayfamı ziyaret edebilirsiniz.",
-    "badge": "HackGDG'25 🚀"
+    "social_email": "E-posta Gönder",
+    "social_cv": "CV'yi Görüntüle",
+    "social_linkedin": "LinkedIn'i Görüntüle",
+    "social_github": "GitHub'ı Görüntüle",
+    "greeting": "Merhaba, ben"
   },
   "Experience": {
     "title": "İş & Staj Deneyimi",

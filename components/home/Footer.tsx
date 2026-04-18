@@ -15,7 +15,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer id="footer" className="relative z-10 mt-20 pt-10 pb-20 sm:pb-12 border-t border-white/5">
+        <footer id="footer" className="relative z-10 mt-20 pt-10 pb-20 sm:pb-12 border-t border-border-main transition-colors">
             <div className="max-w-2xl mx-auto px-4">
 
                 <div className="flex flex-col items-center gap-6">
@@ -28,7 +28,7 @@ export default function Footer() {
                                 target={social.target}
                                 rel="noopener noreferrer nofollow"
                                 title={social.label}
-                                className="flex items-center justify-center w-9 h-9 rounded-xl bg-zinc-900/50 border border-zinc-800 text-zinc-600 hover:text-rose-400 hover:border-rose-500/30 hover:bg-rose-500/5 transition-all duration-300"
+                                className="flex items-center justify-center w-9 h-9 rounded-xl bg-surface border border-border-main text-muted hover:text-rose-400 hover:border-rose-500/30 hover:bg-accent-10 transition-all duration-300"
                             >
                                 <social.icon size={16} />
                             </a>
@@ -36,7 +36,7 @@ export default function Footer() {
                     </div>
 
                     {/* Copyright */}
-                    <p className="text-xs text-zinc-700 tracking-wide">
+                    <p className="text-[10px] md:text-xs text-muted/60 tracking-wide uppercase">
                         © {currentYear} Ali Akpoyraz
                     </p>
                 </div>

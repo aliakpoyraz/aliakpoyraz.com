@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Calendar, Clock, ArrowUpRight, BookOpen } from 'lucide-react';
+import { Search, Calendar, Clock, ArrowUpRight } from 'lucide-react';
 
 interface Post {
     slug: string;
@@ -34,41 +34,41 @@ export default function BlogList({ posts }: { posts: Post[] }) {
         <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group relative w-full block py-6 sm:py-8 border-b border-white/5 last:border-none"
+            className="group relative w-full block py-6 sm:py-8 border-b border-border-main last:border-none"
         >
             <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 transition-all duration-300">
                 
                 {/* Sol Taraf: Metin İçerik */}
                 <div className="flex-1">
                     <div className="flex items-start justify-between gap-4 mb-2">
-                        <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-rose-400 transition-colors leading-tight">
+                        <h2 className="text-xl sm:text-2xl font-bold text-fg/90 group-hover:text-rose-400 transition-colors leading-tight">
                             {post.title}
                         </h2>
                         <ArrowUpRight
                             size={22}
-                            className="text-zinc-600 md:hidden group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0 mt-1"
+                            className="text-muted md:hidden group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0 mt-1"
                         />
                     </div>
 
                     {post.description && (
-                        <p className="text-base text-zinc-500 leading-relaxed line-clamp-2 md:line-clamp-3 mb-4 group-hover:text-zinc-400 transition-colors">
+                        <p className="text-base text-fg/70 leading-relaxed line-clamp-2 md:line-clamp-3 mb-4 group-hover:text-fg/90 transition-colors">
                             {post.description}
                         </p>
                     )}
 
                     {isContentMatch && searchQuery && (
-                        <div className="mb-4 text-xs font-semibold text-rose-400 bg-rose-500/10 px-2.5 py-1.5 rounded-lg w-fit border border-rose-500/20">
+                        <div className="mb-4 text-xs font-semibold text-rose-400 bg-accent-10 px-2.5 py-1.5 rounded-lg w-fit border border-accent-20">
                             ✨ İçerikte &quot;{searchQuery}&quot; geçiyor
                         </div>
                     )}
 
-                    <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-zinc-500 font-mono mt-2">
+                    <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-muted font-mono mt-2">
                         <div className="flex items-center gap-1.5 hover:text-rose-400 transition-colors">
                             <Calendar size={14} className="group-hover:text-rose-400 transition-colors" />
                             <span>{post.date}</span>
                         </div>
 
-                        <span className="text-zinc-700">•</span>
+                        <span className="opacity-20">•</span>
 
                         <div className="flex items-center gap-1.5 hover:text-rose-400 transition-colors">
                             <Clock size={14} className="group-hover:text-rose-400 transition-colors" />
@@ -81,7 +81,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                 <div className="hidden md:flex flex-shrink-0 mt-1">
                     <ArrowUpRight
                         size={28}
-                        className="text-zinc-700 group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                        className="text-muted/40 group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
                     />
                 </div>
 
@@ -93,16 +93,16 @@ export default function BlogList({ posts }: { posts: Post[] }) {
         <section className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20">
 
             {/* Başlık */}
-            <div className="flex items-center gap-4 mb-12 pb-6 border-b border-white/5">
+            <div className="flex items-center gap-4 mb-12 pb-6 border-b border-border-main">
                 <div>
-                    <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Blog</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold text-fg tracking-tight transition-colors">Blog</h1>
                 </div>
             </div>
 
             {/* Minimal Arama Input */}
             <div className="relative w-full mb-12 group">
-                <div className="relative flex items-center border-b border-zinc-700 pb-2 transition-all duration-300 focus-within:border-rose-500/50 hover:border-zinc-500">
-                    <div className="pl-1 text-zinc-500 group-focus-within:text-rose-400 transition-colors z-10">
+                <div className="relative flex items-center border-b border-border-main pb-2 transition-all duration-300 focus-within:border-rose-500/50 hover:border-muted">
+                    <div className="pl-1 text-muted group-focus-within:text-rose-400 transition-colors z-10">
                         <Search size={22} />
                     </div>
                     <input
@@ -110,7 +110,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                         placeholder="Yazı başlığı veya içeriği ara..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full h-12 bg-transparent border-none text-zinc-200 placeholder:text-zinc-600 px-4 outline-none z-10 relative text-sm sm:text-base font-medium"
+                        className="w-full h-12 bg-transparent border-none text-fg placeholder:text-muted/50 px-4 outline-none z-10 relative text-sm sm:text-base font-medium"
                     />
                 </div>
             </div>
@@ -123,7 +123,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                 {searchQuery && (
                     <>
                         {!hasAnyResult && (
-                            <div className="flex flex-col items-center justify-center py-20 text-zinc-500 bg-transparent">
+                            <div className="flex flex-col items-center justify-center py-20 text-muted bg-transparent">
                                 <Search size={32} className="mb-4 opacity-30 text-rose-400" />
                                 <p className="text-sm tracking-wide">&quot;{searchQuery}&quot; ile eşleşen yazı yok.</p>
                             </div>
@@ -143,7 +143,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                                             ? "BAŞLIKTA YOK AMA İÇERİKTE BULUNDU"
                                             : "AYRICA İÇERİKTE GEÇENLER"}
                                     </span>
-                                    <div className="h-px flex-1 bg-white/5"></div>
+                                    <div className="h-px flex-1 bg-border-main"></div>
                                 </div>
                                 <div className="flex flex-col">
                                     {contentMatches.map(post => renderPostCard(post, true))}
