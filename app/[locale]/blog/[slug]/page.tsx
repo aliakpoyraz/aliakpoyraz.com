@@ -278,6 +278,7 @@ export default async function BlogPost({ params }: Props) {
                         mdxOptions: {
                             remarkPlugins: [remarkGfm],
                             rehypePlugins: [rehypeSlug],
+                            // @ts-ignore - blockJS geçerli bir opsiyondur ancak tiplerde henüz tanımlı olmayabilir
                             blockJS: false,
                         },
                     }}
