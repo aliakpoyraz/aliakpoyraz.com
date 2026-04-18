@@ -9,7 +9,7 @@ import { getTranslations } from 'next-intl/server';
 
 // Minimalist tech etiği stili
 function getTechColor() {
-    return 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-900/50 border border-zinc-800 text-zinc-400 hover:border-rose-500/30 hover:bg-rose-500/10 hover:text-rose-400 transition-colors cursor-default';
+    return 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-surface border border-border-main text-muted hover:border-rose-500/30 hover:bg-rose-500/10 hover:text-rose-400 transition-colors cursor-default';
 }
 
 // Yıldız sayısı ve repo bilgileri için
@@ -127,19 +127,19 @@ export default async function ProjectPage({ params }: Props) {
         <article className="w-full max-w-3xl mx-auto mt-8 md:mt-16 px-4 mb-20">
             <Link
                 href="/"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-500 hover:text-rose-400 mb-10 bg-zinc-900/50 border border-zinc-800 hover:border-rose-500/30 hover:bg-rose-500/5 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 mb-10 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-rose-500/5 transition-all duration-300 group"
             >
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                 {t("back_to_home")}
             </Link>
 
-            <header className="mb-10 pb-10 border-b border-white/5">
+            <header className="mb-10 pb-10 border-b border-border-main">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-6">
                     <div>
-                        <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
+                        <h1 className="text-3xl sm:text-5xl font-black md:font-black tracking-tighter text-fg mb-4 leading-tight">
                             {translatedTitle}
                         </h1>
-                        <p className="text-zinc-500 text-lg leading-relaxed max-w-2xl">
+                        <p className="text-muted text-lg leading-relaxed max-w-2xl font-medium">
                             {translatedDesc}
                         </p>
                     </div>
@@ -149,7 +149,7 @@ export default async function ProjectPage({ params }: Props) {
                             <span className={`text-xs font-semibold px-2.5 py-1.5 rounded-lg border ${project.statusColor}`}>
                                 {translatedStatus}
                             </span>
-                            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold">
+                            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface border border-border-main text-fg text-xs font-semibold">
                                 <Star size={14} className="text-rose-500 fill-rose-500/20" />
                                 {stars}
                             </div>
@@ -162,7 +162,7 @@ export default async function ProjectPage({ params }: Props) {
                         href={`https://github.com/${project.githubRepo}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-400 hover:text-rose-400 bg-zinc-900/50 border border-zinc-800 hover:border-rose-500/30 hover:bg-rose-500/10 transition-all duration-300 group"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-rose-500/10 transition-all duration-300 group"
                     >
                         <Github size={16} className="group-hover:text-rose-400 transition-colors" />
                         <span>{t("github_repo")}</span>
@@ -173,7 +173,7 @@ export default async function ProjectPage({ params }: Props) {
                             href={project.demoLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-400 hover:text-rose-400 bg-zinc-900/50 border border-zinc-800 hover:border-rose-500/30 hover:bg-rose-500/10 transition-all duration-300 group"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-rose-500/10 transition-all duration-300 group"
                         >
                             <ExternalLink size={16} className="group-hover:text-rose-400 transition-colors" />
                             <span>{t("live_preview")}</span>
@@ -182,8 +182,8 @@ export default async function ProjectPage({ params }: Props) {
                 </div>
 
                 {allTechStack.length > 0 && (
-                    <div className="mt-8 pt-6 border-t border-white/5">
-                        <h3 className="text-xs font-semibold text-zinc-500 mb-3 uppercase tracking-wider">{t("tech_used")}</h3>
+                    <div className="mt-8 pt-6 border-t border-border-main">
+                        <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">{t("tech_used")}</h3>
                         <div className="flex flex-wrap items-center gap-2">
                             {allTechStack.map((tech) => (
                                 <span key={tech} className={getTechColor()}>
@@ -196,29 +196,29 @@ export default async function ProjectPage({ params }: Props) {
             </header>
 
             <div className="mb-8">
-                <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/5">
-                    <Github size={20} className="text-zinc-500" />
-                    <h2 className="text-lg font-bold text-zinc-300">README.md</h2>
+                <div className="flex items-center gap-3 mb-8 pb-4 border-b border-border-main">
+                    <Github size={20} className="text-muted" />
+                    <h2 className="text-lg font-bold text-fg">README.md</h2>
                 </div>
 
                 {readmeContent ? (
-                    <div className="prose prose-invert prose-zinc max-w-none 
+                    <div className="prose prose-zinc dark:prose-invert max-w-none 
                         prose-headings:scroll-mt-20
                         prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:underline
-                        prose-headings:font-bold prose-headings:text-white 
-                        prose-p:text-zinc-500 prose-p:leading-relaxed
-                        prose-strong:text-zinc-300 prose-strong:font-semibold
-                        prose-ul:list-disc prose-ul:pl-5 prose-ul:marker:text-zinc-600
-                        prose-ol:list-decimal prose-ol:pl-5 prose-ol:marker:text-zinc-600
-                        prose-code:text-rose-300 prose-code:bg-rose-500/10 prose-code:border prose-code:border-rose-500/20 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-lg prose-code:font-normal
-                        prose-pre:bg-zinc-900/50 prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-2xl
+                        prose-headings:font-bold prose-headings:text-fg
+                        prose-p:text-muted prose-p:leading-relaxed
+                        prose-strong:text-fg prose-strong:font-semibold
+                        prose-ul:list-disc prose-ul:pl-5 prose-ul:marker:text-border-main
+                        prose-ol:list-decimal prose-ol:pl-5 prose-ol:marker:text-border-main
+                        prose-code:text-rose-500 dark:prose-code:text-rose-300 prose-code:bg-rose-500/10 prose-code:border prose-code:border-rose-500/20 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-lg prose-code:font-normal
+                        prose-pre:bg-surface prose-pre:border prose-pre:border-border-main prose-pre:rounded-2xl
                         prose-table:border-collapse prose-table:w-full prose-table:my-8
-                        prose-thead:border-b prose-thead:border-zinc-800
-                        prose-th:text-zinc-300 prose-th:font-semibold prose-th:p-3 prose-th:text-left
-                        prose-tr:border-b prose-tr:border-zinc-800/50 hover:prose-tr:bg-zinc-900/30
-                        prose-td:text-zinc-500 prose-td:p-3
-                        prose-blockquote:border-l-2 prose-blockquote:border-rose-500/50 prose-blockquote:bg-zinc-900/30 prose-blockquote:px-5 prose-blockquote:py-2 prose-blockquote:not-italic prose-blockquote:text-zinc-400
-                        prose-img:rounded-2xl prose-img:border prose-img:border-zinc-800
+                        prose-thead:border-b prose-thead:border-border-main
+                        prose-th:text-fg prose-th:font-semibold prose-th:p-3 prose-th:text-left
+                        prose-tr:border-b prose-tr:border-border-main hover:prose-tr:bg-surface
+                        prose-td:text-muted prose-td:p-3
+                        prose-blockquote:border-l-2 prose-blockquote:border-rose-500/50 prose-blockquote:bg-surface prose-blockquote:px-5 prose-blockquote:py-2 prose-blockquote:not-italic prose-blockquote:text-muted
+                        prose-img:rounded-2xl prose-img:border prose-img:border-border-main
                     ">
                         <MDXRemote
                             source={readmeContent}
