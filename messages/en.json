@@ -82,6 +82,10 @@
     "readme_error": "README file not found or an error occurred."
   },
   "ProjectData": {
+    "ticimax-wolvox-erp-entegrasyonu": {
+      "title": "Ticimax & Wolvox ERP Sync",
+      "desc": "Windows Service application designed to seamlessly synchronize Ticimax-based e-commerce platforms with the Akınsoft Wolvox 8 ERP system. It ensures real-time updates for inventory levels, order statuses, and pricing, eliminating manual data entry and ensuring operational accuracy."
+    },
     "borsa-app": {
       "title": "BorsaApp",
       "desc": "A mobile application developed using Swift, focused on stock market and finance tracking with Binance and Yahoo API integration. It allows you to track crypto and bist data in real-time, and track your portfolio instantly by adding to favorites via widget or adding your assets."

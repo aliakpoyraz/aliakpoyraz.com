@@ -23,6 +23,15 @@ export const activeProjects: Project[] = [
         tags: ["Next.js", "Tailwind 4", "i18n"]
     },
     {
+        slug: "ticimax-wolvox-erp-entegrasyonu",
+        title: "Ticimax & Wolvox 8 Erp Entegrasyonu",
+        description: "Ticimax tabanlı e-ticaret platformları ile Akınsoft Wolvox 8 ERP sistemi arasında çift yönlü veri aktarımı sağlayan bir Windows Servis uygulamasıdır. Bu servis; anlık stok takibi, sipariş yönetimi ve fiyat güncellemelerini tam senkronize şekilde yürüterek operasyonel verimliliği artırır.",
+        status: "Canlı",
+        statusColor: "text-rose-500 dark:text-rose-400 bg-rose-500/10 border-rose-500/20",
+        githubRepo: "aliakpoyraz/",
+        tags: [".NET"]
+    },
+    {
         slug: "borsa-app",
         title: "BorsaApp",
         description: "Swift kullanılarak geliştirilen, borsa ve finans takibi üzerine odaklanmış Binance ve Yahoo API entegrasyonuyla birlikte anlık olarak kripto ve bist verilerini takip edebileceğiniz, favorilere ekleyerek widget üzerinden veya varlıklarınızı ekleyerek anlık olarak portföyünüzü takip edebileceğiniz bir mobil uygulama.",
