@@ -6,7 +6,9 @@
 
 Welcome! This is my personal portfolio website, where I showcase my projects and share my knowledge through blog posts. As a Software Engineering student, I built this space using modern technologies to maintain a fast, minimalist, and premium aesthetic.
 
-![Home Desktop - EN](./public/img/readme/home-en.png)
+![Home Desktop - EN]
+(./public/img/readme/aliakpoyrazcom-light-en.png)
+(./public/img/readme/aliakpoyrazcom-dark-en.png)
 
 ## Tech Stack
 
@@ -26,7 +28,7 @@ I utilized high-performance modern web technologies for this project:
 - **GitHub Activity Calendar**: Custom-themed daily contribution graph.
 - **AI-Powered Blog**: Automated technical summaries using the Gemini API.
 
-![Projects Section - EN](./public/img/readme/projects-en.png)
+![Projects Section - EN]
 
 ## Running Locally
 
@@ -60,7 +62,9 @@ If you find this project useful, please give it a star!
 
 Merhaba! Burası benim kişisel portfolyo sitem. Bir Yazılım Mühendisliği öğrencisi olarak projelerimi sergilemek ve öğrendiklerimi blog yazılarımla paylaşmak için hazırladığım bu alanı, modern teknolojilerle hızlı ve minimalist bir yapıda kurguladım.
 
-![Ana Sayfa - TR](./public/img/readme/home-tr.png)
+![Ana Sayfa - TR]
+(./public/img/readme/aliakpoyrazcom-light-tr.png)
+(./public/img/readme/aliakpoyrazcom-dark-tr.png)
 
 ## Kullanılan Teknolojiler
 
@@ -80,9 +84,9 @@ Bu projede yüksek performanslı ve güncel teknolojiler tercih ettim:
 - **GitHub Aktivite Takvimi**: Kişiselleştirilmiş rose temalı katkı çizelgesi.
 - **AI Destekli Blog**: Gemini API ile otomatik oluşturulan teknik özetler.
 
-![Projeler Bölümü - TR](./public/img/readme/projects-tr.png)
+![Projeler Bölümü - TR]
 
-![Blog Sayfası - TR](./public/img/readme/blog-tr.png)
+![Blog Sayfası - TR]
 
 ## Yerelde Çalıştırma
 
