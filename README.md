@@ -6,9 +6,8 @@
 
 Welcome! This is my personal portfolio website, where I showcase my projects and share my knowledge through blog posts. As a Software Engineering student, I built this space using modern technologies to maintain a fast, minimalist, and premium aesthetic.
 
-![Home Desktop - EN]
-(./public/img/readme/aliakpoyrazcom-light-en.png)
-(./public/img/readme/aliakpoyrazcom-dark-en.png)
+![Home Desktop - EN](./public/img/readme/aliakpoyrazcom-light-en.png)
+![Home Desktop - Dark EN](./public/img/readme/aliakpoyrazcom-dark-en.png)
 
 ## Tech Stack
 
@@ -63,8 +62,8 @@ If you find this project useful, please give it a star!
 Merhaba! Burası benim kişisel portfolyo sitem. Bir Yazılım Mühendisliği öğrencisi olarak projelerimi sergilemek ve öğrendiklerimi blog yazılarımla paylaşmak için hazırladığım bu alanı, modern teknolojilerle hızlı ve minimalist bir yapıda kurguladım.
 
 ![Ana Sayfa - TR]
-(./public/img/readme/aliakpoyrazcom-light-tr.png)
-(./public/img/readme/aliakpoyrazcom-dark-tr.png)
+![Anasayfa - TR](./public/img/readme/aliakpoyrazcom-light-en.png)
+![Anasayfa - Koyu TR](./public/img/readme/aliakpoyrazcom-dark-en.png)
 
 ## Kullanılan Teknolojiler
 
