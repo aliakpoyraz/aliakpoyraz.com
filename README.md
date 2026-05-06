@@ -27,7 +27,6 @@ I utilized high-performance modern web technologies for this project:
 - **GitHub Activity Calendar**: Custom-themed daily contribution graph.
 - **AI-Powered Blog**: Automated technical summaries using the Gemini API.
 
-![Projects Section - EN]
 
 ## Running Locally
 
@@ -61,7 +60,6 @@ If you find this project useful, please give it a star!
 
 Merhaba! Burası benim kişisel portfolyo sitem. Bir Yazılım Mühendisliği öğrencisi olarak projelerimi sergilemek ve öğrendiklerimi blog yazılarımla paylaşmak için hazırladığım bu alanı, modern teknolojilerle hızlı ve minimalist bir yapıda kurguladım.
 
-![Ana Sayfa - TR]
 ![Anasayfa - TR](./public/img/readme/aliakpoyrazcom-light-en.png)
 ![Anasayfa - Koyu TR](./public/img/readme/aliakpoyrazcom-dark-en.png)
 
@@ -83,9 +81,6 @@ Bu projede yüksek performanslı ve güncel teknolojiler tercih ettim:
 - **GitHub Aktivite Takvimi**: Kişiselleştirilmiş rose temalı katkı çizelgesi.
 - **AI Destekli Blog**: Gemini API ile otomatik oluşturulan teknik özetler.
 
-![Projeler Bölümü - TR]
-
-![Blog Sayfası - TR]
 
 ## Yerelde Çalıştırma
 
