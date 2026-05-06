@@ -14,12 +14,12 @@ export default function Home() {
         <Experience />
       </div>
 
-      <div id="gonulluluk" className="w-full mb-20 md:mb-32">
-        <Volunteering />
+      <div id="projeler" className="w-full mb-20 md:mb-32">
+        <Projects />
       </div>
 
-      <div id="projeler" className="w-full">
-        <Projects />
+      <div id="gonulluluk" className="w-full">
+        <Volunteering />
       </div>
     </main>
   );

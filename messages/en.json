@@ -71,7 +71,8 @@
     "view_repo": "Source Code",
     "no_description": "No description available.",
     "status_gelistirildi": "Developed",
-    "status_canli": "Live"
+    "status_canli": "Live",
+    "web_sitesi": "Web Site"
   },
   "ProjectDetails": {
     "not_found": "Project Not Found",
@@ -105,6 +106,9 @@
     "basic-portfolio": {
       "title": "Basic Portfolio",
       "desc": "A more minimal, simple, and high-performance portfolio site alternative."
+    },
+    "cash-and-voyage": {
+      "desc": "A finance tracking application where you can track, categorize and translate between currencies during your travels."
     }
   },
   "Footer": {

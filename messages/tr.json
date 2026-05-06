@@ -71,7 +71,8 @@
     "view_repo": "Kaynak Kod",
     "no_description": "Açıklama yok.",
     "status_gelistirildi": "Geliştirildi",
-    "status_canli": "Canlı"
+    "status_canli": "Canlı",
+    "web_sitesi": "Web Sitesi"
   },
   "ProjectDetails": {
     "not_found": "Proje Bulunamadı",
@@ -105,6 +106,9 @@
     "basic-portfolio": {
       "title": "Basic Portfolyo",
       "desc": "Daha minimal sade ve yüksek performanslı bir portfolyo site alternatifi."
+    },
+    "cash-and-voyage": {
+      "desc": "Seyahatleriniz sırasında yapacağınız harcamalarınızı takip edebileceğiniz, kategorize edebileceğiniz ve para birimleri arası çeviri yapabileceğiniz bir finans takip uygulaması."
     }
   },
   "Footer": {

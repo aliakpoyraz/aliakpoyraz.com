@@ -1,5 +1,41 @@
 import { useTranslations } from "next-intl";
 
+export type StoreLink = {
+    type: "appstore" | "playstore" | "web";
+    url: string;
+};
+
+export type PublishedApp = {
+    id: string;
+    name: string;
+    description: string;
+    logoUrl: string;
+    stores: StoreLink[];
+    tags: string[];
+};
+
+export const publishedApps: PublishedApp[] = [
+    {
+        id: "cash-and-voyage",
+        name: "Cash & Voyage",
+        description: "Seyahatleriniz sırasında yapacağınız harcamalarınızı takip edebileceğiniz, kategorize edebileceğiniz ve para birimleri arası çeviri yapabileceğiniz bir finans takip uygulaması.",
+        logoUrl: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c5/9f/84/c59f84ef-14ca-b06c-96a5-00970631d73c/Placeholder.mill/400x400bb-75.webp",
+        stores: [
+            {
+                type: "appstore",
+                url: "https://apps.apple.com/tr/app/cash-voyage/id6766110025?l=trCash&Voyage"
+            },
+            {
+                type: "web",
+                url: "https://cashandvoyage.com"
+            }
+
+        ],
+
+        tags: ["React Native",]
+    }
+];
+
 export type Project = {
     slug: string;
     title: string;
@@ -76,5 +112,14 @@ export function useActiveProjects() {
         title: tData(`${project.slug}.title` as any) || project.title,
         description: tData(`${project.slug}.desc` as any) || project.description,
         status: project.status === "Canlı" ? t("status_canli") : t("status_gelistirildi")
+    }));
+}
+
+export function usePublishedApps() {
+    const tData = useTranslations("ProjectData");
+
+    return publishedApps.map(app => ({
+        ...app,
+        description: tData(`${app.id}.desc` as any) || app.description,
     }));
 }

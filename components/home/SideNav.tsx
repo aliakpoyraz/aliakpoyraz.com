@@ -14,8 +14,8 @@ export default function SideNav() {
     const navItems = [
         { id: "baslangic", label: t("baslangic"), icon: <Home size={18} />, href: "/#baslangic" },
         { id: "deneyim", label: t("deneyim"), icon: <Briefcase size={18} />, href: "/#deneyim" },
-        { id: "gonulluluk", label: t("gonulluluk"), icon: <Heart size={18} />, href: "/#gonulluluk" },
         { id: "projeler", label: t("projeler"), icon: <Github size={18} />, href: "/#projeler" },
+        { id: "gonulluluk", label: t("gonulluluk"), icon: <Heart size={18} />, href: "/#gonulluluk" },
         { id: "blog", label: t("blog"), icon: <BookOpen size={18} />, href: "/blog" },
     ];
 
