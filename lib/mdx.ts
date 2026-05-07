@@ -4,7 +4,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
-const contentDirectory = path.join(process.cwd(), 'content');
+const contentDirectory = path.join(process.cwd(), 'content', 'blog');
 
 function calculateReadingTime(content: string) {
     const wordsPerMinute = 200;

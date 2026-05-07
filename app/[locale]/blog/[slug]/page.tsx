@@ -54,7 +54,7 @@ function formatToTurkishDisplay(date: Date): string {
 }
 
 function getSortedPosts() {
-    const contentDir = path.join(process.cwd(), 'content');
+    const contentDir = path.join(process.cwd(), 'content', 'blog');
     const files = fs.readdirSync(contentDir);
 
     const posts = files.map((filename) => {
@@ -88,7 +88,7 @@ function getHeadings(source: string) {
 }
 
 function getPost(slug: string) {
-    const contentDir = path.join(process.cwd(), 'content');
+    const contentDir = path.join(process.cwd(), 'content', 'blog');
     const filePath = path.join(contentDir, `${slug}.mdx`);
 
     try {
@@ -339,7 +339,7 @@ export default async function BlogPost({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-    const files = fs.readdirSync(path.join(process.cwd(), 'content'));
+    const files = fs.readdirSync(path.join(process.cwd(), 'content', 'blog'));
     return files.map((filename) => ({
         slug: filename.replace('.mdx', ''),
     }));
