@@ -59,13 +59,32 @@ export const activeProjects: Project[] = [
         tags: ["Next.js", "Tailwind 4", "i18n"]
     },
     {
+        slug: "e-ticaret-platformu",
+        title: "E-Ticaret Platformu",
+        description: "Modern web teknolojileri kullanılarak geliştirilmiş, bir e-ticaret sitesi için ihtiyaç olan bütün senaryoları (ürün listeleme, sepet, ödeme, üyelik, sipariş takibi, iletişim, mail onay, sipariş mail bildirimleri vb.) barındıran bir e-ticaret platformu.",
+        status: "Canlı",
+        statusColor: "text-rose-500 dark:text-rose-400 bg-rose-500/10 border-rose-500/20",
+        demoLink: "https://e-ticaret.aliakpoyraz.com",
+        githubRepo: "aliakpoyraz/mini-e-ticaret",
+        tags: ["Next.js", "Supabase", "Resend"]
+    },
+    {
         slug: "ticimax-wolvox-erp-entegrasyonu",
         title: "Ticimax & Wolvox 8 Erp Entegrasyonu",
         description: "Ticimax tabanlı e-ticaret platformları ile Akınsoft Wolvox 8 ERP sistemi arasında çift yönlü veri aktarımı sağlayan bir Windows Servis uygulamasıdır. Bu servis; anlık stok takibi, sipariş yönetimi ve fiyat güncellemelerini tam senkronize şekilde yürüterek operasyonel verimliliği artırır.",
-        status: "Canlı",
+        status: "Geliştirildi",
         statusColor: "text-rose-500 dark:text-rose-400 bg-rose-500/10 border-rose-500/20",
         githubRepo: "aliakpoyraz/",
         tags: [".NET"]
+    },
+    {
+        slug: "one-click-block-x",
+        title: "One Click Block X",
+        description: "One Click Block X birChrome eklentisidir. X (Twitter) platformunda gönderi sahiplerini kullanıcı profillerine girmeden tek tıklama ile direkt olarak engellemenizi sağlar.",
+        status: "Geliştirildi",
+        statusColor: "text-rose-500 dark:text-rose-400 bg-rose-500/10 border-rose-500/20",
+        githubRepo: "aliakpoyraz/one-click-block-x",
+        tags: ["JavaScript"]
     },
     {
         slug: "borsa-app",
@@ -86,16 +105,6 @@ export const activeProjects: Project[] = [
         demoLink: "https://github.com/aliakpoyraz/DevCleaner/releases/tag/v1.0.0",
         tags: ["Swift"]
     },
-    {
-        slug: "e-ticaret-platformu",
-        title: "E-Ticaret Platformu",
-        description: "Modern web teknolojileri kullanılarak geliştirilmiş, bir e-ticaret sitesi için ihtiyaç olan bütün senaryoları (ürün listeleme, sepet, ödeme, üyelik, sipariş takibi, iletişim, mail onay, sipariş mail bildirimleri vb.) barındıran bir e-ticaret platformu.",
-        status: "Canlı",
-        statusColor: "text-rose-500 dark:text-rose-400 bg-rose-500/10 border-rose-500/20",
-        demoLink: "https://e-ticaret.aliakpoyraz.com",
-        githubRepo: "aliakpoyraz/mini-e-ticaret",
-        tags: ["Next.js", "Supabase", "Resend"]
-    }
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {

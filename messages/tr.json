@@ -91,6 +91,10 @@
       "title": "Ticimax & Wolvox 8 Erp Entegrasyonu",
       "desc": "Ticimax tabanlı e-ticaret platformları ile Akınsoft Wolvox 8 ERP sistemi arasında çift yönlü veri aktarımı sağlayan bir Windows Servis uygulamasıdır. Bu servis; anlık stok takibi, sipariş yönetimi ve fiyat güncellemelerini tam senkronize şekilde yürüterek operasyonel verimliliği artırır."
     },
+    "one-click-block-x": {
+      "title": "One Click Block X",
+      "desc": "Chromium tabanlı tarayıcılar için geliştirilmiştir. X (Twitter) platformunda gönderi sahiplerini kullanıcı profillerine girmeden tek tıklama ile direkt olarak engellemenizi sağlar."
+    },
     "DevCleaner": {
       "title": "DevCleaner",
       "desc": "Geliştiriciler için CleanMyMac uygulaması alternatifi. Kullanılmayan xcode cacheleri, docker image, node_modules dosyaları gibi daha önceden geliştirdiğiniz ancak cachelerinin bilgisayarınızda tutulmaya devam ettiği dosyaları birkaç tıklamayla silmenize yarayan MacOS uygulaması."

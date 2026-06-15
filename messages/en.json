@@ -91,6 +91,10 @@
       "title": "BorsaApp",
       "desc": "A mobile application developed using Swift, focused on stock market and finance tracking with Binance and Yahoo API integration. It allows you to track crypto and bist data in real-time, and track your portfolio instantly by adding to favorites via widget or adding your assets."
     },
+    "one-click-block-x": {
+      "title": "One Click Block X",
+      "desc": "Developed for Chromium-based browsers. It allows you to block post authors directly on the X (Twitter) platform with a single click, without having to enter their user profiles."
+    },
     "DevCleaner": {
       "title": "DevCleaner",
       "desc": "A CleanMyMac application alternative for developers. A MacOS application that allows you to delete files such as unused Xcode caches, Docker images, node_modules files that you previously developed but whose caches continue to be kept on your computer with a few clicks."
