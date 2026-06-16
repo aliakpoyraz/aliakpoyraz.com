@@ -27,6 +27,10 @@
   },
   "Experience": {
     "title": "İş & Staj Deneyimi",
+    "vbt_role": "Stajyer Yazılım Mühendisi",
+    "vbt_desc": "Aktif olarak staj süreci devam etmektedir.",
+    "vbt_date": "Haziran 2026 - Halen",
+    "vbt_location": "İstanbul (Uzaktan)",
     "aktif_tech_role": "Test ve Kalite Yönetimi Stajyeri",
     "aktif_tech_desc": "Yazılım geliştirme yaşam döngüsü (SDLC, SDTC) adımlarını ve metodolojilerini inceleyerek QA süreçlerine entegrasyonuna katkıda bulundum. Fonksiyonel testlerin yürütülmesi, hata raporlarının hazırlanması ve çevik (Agile) çalışma ortamında ekip içi iletişim ve koordinasyon konularında deneyim kazandım.",
     "aktif_tech_date": "Ocak 2026",
@@ -37,11 +41,11 @@
     "kayisir_desc": "E-ticaret sistemlerinin uçtan uca yönetimi, kapsamlı SEO optimizasyonu ve dijital pazarlama faaliyetlerininin yönetimi, Trendyol başta olmak üzere çeşitli pazar yerlerinin operasyonel süreçlerinin  yönetimi gibi görevleri yürütmekteyim.",
     "swordsec_role": "Stajyer Yazılım Mühendisi",
     "swordsec_date": "Haziran 2025 - Temmuz 2025",
-    "swordsec_location": "Ankara (Hybrid)",
+    "swordsec_location": "Ankara (Hibrit)",
     "swordsec_desc": "Siber güvenlik alanında sızma testleri, Nmap, Burpsuite, Metasploit gibi araçların kullanımı üzerine deneyim kazandım. Gerçek dünya senaryolarında güvenlik açıklarını tespit edip raporladım.",
     "toya_role": "Stajyer Yazılım Mühendisi",
     "toya_date": "Ocak 2025 - Şubat 2025",
-    "toya_location": "Ankara (Hybrid)",
+    "toya_location": "Ankara (Hibrit)",
     "toya_desc": "Toya Pos Sistemleri ve ERP çözümleri üzerinde çalıştım. Web geliştirme projelerinde yer aldım ve ekip ile birlikte yazılım süreçlerine katkıda bulundum."
   },
   "Volunteering": {

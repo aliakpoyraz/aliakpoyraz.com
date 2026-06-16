@@ -10,6 +10,16 @@ export default function Experience() {
 
     const experiences = [
         {
+            company: "VBT Yazılım A.Ş.",
+            url: "https://vbt.com.tr/",
+            role: t("vbt_role"),
+            date: t("vbt_date"),
+            location: t("vbt_location"),
+            description: t("vbt_desc"),
+            tech: ["SQL", "C#", ".NET"],
+            current: true,
+        },
+        {
             company: "AktifTech (AktifBank A.Ş.)",
             url: "https://www.aktiftech.com",
             role: t("aktif_tech_role"),

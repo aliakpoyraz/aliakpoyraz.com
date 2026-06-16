@@ -27,6 +27,10 @@
   },
   "Experience": {
     "title": "Work & Internship Experience",
+    "vbt_role": "Software Engineering Intern",
+    "vbt_desc": "The internship process is currently ongoing.",
+    "vbt_date": "June 2026 - Present",
+    "vbt_location": "Istanbul (Remote)",
     "aktif_tech_role": "Test and Quality Management Intern",
     "aktif_tech_desc": "I contributed to the integration of Software Development Life Cycle (SDLC, SDTC) steps and methodologies into QA processes. I gained experience in executing functional tests, preparing bug reports, and team communication and coordination in an Agile work environment.",
     "aktif_tech_date": "January 2026",
