@@ -10,6 +10,7 @@
   },
   "ProfileCard": {
     "title": "Software Engineer",
+    "view_cv": "View CV",
     "subtitle_student": "Student",
     "stack_label": "Techstacks",
     "bio_1": "Hello! I am Ali Akpoyraz, a 3rd-year Software Engineering student. I love learning new technologies and developing projects. I plan to continue my career in Mobile app development and backend fields, constantly improving myself.",
