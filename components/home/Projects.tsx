@@ -29,9 +29,9 @@ export default function Projects() {
                 <div className="h-1 w-10 bg-rose-500 rounded-full mx-auto md:mx-0 mt-2 opacity-60"></div>
             </div>
 
-            {/* Yayındaki Uygulamalar */}
+            {/* Yayındaki Uygulamalar (Hero Product Layout - Tam Genişlik) */}
             {publishedApps && publishedApps.length > 0 && (
-                <div className="mb-16 flex flex-col gap-6">
+                <div className="mb-12 flex flex-col gap-6">
                     {publishedApps.map((app) => (
                         <div 
                             key={app.id} 
@@ -50,19 +50,18 @@ export default function Projects() {
                             </div>
                             
                             {/* İçerik */}
-                            <div className="flex-1 pb-4">
+                            <div className="flex-1 pb-2">
                                 <div className="flex items-center gap-2 mb-3">
                                     <h3 className="text-lg md:text-xl font-bold text-fg/90 group-hover:text-rose-400 transition-colors">
                                         {app.name}
                                     </h3>
                                 </div>
                                 
-                                {/* Description tam genişliği kaplıyor ve sağdan butonlarla aynı pikselde bitiyor */}
                                 <p className="text-sm md:text-base text-muted group-hover:text-fg/70 transition-colors mb-5 leading-relaxed w-full text-justify">
                                     {app.description}
                                 </p>
                                 
-                                {/* Alt Kısım: Tags (Solda) & Butonlar (Sağda) */}
+                                {/* Alt Kısım: Tags & Butonlar */}
                                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-1">
                                     <div className="flex flex-wrap items-center gap-2">
                                         {app.tags?.map((tag, i) => (
@@ -102,48 +101,42 @@ export default function Projects() {
                 </div>
             )}
 
-            {/* Zaman Çizelgesi Yapısı (Projeler İçin) */}
-            <div className="relative flex flex-col gap-12">
-                {/* Sürekli Dikey Çizgi */}
-                <div className="absolute left-[7px] top-6 bottom-8 w-px bg-border-main z-0"></div>
-
+            {/* Diğer Projeler (2'li Grid Yapısı) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {activeProjects.map((project, index) => (
                     <Link
                         key={index}
                         href={`/projeler/${project.slug}`}
-                        className="group relative flex gap-6 md:gap-8 items-start"
+                        className="group relative flex flex-col justify-between p-5 md:p-6 rounded-3xl bg-transparent border border-border-main hover:bg-surface/40 hover:border-rose-500/30 transition-all duration-500"
                     >
-                        {/* Zaman Noktası */}
-                        <div className="relative z-10 flex flex-col items-center mt-2.5">
-                            <div className="relative flex h-3.5 w-3.5 shrink-0 rounded-full bg-surface border-2 border-border-main group-hover:bg-rose-500/50 group-hover:border-rose-400 transition-all duration-500"></div>
-                        </div>
-
-                        {/* İçerik */}
-                        <div className="flex-1 pb-4">
-                            <div className="flex items-center gap-2 mb-3">
-                                <h3 className="text-lg md:text-xl font-bold text-fg/90 group-hover:text-rose-400 transition-colors">
-                                    {project.title}
-                                </h3>
-                                <ArrowUpRight size={16} className="text-muted opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-rose-400 transition-all duration-300" />
-                            </div>
-                            
-                            <p className="text-sm md:text-base text-muted group-hover:text-fg/70 transition-colors mb-5 text-balance leading-relaxed">
-                                {project.description}
-                            </p>
-                            
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                                <div className="flex flex-wrap items-center gap-2 flex-1">
-                                    {project.tags.map((tag, i) => (
-                                        <div key={i} className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface border border-border-main text-[10px] md:text-xs text-muted group-hover:border-accent-30 transition-colors">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-border-main group-hover:bg-rose-400 transition-colors" />
-                                            {tag}
-                                        </div>
-                                    ))}
+                        {/* İçerik Üst Kısım */}
+                        <div>
+                            <div className="flex items-start justify-between gap-3 mb-3">
+                                <div className="flex items-center gap-2">
+                                    <h3 className="text-base md:text-lg font-bold text-fg/90 group-hover:text-rose-400 transition-colors line-clamp-1">
+                                        {project.title}
+                                    </h3>
+                                    <ArrowUpRight size={16} className="text-muted opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-rose-400 transition-all duration-300 shrink-0" />
                                 </div>
-                                <span className={`text-[10px] md:text-xs font-bold px-3 py-1 rounded-full border ${project.statusColor} whitespace-nowrap w-fit`}>
+                                {/* Durum Rozeti */}
+                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${project.statusColor} whitespace-nowrap shrink-0`}>
                                     {project.status}
                                 </span>
                             </div>
+                            
+                            <p className="text-sm text-muted group-hover:text-fg/70 transition-colors mb-6 leading-relaxed line-clamp-3">
+                                {project.description}
+                            </p>
+                        </div>
+                        
+                        {/* İçerik Alt Kısım (Etiketler) */}
+                        <div className="flex flex-wrap items-center gap-2 mt-auto">
+                            {project.tags.map((tag, i) => (
+                                <div key={i} className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-surface border border-border-main text-[10px] text-muted group-hover:border-accent-30 transition-colors">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-border-main group-hover:bg-rose-400 transition-colors" />
+                                    {tag}
+                                </div>
+                            ))}
                         </div>
                     </Link>
                 ))}
