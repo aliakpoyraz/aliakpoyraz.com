@@ -1,16 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, ArrowLeft as ChevronLeft, ArrowRight as ChevronRight } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
-import GithubSlugger from 'github-slugger';
 import Script from 'next/script';
-import { parse, format } from 'date-fns';
-import { tr } from 'date-fns/locale';
 
 import YouTubeCard from '@/components/blog/YoutubeCard';
 import Callout from '@/components/blog/Callout';
@@ -21,16 +15,7 @@ import TableOfContents from '@/components/blog/TableOfContents';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import ShareButtons from '@/components/blog/ShareButtons';
 import AiSummary from '@/components/blog/AiSummary';
-
-// TypeScript Arayüzü: Frontmatter'dan beklenen verileri tanımlar
-interface PostFrontmatter {
-    title: string;
-    date: string; // GG-AA-YYYY formatında gelen orijinal tarih
-    description: string;
-    summary?: string;
-    image?: string; // Zorunlu olmayan alanlar için '?' kullanılır
-    [key: string]: any; // Diğer tüm custom alanlara izin verir
-}
+import { getPost, getHeadings, calculateReadingTime, getSortedPosts, getBlogPosts } from '@/lib/mdx';
 
 const mdxComponents = {
     YouTubeCard,
@@ -39,85 +24,6 @@ const mdxComponents = {
     CaptionImage,
     Accordion,
 };
-
-function parseDateString(dateStr: string): Date {
-    const parsedDate = parse(dateStr, 'dd-MM-yyyy', new Date(), { locale: tr });
-
-    if (isNaN(parsedDate.getTime())) {
-        return new Date('1970-01-01');
-    }
-    return parsedDate;
-}
-
-function formatToTurkishDisplay(date: Date): string {
-    return format(date, 'dd MMMM yyyy', { locale: tr });
-}
-
-function getSortedPosts() {
-    const contentDir = path.join(process.cwd(), 'content', 'blog');
-    const files = fs.readdirSync(contentDir);
-
-    const posts = files.map((filename) => {
-        const filePath = path.join(contentDir, filename);
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        const { data } = matter(fileContent);
-
-        const parsedDate = parseDateString(data.date);
-
-        return {
-            slug: filename.replace('.mdx', ''),
-            dateTimestamp: parsedDate.getTime(),
-            title: data.title,
-        };
-    });
-
-    return posts.sort((a, b) => b.dateTimestamp - a.dateTimestamp);
-}
-
-function getHeadings(source: string) {
-    const slugger = new GithubSlugger();
-    const headingLines = source.split('\n').filter((line) => line.match(/^#{2,3}\s/));
-
-    return headingLines.map((raw) => {
-        const text = raw.replace(/^#{2,3}\s/, '');
-        const level = raw.startsWith('###') ? 3 : 2;
-        const slug = slugger.slug(text);
-
-        return { text, level, slug };
-    });
-}
-
-function getPost(slug: string) {
-    const contentDir = path.join(process.cwd(), 'content', 'blog');
-    const filePath = path.join(contentDir, `${slug}.mdx`);
-
-    try {
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        const { data, content } = matter(fileContent);
-
-        const frontmatterData = data as PostFrontmatter;
-
-        const parsedDate = parseDateString(frontmatterData.date);
-
-        return {
-            frontmatter: {
-                ...frontmatterData,
-                isoDate: parsedDate.toISOString(),
-                turkishDisplayDate: formatToTurkishDisplay(parsedDate),
-            },
-            content
-        };
-    } catch (err) {
-        return null;
-    }
-}
-
-function calculateReadingTime(content: string) {
-    const wordsPerMinute = 200;
-    const words = content.trim().split(/\s+/).length;
-    const time = Math.ceil(words / wordsPerMinute);
-    return `${time} dk okuma`;
-}
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -278,8 +184,6 @@ export default async function BlogPost({ params }: Props) {
                         mdxOptions: {
                             remarkPlugins: [remarkGfm],
                             rehypePlugins: [rehypeSlug],
-                            // @ts-ignore - blockJS geçerli bir opsiyondur ancak tiplerde henüz tanımlı olmayabilir
-                            blockJS: false,
                         },
                     }}
                 />
@@ -339,8 +243,8 @@ export default async function BlogPost({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-    const files = fs.readdirSync(path.join(process.cwd(), 'content', 'blog'));
-    return files.map((filename) => ({
-        slug: filename.replace('.mdx', ''),
+    const posts = getBlogPosts();
+    return posts.map((post) => ({
+        slug: post.slug,
     }));
 }

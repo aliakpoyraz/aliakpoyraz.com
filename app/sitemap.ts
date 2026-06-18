@@ -1,33 +1,108 @@
 import { MetadataRoute } from 'next';
-import fs from 'fs';
-import path from 'path';
+import { getBlogPosts } from '@/lib/mdx';
+import { getSwiftSteps } from '@/lib/swift';
+import { activeProjects, publishedApps } from '@/lib/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const contentDir = path.join(process.cwd(), 'content');
-    const files = fs.readdirSync(contentDir);
-
     const siteUrl = 'https://aliakpoyraz.com';
+    const now = new Date().toISOString();
 
-    const posts = files.map((file) => ({
-        url: `${siteUrl}/blog/${file.replace('.mdx', '')}`,
-        lastModified: new Date().toISOString(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }));
-
-    return [
+    const staticPages: MetadataRoute.Sitemap = [
         {
             url: siteUrl,
-            lastModified: new Date().toISOString(),
+            lastModified: now,
             changeFrequency: 'yearly',
             priority: 1,
+            alternates: {
+                languages: {
+                    tr: siteUrl,
+                    en: `${siteUrl}/en`,
+                },
+            },
         },
         {
             url: `${siteUrl}/blog`,
-            lastModified: new Date().toISOString(),
+            lastModified: now,
             changeFrequency: 'weekly',
             priority: 0.8,
+            alternates: {
+                languages: {
+                    tr: `${siteUrl}/blog`,
+                    en: `${siteUrl}/en/blog`,
+                },
+            },
         },
-        ...posts,
+        {
+            url: `${siteUrl}/swift`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.7,
+            alternates: {
+                languages: {
+                    tr: `${siteUrl}/swift`,
+                    en: `${siteUrl}/en/swift`,
+                },
+            },
+        },
+    ];
+
+    // Blog yazıları
+    const blogPosts: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
+        url: `${siteUrl}/blog/${post.slug}`,
+        lastModified: post.rawDate.toISOString(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+        alternates: {
+            languages: {
+                tr: `${siteUrl}/blog/${post.slug}`,
+                en: `${siteUrl}/en/blog/${post.slug}`,
+            },
+        },
+    }));
+
+    // Swift adımları
+    const swiftSteps: MetadataRoute.Sitemap = getSwiftSteps().map((step) => ({
+        url: `${siteUrl}/swift/${step.slug}`,
+        lastModified: step.rawDate.toISOString(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+        alternates: {
+            languages: {
+                tr: `${siteUrl}/swift/${step.slug}`,
+                en: `${siteUrl}/en/swift/${step.slug}`,
+            },
+        },
+    }));
+
+    // Proje detayları
+    const projectPages: MetadataRoute.Sitemap = activeProjects.map((project) => ({
+        url: `${siteUrl}/projeler/${project.slug}`,
+        lastModified: now,
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+        alternates: {
+            languages: {
+                tr: `${siteUrl}/projeler/${project.slug}`,
+                en: `${siteUrl}/en/projeler/${project.slug}`,
+            },
+        },
+    }));
+
+    // Yayındaki uygulamalar (harici web siteleri)
+    const appExternalPages: MetadataRoute.Sitemap = publishedApps
+        .filter((app) => app.stores.some((s) => s.type === 'web'))
+        .map((app) => ({
+            url: `${siteUrl}/#${app.id}`,
+            lastModified: now,
+            changeFrequency: 'monthly' as const,
+            priority: 0.5,
+        }));
+
+    return [
+        ...staticPages,
+        ...blogPosts,
+        ...swiftSteps,
+        ...projectPages,
+        ...appExternalPages,
     ];
 }
