@@ -16,7 +16,7 @@
   },
   "ProjectDetails": {
     "not_found": "Project Not Found",
-    "back_to_home": "Back to Home",
+    "back_to_projects": "Back to Projects",
     "tech_used": "Technologies Used",
     "github_repo": "GitHub Repository",
     "live_preview": "Live Preview",

@@ -228,11 +228,11 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* ── Geri dön ── */}
       <Link
-        href="/"
+        href="/#projeler"
         className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 mb-8 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-accent-10 transition-all duration-300 group"
       >
         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-        {t('back_to_home')}
+        {t('back_to_projects')}
       </Link>
 
       {/* ══════════════════════════════════════════

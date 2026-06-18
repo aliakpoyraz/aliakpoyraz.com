@@ -16,7 +16,7 @@
   },
   "ProjectDetails": {
     "not_found": "Proje Bulunamadı",
-    "back_to_home": "Ana Sayfaya Dön",
+    "back_to_projects": "Projelere Dön",
     "tech_used": "Kullanılan Teknolojiler",
     "github_repo": "GitHub Reposu",
     "live_preview": "Canlı Önizleme",

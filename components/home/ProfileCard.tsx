@@ -170,7 +170,15 @@ export default function ProfileCard() {
                                 href={item.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center w-12 h-12 md:w-11 md:h-11 rounded-2xl bg-surface border border-border-main text-muted hover:text-rose-400 hover:border-rose-500/30 hover:shadow-lg hover:shadow-rose-500/5 transition-all duration-300"
+                                className={`flex items-center justify-center w-12 h-12 md:w-11 md:h-11 rounded-2xl bg-surface border border-border-main text-muted hover:shadow-lg transition-all duration-300
+                                    ${item.href.includes('instagram')
+                                        ? 'hover:text-[#E4405F] hover:border-[#E4405F]/30'
+                                        : item.href.includes('linkedin')
+                                        ? 'hover:text-[#0A66C2] hover:border-[#0A66C2]/30'
+                                        : item.href.includes('github')
+                                        ? 'hover:text-[#6e40c9] hover:border-[#6e40c9]/30'
+                                        : 'hover:text-rose-400 hover:border-rose-500/30'
+                                    }`}
                                 title={t(item.tKey)}
                             >
                                 {item.icon}

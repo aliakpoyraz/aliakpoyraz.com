@@ -30,7 +30,15 @@ export default function Footer() {
                                 target={social.target}
                                 rel="noopener noreferrer nofollow"
                                 title={social.label}
-                                className="flex items-center justify-center w-9 h-9 rounded-xl bg-surface border border-border-main text-muted hover:text-rose-400 hover:border-rose-500/30 hover:bg-accent-10 transition-all duration-300"
+                                className={`flex items-center justify-center w-9 h-9 rounded-xl bg-surface border border-border-main text-muted transition-all duration-300
+                                    ${social.href.includes('instagram')
+                                        ? 'hover:text-[#E4405F] hover:border-[#E4405F]/30 hover:bg-[#E4405F]/5'
+                                        : social.href.includes('linkedin')
+                                        ? 'hover:text-[#0A66C2] hover:border-[#0A66C2]/30 hover:bg-[#0A66C2]/5'
+                                        : social.href.includes('github')
+                                        ? 'hover:text-[#6e40c9] hover:border-[#6e40c9]/30 hover:bg-[#6e40c9]/5'
+                                        : 'hover:text-rose-400 hover:border-rose-500/30 hover:bg-accent-10'
+                                    }`}
                             >
                                 <social.icon size={16} />
                             </a>
