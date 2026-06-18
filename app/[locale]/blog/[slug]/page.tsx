@@ -32,7 +32,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
     const { slug } = await params;
-    const post = getPost(slug);
+    const post = await getPost(slug);
     if (!post) {
         const t = await getTranslations("BlogPost");
         return { title: t("not_found_title") };
@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogPost({ params }: Props) {
     const { slug } = await params;
-    const post = getPost(slug);
+    const post = await getPost(slug);
 
     if (!post) {
         notFound();
@@ -92,7 +92,7 @@ export default async function BlogPost({ params }: Props) {
     const siteUrl = 'https://aliakpoyraz.com';
     const shareUrl = `${siteUrl}/blog/${slug}`;
 
-    const sortedPosts = getSortedPosts();
+    const sortedPosts = await getSortedPosts();
     const currentIndex = sortedPosts.findIndex(p => p.slug === slug);
 
     const prevPost = sortedPosts[currentIndex + 1] || null;
@@ -248,7 +248,7 @@ export default async function BlogPost({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-    const posts = getBlogPosts();
+    const posts = await getBlogPosts();
     return posts.map((post) => ({
         slug: post.slug,
     }));

@@ -3,7 +3,7 @@ import { getBlogPosts } from '@/lib/mdx';
 import { getSwiftSteps } from '@/lib/swift';
 import { activeProjects, publishedApps } from '@/lib/projects';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const siteUrl = 'https://aliakpoyraz.com';
     const now = new Date().toISOString();
 
@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
 
     // Blog yazıları
-    const blogPosts: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
+    const blogPosts: MetadataRoute.Sitemap = (await getBlogPosts()).map((post) => ({
         url: `${siteUrl}/blog/${post.slug}`,
         lastModified: post.rawDate.toISOString(),
         changeFrequency: 'monthly' as const,

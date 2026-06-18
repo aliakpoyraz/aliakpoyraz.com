@@ -1,6 +1,7 @@
 import { format, parse } from 'date-fns';
 import { tr } from 'date-fns/locale';
-import fs from 'fs';
+import fs from 'fs/promises';
+import { existsSync, readdirSync } from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import GithubSlugger from 'github-slugger';
@@ -13,7 +14,7 @@ const contentDirectory = path.join(process.cwd(), 'content', 'blog');
 
 export interface PostFrontmatter {
   title: string;
-  date: string; // GG-AA-YYYY
+  date: string;
   description: string;
   summary?: string;
   image?: string;
@@ -49,10 +50,15 @@ export function formatToTurkishDisplay(date: Date): string {
   return format(date, 'dd MMMM yyyy', { locale: tr });
 }
 
+/**
+ * Okuma süresi hesaplar, kod bloklarını atlayarak daha doğru sonuç verir.
+ */
 export function calculateReadingTime(content: string): string {
+  // Kod bloklarını çıkar (```...```)
+  const withoutCode = content.replace(/```[\s\S]*?```/g, '');
   const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wordsPerMinute);
+  const words = withoutCode.trim().split(/\s+/).filter(Boolean).length;
+  const time = Math.max(1, Math.ceil(words / wordsPerMinute));
   return `${time} dk okuma`;
 }
 
@@ -76,10 +82,10 @@ export function getHeadings(source: string): Heading[] {
 // Single post
 // ──────────────────────────────────────────────
 
-export function getPost(slug: string) {
+export async function getPost(slug: string) {
   const filePath = path.join(contentDirectory, `${slug}.mdx`);
   try {
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileContent = await fs.readFile(filePath, 'utf8');
     const { data, content } = matter(fileContent);
     const frontmatterData = data as PostFrontmatter;
     const parsedDate = parseDateString(frontmatterData.date);
@@ -101,14 +107,17 @@ export function getPost(slug: string) {
 // Sorted posts (for prev / next navigation)
 // ──────────────────────────────────────────────
 
-export function getSortedPosts(): { slug: string; dateTimestamp: number; title: string }[] {
-  if (!fs.existsSync(contentDirectory)) return [];
+export async function getSortedPosts(): Promise<
+  { slug: string; dateTimestamp: number; title: string }[]
+> {
+  if (!existsSync(contentDirectory)) return [];
 
-  const files = fs.readdirSync(contentDirectory);
-  return files
-    .map((filename) => {
+  const files = readdirSync(contentDirectory);
+
+  const posts = await Promise.all(
+    files.map(async (filename) => {
       const filePath = path.join(contentDirectory, filename);
-      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const fileContent = await fs.readFile(filePath, 'utf8');
       const { data } = matter(fileContent);
       const parsedDate = parseDateString(data.date);
       return {
@@ -117,40 +126,41 @@ export function getSortedPosts(): { slug: string; dateTimestamp: number; title: 
         title: data.title,
       };
     })
-    .sort((a, b) => b.dateTimestamp - a.dateTimestamp);
+  );
+
+  return posts.sort((a, b) => b.dateTimestamp - a.dateTimestamp);
 }
 
 // ──────────────────────────────────────────────
 // All posts (for blog list page)
 // ──────────────────────────────────────────────
 
-export function getBlogPosts(): PostListItem[] {
-  if (!fs.existsSync(contentDirectory)) {
-    return [];
-  }
+export async function getBlogPosts(): Promise<PostListItem[]> {
+  if (!existsSync(contentDirectory)) return [];
 
-  const fileNames = fs.readdirSync(contentDirectory);
+  const fileNames = readdirSync(contentDirectory);
 
-  const allPostsData: PostListItem[] = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, '');
-    const fullPath = path.join(contentDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
-    const parsedDate = parseDateString(data.date);
+  const allPostsData = await Promise.all(
+    fileNames.map(async (fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '');
+      const fullPath = path.join(contentDirectory, fileName);
+      const fileContents = await fs.readFile(fullPath, 'utf8');
+      const { data, content } = matter(fileContents);
+      const parsedDate = parseDateString(data.date);
+      const formattedDateDisplay = formatToTurkishDisplay(parsedDate);
 
-    const formattedDateDisplay = formatToTurkishDisplay(parsedDate);
-
-    return {
-      slug,
-      title: data.title,
-      rawDate: parsedDate,
-      date: formattedDateDisplay,
-      originalDateString: data.date,
-      description: data.description || '',
-      readingTime: calculateReadingTime(content),
-      content,
-    };
-  });
+      return {
+        slug,
+        title: data.title,
+        rawDate: parsedDate,
+        date: formattedDateDisplay,
+        originalDateString: data.date,
+        description: data.description || '',
+        readingTime: calculateReadingTime(content),
+        content,
+      };
+    })
+  );
 
   return allPostsData.sort((a, b) => b.rawDate.getTime() - a.rawDate.getTime());
 }

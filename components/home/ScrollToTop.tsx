@@ -27,6 +27,9 @@ export default function ScrollToTop() {
     return (
         <button
             onClick={scrollToTop}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToTop(); }}
             className={`
         fixed bottom-24 right-4 xl:bottom-8 xl:right-8 z-50 p-3 rounded-full 
         bg-surface/80 border border-border-main text-fg shadow-xl backdrop-blur-md

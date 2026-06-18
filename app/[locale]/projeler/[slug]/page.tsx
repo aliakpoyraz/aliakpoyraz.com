@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Star, Github, ExternalLink, GitFork, Eye, Clock, Circle } from 'lucide-react';
+import Script from 'next/script';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -165,8 +166,34 @@ export default async function ProjectPage({ params }: Props) {
   const metaBadge =
     'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface border border-border-main backdrop-blur-sm text-xs font-semibold';
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: translatedTitle,
+    description: translatedDesc,
+    url: `https://aliakpoyraz.com/projeler/${project.slug}`,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: repoData?.description?.includes('iOS') || project.tags.includes('Swift') ? 'iOS, macOS' : 'Web, Cross-platform',
+    author: {
+      '@type': 'Person',
+      name: 'Ali Akpoyraz',
+      url: 'https://aliakpoyraz.com',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  };
+
   return (
     <article className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20">
+      <Script
+        id="project-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* ── Geri dön ── */}
       <Link
         href="/"

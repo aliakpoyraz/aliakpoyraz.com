@@ -26,9 +26,18 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
 
     const toggleTheme = () => {
         const newTheme = theme === "dark" ? "light" : "dark";
-        setTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-        document.documentElement.classList.toggle("dark", newTheme === "dark");
+        const applyTheme = () => {
+            setTheme(newTheme);
+            localStorage.setItem("theme", newTheme);
+            document.documentElement.classList.toggle("dark", newTheme === "dark");
+        };
+
+        // View Transition API (Chrome 111+) ile yumuşak tema geçişi
+        if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+            (document as any).startViewTransition(applyTheme);
+        } else {
+            applyTheme();
+        }
     };
 
     return (

@@ -134,6 +134,18 @@ a {
   border-color: rgb(var(--accent));
 }
 
+/* ============================================================
+   VIEW TRANSITIONS (Chrome 111+)
+   ============================================================ */
+@view-transition {
+  navigation: auto;
+}
+
+/* Her sayfanın ana içeriği için view transition adı */
+main {
+  view-transition-name: page-content;
+}
+
 /* Scrollbar Hide Utility */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
