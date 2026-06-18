@@ -1,4 +1,4 @@
-import React from 'react';
+import { getTranslations } from 'next-intl/server';
 
 type Heading = {
     text: string;
@@ -6,12 +6,13 @@ type Heading = {
     slug: string;
 };
 
-export default function TableOfContents({ headings }: { headings: Heading[] }) {
+export default async function TableOfContents({ headings }: { headings: Heading[] }) {
+    const t = await getTranslations("TableOfContents");
     if (headings.length === 0) return null;
 
     return (
         <nav className="my-8 pl-4 border-l border-rose-500/30">
-            <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted">İçindekiler</h2>
+            <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted">{t("title")}</h2>
             <ul className="flex flex-col gap-2">
                 {headings.map((heading, index) => (
                     <li

@@ -1,0 +1,32 @@
+{
+  "BlogList": {
+    "title": "Blog",
+    "search_placeholder": "Search by title or content...",
+    "no_results": "No posts found for \"{query}\".",
+    "content_match_badge": "Mentioned in content",
+    "content_match_header": "ALSO FOUND IN CONTENT",
+    "content_match_header_only": "NOT IN TITLE BUT FOUND IN CONTENT"
+  },
+  "BlogPost": {
+    "not_found_title": "Post Not Found",
+    "back_to_list": "Back to Blog",
+    "share_label": "Share:",
+    "prev_post": "Previous",
+    "next_post": "Next",
+    "share_prompt": "If you found this post helpful, please share:"
+  },
+  "TableOfContents": {
+    "title": "Table of Contents"
+  },
+  "AiSummary": {
+    "title": "AI Summary",
+    "generated_by": "Generated with Gemini"
+  },
+  "ShareButtons": {
+    "tooltip_twitter": "Share on Twitter",
+    "tooltip_linkedin": "Share on LinkedIn",
+    "tooltip_copy": "Copy Link",
+    "copy_error": "Copy failed",
+    "copy_success": "Copied!"
+  }
+}

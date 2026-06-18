@@ -1,5 +1,7 @@
+"use client";
+
 import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 
 const GITHUB_USERNAME = "aliakpoyraz";
 
@@ -37,7 +39,7 @@ export default function Footer() {
 
                     {/* Copyright */}
                     <p className="text-[10px] md:text-xs text-muted/60 tracking-wide uppercase">
-                        © {currentYear} Ali Akpoyraz
+                        {t("copyright", { year: currentYear })}
                     </p>
                 </div>
 

@@ -1,0 +1,23 @@
+{
+  "SideNav": {
+    "baslangic": "Başlangıç",
+    "deneyim": "Deneyim",
+    "gonulluluk": "Gönüllülük",
+    "aktif-calismalar": "Aktif Çalışmalar",
+    "son-projeler": "Herkese Açık Projeler",
+    "blog": "Blog",
+    "projeler": "Projeler"
+  },
+  "Footer": {
+    "copyright": "© {year} Ali Akpoyraz. Tüm hakları saklıdır.",
+    "made_with": "ile geliştirildi. kaynak kodları",
+    "github_link_text": "GitHub"
+  },
+  "LanguageSwitcher": {
+    "tooltip_tr": "Türkçe'ye Geç",
+    "tooltip_en": "Switch to English"
+  },
+  "ScrollToTop": {
+    "aria_label": "Yukarı Çık"
+  }
+}

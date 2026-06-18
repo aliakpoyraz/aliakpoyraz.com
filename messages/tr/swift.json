@@ -1,0 +1,20 @@
+{
+  "SwiftPage": {
+    "title": "Swift Geliştirme Yolculuğum",
+    "description": "Sıfırdan başlayarak iOS ekosistemini, Swift dilini ve SwiftUI çerçevesini öğrenme sürecimi burada belgeliyorum.",
+    "goal_label": "Amaç",
+    "goal_text": "Modern, performanslı ve harika görünen native iOS uygulamaları geliştirmek.",
+    "start_label": "Başlangıç:",
+    "end_label": "Bitiş:",
+    "progress_label": "İlerleme",
+    "start_date": "05 Mayıs 2026",
+    "end_date": "Devam Ediyor"
+  },
+  "SwiftPost": {
+    "not_found_title": "Bulunamadı",
+    "back_to_list": "Swift Serüvenine Dön",
+    "step_label": "ADIM",
+    "prev_step": "Önceki Adım",
+    "next_step": "Sonraki Adım"
+  }
+}

@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import Script from 'next/script';
+import { getTranslations } from 'next-intl/server';
 
 import YouTubeCard from '@/components/blog/YoutubeCard';
 import Callout from '@/components/blog/Callout';
@@ -32,7 +33,10 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
     const { slug } = await params;
     const post = getPost(slug);
-    if (!post) return { title: 'Yazı Bulunamadı' };
+    if (!post) {
+        const t = await getTranslations("BlogPost");
+        return { title: t("not_found_title") };
+    }
 
     const siteUrl = 'https://aliakpoyraz.com';
     const ogImage = post.frontmatter.image
@@ -83,6 +87,7 @@ export default async function BlogPost({ params }: Props) {
 
     const readingTime = calculateReadingTime(post.content);
     const headings = getHeadings(post.content);
+    const t = await getTranslations("BlogPost");
 
     const siteUrl = 'https://aliakpoyraz.com';
     const shareUrl = `${siteUrl}/blog/${slug}`;
@@ -124,7 +129,7 @@ export default async function BlogPost({ params }: Props) {
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 mb-10 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-accent-10 transition-all duration-300 group"
             >
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                Blog Listesine Dön
+                {t("back_to_list")}
             </Link>
 
             <header className="mb-10 pb-10 border-b border-border-main">
@@ -145,7 +150,7 @@ export default async function BlogPost({ params }: Props) {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <span className="text-xs text-muted/60 font-mono hidden sm:block">Paylaş:</span>
+                        <span className="text-xs text-muted/60 font-mono hidden sm:block">{t("share_label")}</span>
                         <ShareButtons title={post.frontmatter.title} url={shareUrl} />
                     </div>
                 </div>
@@ -199,7 +204,7 @@ export default async function BlogPost({ params }: Props) {
                             className="flex flex-col p-4 text-left transition-all w-full group"
                         >
                             <span className="text-xs font-semibold uppercase tracking-widest text-muted/60 flex items-center gap-1 group-hover:text-rose-400 transition-colors">
-                                <ChevronLeft size={16} /> Önceki
+                                <ChevronLeft size={16} /> {t("prev_post")}
                             </span>
                             <span className="text-base font-bold text-muted group-hover:text-fg transition-colors mt-2 leading-relaxed">
                                 {prevPost.title}
@@ -215,7 +220,7 @@ export default async function BlogPost({ params }: Props) {
                             className="flex flex-col p-4 text-right transition-all w-full group"
                         >
                             <span className="text-xs font-semibold uppercase tracking-widest text-muted/60 flex items-center justify-end gap-1 group-hover:text-rose-400 transition-colors">
-                                Sonraki <ChevronRight size={16} />
+                                {t("next_post")} <ChevronRight size={16} />
                             </span>
                             <span className="text-base font-bold text-muted group-hover:text-fg transition-colors mt-2 leading-relaxed">
                                 {nextPost.title}
@@ -232,7 +237,7 @@ export default async function BlogPost({ params }: Props) {
             <div className="mt-8 border-t border-border-main pt-8">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <p className="text-muted text-sm transition-colors">
-                        Bu yazıyı faydalı bulduysanız paylaşabilirsiniz:
+                        {t("share_prompt")}
                     </p>
                     <ShareButtons title={post.frontmatter.title} url={shareUrl} />
                 </div>

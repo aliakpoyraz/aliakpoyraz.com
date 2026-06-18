@@ -1,0 +1,7 @@
+{
+  "NotFound": {
+    "title": "404",
+    "message": "Üzgünüz, aradığınız sayfa bulunamadı. Lütfen adresi kontrol edin.",
+    "back_home": "Ana Sayfaya Dön"
+  }
+}

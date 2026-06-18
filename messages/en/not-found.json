@@ -1,0 +1,7 @@
+{
+  "NotFound": {
+    "title": "404",
+    "message": "Sorry, the page you are looking for could not be found. Please check the URL.",
+    "back_home": "Back to Home"
+  }
+}

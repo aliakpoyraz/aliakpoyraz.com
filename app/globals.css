@@ -7,13 +7,19 @@
 :root {
   /* Common */
   --accent: 251 113 133; /* Rose-400 */
-  
+
   /* Light Mode Defaults */
   --bg: #ffffff;
   --fg: #18181b; /* zinc-900 */
   --surface: #f4f4f5; /* zinc-100 */
   --border: rgba(0, 0, 0, 0.08);
   --muted: #52525b; /* zinc-600 */
+
+  /* Semantic Status Colors — Light */
+  --success: #16a34a;
+  --warning: #ca8a04;
+  --info: #2563eb;
+  --danger: #dc2626;
 }
 
 .dark {
@@ -23,6 +29,12 @@
   --surface: #18181b; /* zinc-900 */
   --border: rgba(255, 255, 255, 0.05);
   --muted: #d4d4d8; /* zinc-300 */
+
+  /* Semantic Status Colors — Dark */
+  --success: #4ade80;
+  --warning: #facc15;
+  --info: #60a5fa;
+  --danger: #f87171;
 }
 
 @theme {
@@ -30,7 +42,7 @@
   --color-accent-60: rgb(var(--accent) / 0.6);
   --color-accent-30: rgb(var(--accent) / 0.3);
   --color-accent-10: rgb(var(--accent) / 0.1);
-  
+
   /* Semantic Colors Mapping */
   --color-bg: var(--bg);
   --color-fg: var(--fg);
@@ -40,15 +52,27 @@
 }
 
 html {
-  scroll-behavior: auto !important;
+  scroll-behavior: smooth;
   scroll-padding-top: 5rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-  scroll-behavior: auto !important;
-  background-color: var(--bg) !important;
-  color: var(--fg) !important;
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* color-scheme for native UI elements (scrollbar, inputs, etc.) */
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+/* Theme color for mobile browser address bar */
+meta[name="theme-color"] {
+  content: var(--bg);
 }
 
 a {
@@ -76,21 +100,38 @@ a {
 .bg-accent { background-color: rgb(var(--accent)); }
 .border-accent { border-color: rgb(var(--accent)); }
 
-/* Cleanup ambient glow */
+/* Semantic Status Utilities */
+.text-success { color: var(--success); }
+.bg-success-soft { background-color: color-mix(in srgb, var(--success) 10%, transparent); }
+.border-success-soft { border-color: color-mix(in srgb, var(--success) 20%, transparent); }
+
+.text-warning { color: var(--warning); }
+.bg-warning-soft { background-color: color-mix(in srgb, var(--warning) 10%, transparent); }
+.border-warning-soft { border-color: color-mix(in srgb, var(--warning) 20%, transparent); }
+
+.text-info { color: var(--info); }
+.bg-info-soft { background-color: color-mix(in srgb, var(--info) 10%, transparent); }
+.border-info-soft { border-color: color-mix(in srgb, var(--info) 20%, transparent); }
+
+.text-danger { color: var(--danger); }
+.bg-danger-soft { background-color: color-mix(in srgb, var(--danger) 10%, transparent); }
+.border-danger-soft { border-color: color-mix(in srgb, var(--danger) 20%, transparent); }
+
+/* Ambient wrapper — body bg'sini takip eder, !important yok */
 .bg-ambient {
-  background-color: var(--bg) !important;
-  background-image: none !important;
+  background-color: var(--bg);
+  background-image: none;
 }
 
-/* Fail-Safe Experience Hover */
+/* Fail-Safe Experience Hover — !important kullanmaz, özgüllük sağlar */
 .experience-item:hover .company-name {
-  color: rgb(var(--accent)) !important;
-  transition: all 0.3s ease;
+  color: rgb(var(--accent));
+  transition: color 0.3s ease;
 }
 
 .experience-item:hover .timeline-dot {
-  background-color: rgba(var(--accent) / 0.5) !important;
-  border-color: rgb(var(--accent)) !important;
+  background-color: rgba(var(--accent) / 0.5);
+  border-color: rgb(var(--accent));
 }
 
 /* Scrollbar Hide Utility */

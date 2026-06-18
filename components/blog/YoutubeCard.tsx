@@ -3,7 +3,7 @@ import React from 'react';
 const YouTubeCard = ({ url }: { url: string }) => {
     const videoId = url.split('v=')[1]?.split('&')[0];
 
-    if (!videoId) return <p className="text-red-500 font-medium">Hatalı YouTube Linki</p>;
+    if (!videoId) return <p className="text-danger font-medium">Hatalı YouTube Linki</p>;
 
     return (
         <div className="my-8 w-full overflow-hidden rounded-2xl border border-border-main bg-surface/80 backdrop-blur-xl shadow-2xl transition-all duration-300">

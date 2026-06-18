@@ -1,0 +1,18 @@
+{
+  "Site": {
+    "title": "Ali Akpoyraz | Yazılım Mühendisi",
+    "description": "Ben Ali Akpoyraz, yazılım mühendisliği öğrencisiyim. Bu sitede projelerimi, blog yazılarını ve kişisel deneyimlerimi paylaşıyorum.",
+    "keywords": "Ali Akpoyraz, Yazılım Mühendisi, Software Engineer, Öğrenci, React, Next.js, Swift, Blog, Portfolyo"
+  },
+  "BlogPage": {
+    "title": "Blog | Ali Akpoyraz",
+    "description": "Teknik notlarım ve düşüncelerim."
+  },
+  "SwiftPage": {
+    "title": "Swift Öğrenme Serüvenim | Ali Akpoyraz",
+    "description": "Swift ve iOS geliştirme yolculuğumu adım adım paylaşıyorum."
+  },
+  "ProjectPage": {
+    "not_found_title": "Proje Bulunamadı"
+  }
+}

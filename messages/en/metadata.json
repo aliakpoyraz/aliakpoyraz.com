@@ -1,0 +1,18 @@
+{
+  "Site": {
+    "title": "Ali Akpoyraz | Software Engineer",
+    "description": "I'm Ali Akpoyraz, a software engineering student. On this site I share my projects, blog posts, and personal experiences.",
+    "keywords": "Ali Akpoyraz, Software Engineer, Öğrenci, React, Next.js, Swift, Blog, Portfolio"
+  },
+  "BlogPage": {
+    "title": "Blog | Ali Akpoyraz",
+    "description": "My technical notes and thoughts."
+  },
+  "SwiftPage": {
+    "title": "My Swift Learning Journey | Ali Akpoyraz",
+    "description": "I share my Swift and iOS development journey step by step."
+  },
+  "ProjectPage": {
+    "not_found_title": "Project Not Found"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "BlogList": {
+    "title": "Blog",
+    "search_placeholder": "Yazı başlığı veya içeriği ara...",
+    "no_results": "\"{query}\" ile eşleşen yazı yok.",
+    "content_match_badge": "İçerikte geçiyor",
+    "content_match_header": "AYRICA İÇERİKTE GEÇENLER",
+    "content_match_header_only": "BAŞLIKTA YOK AMA İÇERİKTE BULUNDU"
+  },
+  "BlogPost": {
+    "not_found_title": "Yazı Bulunamadı",
+    "back_to_list": "Blog Listesine Dön",
+    "share_label": "Paylaş:",
+    "prev_post": "Önceki",
+    "next_post": "Sonraki",
+    "share_prompt": "Bu yazıyı faydalı bulduysanız paylaşabilirsiniz:"
+  },
+  "TableOfContents": {
+    "title": "İçindekiler"
+  },
+  "AiSummary": {
+    "title": "AI Özet",
+    "generated_by": "Gemini ile oluşturuldu"
+  },
+  "ShareButtons": {
+    "tooltip_twitter": "Twitter'da Paylaş",
+    "tooltip_linkedin": "LinkedIn'de Paylaş",
+    "tooltip_copy": "Linki Kopyala",
+    "copy_error": "Kopyalama başarısız",
+    "copy_success": "Kopyalandı!"
+  }
+}

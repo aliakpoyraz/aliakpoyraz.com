@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Frown } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 
-export default function NotFound() {
+export default async function NotFound() {
+    const t = await getTranslations("NotFound");
 
     return (
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center pt-20">
@@ -13,11 +15,11 @@ export default function NotFound() {
             <Frown size={64} className="text-muted/40 mb-4" />
 
             <h1 className="text-6xl font-extrabold text-fg mb-4 transition-colors">
-                404
+                {t("title")}
             </h1>
 
             <p className="text-lg text-muted mb-6 max-w-md transition-colors">
-                Üzgünüz, aradığınız sayfa bulunamadı. Lütfen adresi kontrol edin.
+                {t("message")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -25,7 +27,7 @@ export default function NotFound() {
                     href="/"
                     className="flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold rounded-lg bg-rose-500 text-white transition-colors hover:bg-rose-400 shadow-md"
                 >
-                    Ana Sayfaya Dön
+                    {t("back_home")}
                 </Link>
             </div>
 

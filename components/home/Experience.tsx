@@ -1,6 +1,6 @@
 "use client";
 
-import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
 import { useTranslations } from "next-intl";
 

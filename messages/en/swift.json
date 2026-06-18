@@ -1,0 +1,20 @@
+{
+  "SwiftPage": {
+    "title": "My Swift Development Journey",
+    "description": "I document my learning process of the iOS ecosystem, Swift language, and SwiftUI framework from scratch.",
+    "goal_label": "Goal",
+    "goal_text": "Build modern, performant, and great-looking native iOS applications.",
+    "start_label": "Start:",
+    "end_label": "End:",
+    "progress_label": "Progress",
+    "start_date": "May 5, 2026",
+    "end_date": "Ongoing"
+  },
+  "SwiftPost": {
+    "not_found_title": "Not Found",
+    "back_to_list": "Back to Swift Journey",
+    "step_label": "STEP",
+    "prev_step": "Previous Step",
+    "next_step": "Next Step"
+  }
+}

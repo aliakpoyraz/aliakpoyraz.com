@@ -89,7 +89,7 @@ export default function ProfileCard() {
         href="/cv.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        className="group/btn flex items-center gap-2.5 px-6 py-3 rounded-xl bg-transparent border-2 border-border-main text-fg font-bold hover:bg-rose-500 hover:border-rose-500 hover:text-white transition-all duration-300"
+        className="group/btn inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-surface border border-border-main text-muted font-semibold hover:text-rose-400 hover:border-rose-500/30 hover:bg-rose-500/5 transition-all duration-300"
     >
         <FileText size={18} className="transition-transform group-hover/btn:-translate-y-0.5" />
         <span>{t("view_cv") || "Özgeçmişi Görüntüle"}</span>

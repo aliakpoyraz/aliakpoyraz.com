@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Search, Calendar, Clock, ArrowUpRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface Post {
     slug: string;
@@ -14,6 +15,7 @@ interface Post {
 }
 
 export default function BlogList({ posts }: { posts: Post[] }) {
+    const t = useTranslations("BlogList");
     const [searchQuery, setSearchQuery] = useState("");
     const query = searchQuery.toLowerCase();
 
@@ -58,7 +60,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
 
                     {isContentMatch && searchQuery && (
                         <div className="mb-4 text-xs font-semibold text-rose-400 bg-accent-10 px-2.5 py-1.5 rounded-lg w-fit border border-accent-20">
-                            ✨ İçerikte &quot;{searchQuery}&quot; geçiyor
+                            ✨ {t("content_match_badge")} &quot;{searchQuery}&quot;
                         </div>
                     )}
 
@@ -95,7 +97,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
             {/* Başlık */}
             <div className="flex items-center gap-4 mb-12 pb-6 border-b border-border-main">
                 <div>
-                    <h1 className="text-3xl sm:text-4xl font-bold text-fg tracking-tight transition-colors">Blog</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold text-fg tracking-tight transition-colors">{t("title")}</h1>
                 </div>
             </div>
 
@@ -107,7 +109,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                     </div>
                     <input
                         type="text"
-                        placeholder="Yazı başlığı veya içeriği ara..."
+                        placeholder={t("search_placeholder")}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full h-12 bg-transparent border-none text-fg placeholder:text-muted/50 px-4 outline-none z-10 relative text-sm sm:text-base font-medium"
@@ -125,7 +127,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                         {!hasAnyResult && (
                             <div className="flex flex-col items-center justify-center py-20 text-muted bg-transparent">
                                 <Search size={32} className="mb-4 opacity-30 text-rose-400" />
-                                <p className="text-sm tracking-wide">&quot;{searchQuery}&quot; ile eşleşen yazı yok.</p>
+                                <p className="text-sm tracking-wide">{t("no_results", { query: searchQuery })}</p>
                             </div>
                         )}
 
@@ -140,8 +142,8 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                                 <div className="flex items-center gap-3 mb-4 px-2">
                                     <span className="text-xs font-semibold text-rose-400/70 tracking-widest uppercase">
                                         {titleMatches.length === 0
-                                            ? "BAŞLIKTA YOK AMA İÇERİKTE BULUNDU"
-                                            : "AYRICA İÇERİKTE GEÇENLER"}
+                                            ? t("content_match_header_only")
+                                            : t("content_match_header")}
                                     </span>
                                     <div className="h-px flex-1 bg-border-main"></div>
                                 </div>

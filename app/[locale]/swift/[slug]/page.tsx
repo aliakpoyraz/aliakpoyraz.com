@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import { ArrowLeft, Calendar, ArrowLeft as ChevronLeft, ArrowRight as ChevronRight } from 'lucide-react';
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -16,11 +17,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const step = getSwiftStepBySlug(slug);
 
     if (!step) {
-        return { title: 'Bulunamadı' };
+        const t = await getTranslations("SwiftPost");
+        return { title: t("not_found_title") };
     }
 
     return {
-        title: `${step.title} | Swift Serüvenim`,
+        title: `${step.title} | ${step.step}. Adım`,
         description: step.description,
     };
 }
@@ -28,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SwiftStepPage({ params }: Props) {
     const { slug } = await params;
     const step = getSwiftStepBySlug(slug);
+    const t = await getTranslations("SwiftPost");
 
     if (!step) {
         notFound();
@@ -45,13 +48,13 @@ export default async function SwiftStepPage({ params }: Props) {
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 mb-10 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-accent-10 transition-all duration-300 group"
             >
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                Swift Serüvenine Dön
+                {t("back_to_list")}
             </Link>
 
             <header className="mb-10 pb-10 border-b border-border-main">
                 <div className="flex items-center gap-3 mb-6 text-xs font-semibold font-mono">
                     <div className="flex items-center gap-1.5 bg-accent-10 text-rose-400 px-2.5 py-1.5 rounded-lg border border-accent-20 backdrop-blur-sm">
-                        ADIM {step.step}
+                        {t("step_label")} {step.step}
                     </div>
                     <div className="flex items-center gap-1.5 bg-surface text-muted px-2.5 py-1.5 rounded-lg border border-border-main backdrop-blur-sm hover:border-accent-30 transition-colors">
                         <Calendar size={14} className="text-rose-400" />
@@ -100,7 +103,7 @@ export default async function SwiftStepPage({ params }: Props) {
                             className="flex flex-col p-4 text-left transition-all w-full group hover:bg-surface/50 rounded-xl"
                         >
                             <span className="text-xs font-semibold uppercase tracking-widest text-muted/60 flex items-center gap-1 group-hover:text-rose-400 transition-colors">
-                                <ChevronLeft size={16} /> Önceki Adım
+                                <ChevronLeft size={16} /> {t("prev_step")}
                             </span>
                             <span className="text-base font-bold text-muted group-hover:text-fg transition-colors mt-2 leading-relaxed">
                                 {prevStep.title}
@@ -114,7 +117,7 @@ export default async function SwiftStepPage({ params }: Props) {
                             className="flex flex-col p-4 text-right transition-all w-full group hover:bg-surface/50 rounded-xl"
                         >
                             <span className="text-xs font-semibold uppercase tracking-widest text-muted/60 flex items-center justify-end gap-1 group-hover:text-rose-400 transition-colors">
-                                Sonraki Adım <ChevronRight size={16} />
+                                {t("next_step")} <ChevronRight size={16} />
                             </span>
                             <span className="text-base font-bold text-muted group-hover:text-fg transition-colors mt-2 leading-relaxed">
                                 {nextStep.title}

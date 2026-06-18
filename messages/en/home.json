@@ -1,13 +1,4 @@
 {
-  "SideNav": {
-    "baslangic": "Home",
-    "deneyim": "Experience",
-    "gonulluluk": "Volunteering",
-    "aktif-calismalar": "Active Projects",
-    "son-projeler": "Public Projects",
-    "blog": "Blog",
-    "projeler": "Projects"
-  },
   "ProfileCard": {
     "title": "Software Engineer",
     "view_cv": "View CV",
@@ -63,66 +54,5 @@
     "seo_org": "SEO Training",
     "seo_date": "March 2025",
     "seo_desc": "I served as a volunteer instructor in SEO trainings organized by the GDSC OSTİMTECH club. I trained students on fundamental SEO concepts, tools, and strategies."
-  },
-  "ActiveProjects": {
-    "title": "Projects",
-    "view_project": "View Project",
-    "view_repo": "View Repo"
-  },
-  "Projects": {
-    "title": "Public Projects",
-    "view_all": "View All",
-    "view_project": "Live Demo",
-    "view_repo": "Source Code",
-    "no_description": "No description available.",
-    "status_gelistirildi": "Developed",
-    "status_canli": "Live",
-    "web_sitesi": "Web Site"
-  },
-  "ProjectDetails": {
-    "not_found": "Project Not Found",
-    "back_to_home": "Back to Home",
-    "tech_used": "Technologies Used",
-    "github_repo": "GitHub Repository",
-    "live_preview": "Live Preview",
-    "readme_error": "README file not found or an error occurred."
-  },
-  "ProjectData": {
-    "ticimax-wolvox-erp-entegrasyonu": {
-      "title": "Ticimax & Wolvox ERP Sync",
-      "desc": "Windows Service application designed to seamlessly synchronize Ticimax-based e-commerce platforms with the Akınsoft Wolvox 8 ERP system. It ensures real-time updates for inventory levels, order statuses, and pricing, eliminating manual data entry and ensuring operational accuracy."
-    },
-    "borsa-app": {
-      "title": "BorsaApp",
-      "desc": "A mobile application developed using Swift, focused on stock market and finance tracking with Binance and Yahoo API integration. It allows you to track crypto and bist data in real-time, and track your portfolio instantly by adding to favorites via widget or adding your assets."
-    },
-    "one-click-block-x": {
-      "title": "One Click Block X",
-      "desc": "Developed for Chromium-based browsers. It allows you to block post authors directly on the X (Twitter) platform with a single click, without having to enter their user profiles."
-    },
-    "DevCleaner": {
-      "title": "DevCleaner",
-      "desc": "A CleanMyMac application alternative for developers. A MacOS application that allows you to delete files such as unused Xcode caches, Docker images, node_modules files that you previously developed but whose caches continue to be kept on your computer with a few clicks."
-    },
-    "e-ticaret-platformu": {
-      "title": "E-Commerce Platform",
-      "desc": "An e-commerce platform developed using modern web technologies, containing all the scenarios needed for an e-commerce site (product listing, cart, payment, membership, order tracking, communication, email confirmation, order email notifications, etc.)."
-    },
-    "kisisel-portfolyo": {
-      "title": "Personal Portfolio",
-      "desc": "This is the current site you are browsing; built with Next.js 16 and Tailwind v4. It runs on Vercel + GitHub infrastructure, operating entirely without a database for maximum performance in a 'database-less' architecture."
-    },
-    "basic-portfolio": {
-      "title": "Basic Portfolio",
-      "desc": "A more minimal, simple, and high-performance portfolio site alternative."
-    },
-    "cash-and-voyage": {
-      "desc": "A finance tracking application where you can track, categorize and translate between currencies during your travels."
-    }
-  },
-  "Footer": {
-    "copyright": "© 2025 Ali Akpoyraz. All rights reserved.",
-    "made_with": "built with. source code is open on",
-    "github_link_text": "GitHub."
   }
 }

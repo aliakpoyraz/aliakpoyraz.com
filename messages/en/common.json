@@ -1,0 +1,23 @@
+{
+  "SideNav": {
+    "baslangic": "Home",
+    "deneyim": "Experience",
+    "gonulluluk": "Volunteering",
+    "aktif-calismalar": "Active Projects",
+    "son-projeler": "Public Projects",
+    "blog": "Blog",
+    "projeler": "Projects"
+  },
+  "Footer": {
+    "copyright": "© {year} Ali Akpoyraz. All rights reserved.",
+    "made_with": "built with. source code is open on",
+    "github_link_text": "GitHub."
+  },
+  "LanguageSwitcher": {
+    "tooltip_tr": "Switch to Turkish",
+    "tooltip_en": "Switch to English"
+  },
+  "ScrollToTop": {
+    "aria_label": "Scroll to Top"
+  }
+}
