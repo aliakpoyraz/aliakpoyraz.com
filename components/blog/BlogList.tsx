@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, Calendar, Clock, ArrowUpRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -14,10 +14,20 @@ interface Post {
     content: string;
 }
 
+function useDebounce(value: string, delay: number): string {
+    const [debounced, setDebounced] = useState(value);
+    useEffect(() => {
+        const timer = setTimeout(() => setDebounced(value), delay);
+        return () => clearTimeout(timer);
+    }, [value, delay]);
+    return debounced;
+}
+
 export default function BlogList({ posts }: { posts: Post[] }) {
     const t = useTranslations("BlogList");
     const [searchQuery, setSearchQuery] = useState("");
-    const query = searchQuery.toLowerCase();
+    const debouncedQuery = useDebounce(searchQuery, 300);
+    const query = debouncedQuery.toLowerCase();
 
     const titleMatches = posts.filter((post) =>
         post.title.toLowerCase().includes(query) ||
