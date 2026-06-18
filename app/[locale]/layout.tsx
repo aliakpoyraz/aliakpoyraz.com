@@ -9,6 +9,8 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { routing } from "@/routing";
 import { notFound } from "next/navigation";
 
+type Locale = (typeof routing.locales)[number];
+
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -68,7 +70,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const resolvedParams = await params;
-  if (!routing.locales.includes(resolvedParams.locale as any)) {
+  if (!routing.locales.includes(resolvedParams.locale as Locale)) {
     notFound();
   }
 

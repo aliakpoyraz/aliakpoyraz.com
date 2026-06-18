@@ -7,14 +7,14 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     const [theme, setTheme] = useState<Theme>("dark");
     const [mounted, setMounted] = useState(false);
 
+    /* eslint-disable react-hooks/set-state-in-effect */
     useEffect(() => {
-        // Local storage kontrolü
+        // localStorage'dan tema tercihini oku
         const savedTheme = localStorage.getItem("theme") as Theme | null;
         if (savedTheme) {
             setTheme(savedTheme);
             document.documentElement.classList.toggle("dark", savedTheme === "dark");
         } else {
-            // Temayı sistem tercihine göre belirle
             const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
             const initialTheme = prefersDark ? "dark" : "light";
             setTheme(initialTheme);
@@ -22,6 +22,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
         }
         setMounted(true);
     }, []);
+    /* eslint-enable react-hooks/set-state-in-effect */
 
     const toggleTheme = () => {
         const newTheme = theme === "dark" ? "light" : "dark";

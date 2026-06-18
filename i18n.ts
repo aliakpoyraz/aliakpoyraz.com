@@ -1,6 +1,8 @@
 import {getRequestConfig} from 'next-intl/server';
 import {routing} from './routing';
 
+type Locale = (typeof routing.locales)[number];
+
 const NAMESPACES = [
   'common',
   'home',
@@ -43,7 +45,7 @@ function deepMerge<T extends Record<string, unknown>>(...sources: T[]): T {
 export default getRequestConfig(async ({requestLocale}) => {
   let locale = await requestLocale;
 
-  if (!locale || !routing.locales.includes(locale as any)) {
+  if (!locale || !routing.locales.includes(locale as Locale)) {
     locale = routing.defaultLocale;
   }
 

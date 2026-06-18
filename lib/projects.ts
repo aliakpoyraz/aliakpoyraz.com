@@ -118,7 +118,9 @@ export function useActiveProjects() {
 
     return activeProjects.map(project => ({
         ...project,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         title: tData(`${project.slug}.title` as any) || project.title,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         description: tData(`${project.slug}.desc` as any) || project.description,
         status: project.status === "Canlı" ? t("status_canli") : t("status_gelistirildi")
     }));
@@ -129,6 +131,7 @@ export function usePublishedApps() {
 
     return publishedApps.map(app => ({
         ...app,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         description: tData(`${app.id}.desc` as any) || app.description,
     }));
 }

@@ -98,6 +98,7 @@ export default function SideNav() {
                 return (
                     <Link
                         key={item.id}
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         href={item.href as any}
                         onClick={(e) => scrollToSection(e, item.id)}
                         className="group relative flex items-center justify-center transition-all duration-300 w-full"

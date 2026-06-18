@@ -2,16 +2,14 @@
 
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/context/ThemeContext";
-import { useEffect, useState } from "react";
 
+/**
+ * ThemeToggle, ThemeProvider'ın opacity wrapper'ı sayesinde
+ * hydration hatası olmadan doğrudan theme context'ini okur.
+ * Ayrı bir mounted state'e gerek yoktur.
+ */
 export default function ThemeToggle() {
     const { theme, toggleTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) return null;
 
     return (
         <button

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Github, Linkedin, Mail, FileText, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ArrowRight, Instagram } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
 import { useTranslations } from "next-intl";
 
@@ -13,9 +13,10 @@ export default function ProfileCard() {
 
     // CV linki buradan çıkarıldı, aşağıda özel bir butona dönüştürüldü
     const socialLinks = [
-        { icon: <Mail size={18} />, href: "mailto:aliakpoyraz@gmail.com", tKey: "social_email" },
+        { icon: <Instagram size={18} />, href: "https://instagram.com/aliakpoyraz", tKey: "social_instagram" },
         { icon: <Linkedin size={18} />, href: "https://linkedin.com/in/aliakpoyraz", tKey: "social_linkedin" },
         { icon: <Github size={18} />, href: "https://github.com/aliakpoyraz", tKey: "social_github" },
+        { icon: <Mail size={18} />, href: "mailto:aliakpoyraz@gmail.com", tKey: "social_email" },
     ];
 
     const stackData = {
