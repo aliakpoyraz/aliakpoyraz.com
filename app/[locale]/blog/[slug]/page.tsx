@@ -12,6 +12,7 @@ import Callout from '@/components/blog/Callout';
 import ProsCons from '@/components/blog/ProsCons';
 import CaptionImage from '@/components/blog/CaptionImage';
 import Accordion from '@/components/blog/Accordion';
+import PreBlock from '@/components/blog/PreBlock';
 import TableOfContents from '@/components/blog/TableOfContents';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import ShareButtons from '@/components/blog/ShareButtons';
@@ -24,6 +25,7 @@ const mdxComponents = {
     ProsCons,
     CaptionImage,
     Accordion,
+    pre: PreBlock,
 };
 
 type Props = {
@@ -166,7 +168,7 @@ export default async function BlogPost({ params }: Props) {
 
             <div className="prose dark:prose-invert prose-zinc max-w-none 
                 prose-headings:scroll-mt-20
-                prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:underline
+                prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:!no-underline
                 prose-headings:font-bold prose-headings:text-fg 
                 prose-p:text-fg/90 prose-p:leading-relaxed
                 prose-strong:text-fg prose-strong:font-bold

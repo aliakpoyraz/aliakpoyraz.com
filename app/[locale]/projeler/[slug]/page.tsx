@@ -5,6 +5,7 @@ import Script from 'next/script';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
+import PreBlock from '@/components/blog/PreBlock';
 import { getProjectBySlug, activeProjects } from '@/lib/projects';
 import { getTranslations } from 'next-intl/server';
 
@@ -379,7 +380,7 @@ export default async function ProjectPage({ params }: Props) {
           <div
             className="prose prose-zinc dark:prose-invert max-w-none 
               prose-headings:scroll-mt-20
-              prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:underline
+              prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:!no-underline
               prose-headings:font-bold prose-headings:text-fg
               prose-p:text-muted prose-p:leading-relaxed
               prose-strong:text-fg prose-strong:font-semibold
@@ -398,6 +399,7 @@ export default async function ProjectPage({ params }: Props) {
           >
             <MDXRemote
               source={readmeContent}
+              components={{ pre: PreBlock }}
               options={{
                 mdxOptions: {
                   remarkPlugins: [remarkGfm],

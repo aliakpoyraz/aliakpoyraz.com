@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
 import { useTranslations } from "next-intl";
@@ -7,6 +8,8 @@ import { useTranslations } from "next-intl";
 export default function Experience() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
     const t = useTranslations("Experience");
+    const timelineRef = useRef<HTMLDivElement>(null);
+    const [lineProgress, setLineProgress] = useState(0);
 
     const experiences = [
         {
@@ -61,6 +64,23 @@ export default function Experience() {
         },
     ];
 
+    useEffect(() => {
+        const el = timelineRef.current;
+        if (!el) return;
+
+        const handleScroll = () => {
+            const rect = el!.getBoundingClientRect();
+            const start = window.innerHeight;
+            const end = -rect.height;
+            const progress = Math.max(0, Math.min(100, ((start - rect.top) / (start - end)) * 100));
+            setLineProgress(progress);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <section
             ref={ref}
@@ -78,9 +98,16 @@ export default function Experience() {
             </div>
 
             {/* Zaman Çizelgesi */}
-            <div className="relative flex flex-col gap-12">
+            <div ref={timelineRef} className="relative flex flex-col gap-12">
                 {/* Sürekli Dikey Çizgi */}
-                <div className="absolute left-[7px] top-6 bottom-8 w-px bg-border-main z-0"></div>
+                <div className="absolute left-[6px] top-6 bottom-8 w-0.5 bg-border-main z-0"></div>
+                {/* Scroll ile dolan çizgi */}
+                <div
+                    className="absolute left-[6px] top-6 bottom-8 w-0.5 z-0 transition-colors"
+                    style={{
+                        background: `linear-gradient(to bottom, rgb(251 113 133 / 1) ${lineProgress}%, transparent ${lineProgress}%)`,
+                    }}
+                />
 
                 {experiences.map((exp, index) => (
                     <div
@@ -95,8 +122,8 @@ export default function Experience() {
                         {/* Zaman Noktası */}
                         <div className="relative z-10 flex flex-col items-center mt-1.5">
                             <div className={`
-                                timeline-dot relative flex h-3.5 w-3.5 shrink-0 rounded-full transition-all duration-500
-                                ${exp.current
+                                timeline-dot relative flex h-3.5 w-3.5 shrink-0 rounded-full transition-all duration-300 hover:scale-150
+                                ${exp.current || lineProgress > (index / experiences.length) * 100
                                     ? "bg-rose-500 shadow-[0_0_15px_rgba(251,113,133,0.5)] scale-110"
                                     : "bg-surface border-2 border-border-main"}
                             `}>

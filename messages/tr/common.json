@@ -10,6 +10,7 @@
   },
   "Footer": {
     "copyright": "© {year} Ali Akpoyraz. Tüm hakları saklıdır.",
+    "last_updated": "Son güncelleme: {date}",
     "made_with": "ile geliştirildi. kaynak kodları",
     "github_link_text": "GitHub"
   },

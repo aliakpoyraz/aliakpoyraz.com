@@ -41,6 +41,9 @@ export default function Footer() {
                     <p className="text-[10px] md:text-xs text-muted/60 tracking-wide uppercase">
                         {t("copyright", { year: currentYear })}
                     </p>
+                    <p className="text-[10px] md:text-xs text-muted/40 tracking-wide">
+                        {t("last_updated", { date: "Haziran 2026" })}
+                    </p>
                 </div>
 
             </div>

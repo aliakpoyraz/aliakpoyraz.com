@@ -7,6 +7,7 @@ import rehypeSlug from 'rehype-slug';
 import { ArrowLeft, Calendar, ArrowLeft as ChevronLeft, ArrowRight as ChevronRight } from 'lucide-react';
 import { Metadata } from 'next';
 import Script from 'next/script';
+import PreBlock from '@/components/blog/PreBlock';
 import { getTranslations } from 'next-intl/server';
 
 type Props = {
@@ -130,7 +131,7 @@ export default async function SwiftStepPage({ params }: Props) {
 
             <div className="prose dark:prose-invert prose-zinc max-w-none 
                 prose-headings:scroll-mt-20
-                prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:underline
+                prose-a:!text-rose-400 prose-a:!font-bold prose-a:!no-underline hover:prose-a:!no-underline
                 prose-headings:font-bold prose-headings:text-fg 
                 prose-p:text-fg/90 prose-p:leading-relaxed
                 prose-strong:text-fg prose-strong:font-bold
@@ -143,6 +144,7 @@ export default async function SwiftStepPage({ params }: Props) {
             ">
                 <MDXRemote
                     source={step.content}
+                    components={{ pre: PreBlock }}
                     options={{
                         mdxOptions: {
                             remarkPlugins: [remarkGfm],

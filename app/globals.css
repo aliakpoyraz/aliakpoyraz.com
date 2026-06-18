@@ -80,6 +80,19 @@ a {
   text-decoration: none;
 }
 
+/* Selection color */
+::selection {
+  background-color: rgb(var(--accent) / 0.2);
+  color: var(--fg);
+}
+
+/* Keyboard focus ring */
+:focus-visible {
+  outline: 2px solid rgb(var(--accent) / 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -106,6 +119,101 @@ a {
 }
 .card-glow:hover {
   box-shadow: 0 0 40px rgb(var(--accent) / 0.05);
+}
+
+/* Card shine sweep on hover */
+.shine {
+  overflow: hidden;
+}
+.shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgb(var(--accent) / 0.04) 45%,
+    rgb(var(--accent) / 0.08) 50%,
+    rgb(var(--accent) / 0.04) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.shine:hover::after {
+  transform: translateX(100%);
+}
+
+/* ── Animated border via conic-gradient ── */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.border-rotate {
+  position: relative;
+  z-index: 0;
+}
+
+.border-rotate::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 60%,
+    rgb(var(--accent) / 0.4),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.border-rotate:hover::before {
+  opacity: 1;
+  animation: border-spin 4s linear infinite;
+}
+
+@keyframes border-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* ── Prose link underline animation ── */
+.prose a {
+  position: relative;
+  text-decoration: none !important;
+}
+
+.prose a:hover {
+  text-decoration: none !important;
+}
+
+.prose a::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgb(var(--accent));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.prose a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* Semantic Status Utilities */
@@ -138,8 +246,8 @@ a {
 }
 
 .experience-item:hover .timeline-dot {
-  background-color: rgba(var(--accent) / 0.5);
   border-color: rgb(var(--accent));
+  box-shadow: 0 0 12px rgb(var(--accent) / 0.3);
 }
 
 /* ============================================================
