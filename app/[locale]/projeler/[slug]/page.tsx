@@ -103,9 +103,40 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return { title: 'Proje Bulunamadı' };
+
+  const siteUrl = 'https://aliakpoyraz.com';
+  const pageUrl = `${siteUrl}/projeler/${slug}`;
+
   return {
     title: `${project.title} | Ali Akpoyraz`,
     description: project.description,
+    metadataBase: new URL(siteUrl),
+    alternates: {
+      canonical: `/projeler/${slug}`,
+    },
+    openGraph: {
+      title: `${project.title} | Ali Akpoyraz`,
+      description: project.description,
+      url: pageUrl,
+      siteName: 'Ali Akpoyraz',
+      locale: 'tr_TR',
+      type: 'article',
+      authors: ['Ali Akpoyraz'],
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.title,
+      description: project.description,
+      images: ['/og-image.png'],
+    },
   };
 }
 

@@ -100,6 +100,14 @@ a {
 .bg-accent { background-color: rgb(var(--accent)); }
 .border-accent { border-color: rgb(var(--accent)); }
 
+/* Card hover micro glow */
+.card-glow {
+  transition: box-shadow 0.5s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 40px rgb(var(--accent) / 0.05);
+}
+
 /* Semantic Status Utilities */
 .text-success { color: var(--success); }
 .bg-success-soft { background-color: color-mix(in srgb, var(--success) 10%, transparent); }

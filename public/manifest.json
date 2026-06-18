@@ -1,0 +1,19 @@
+{
+  "name": "Ali Akpoyraz | Yazılım Mühendisi",
+  "short_name": "Ali Akpoyraz",
+  "description": "Ben Ali Akpoyraz, yazılım mühendisliği öğrencisiyim. Projelerimi, blog yazılarını ve kişisel deneyimlerimi paylaşıyorum.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ],
+  "lang": "tr",
+  "dir": "ltr",
+  "scope": "/"
+}

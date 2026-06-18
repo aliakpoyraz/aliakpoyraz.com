@@ -42,6 +42,7 @@ export default function Volunteering() {
         >
             <div className="mb-10 text-center md:text-left">
                 <h2 className="text-2xl md:text-3xl font-extrabold text-fg tracking-tight transition-colors">
+                    <span className="font-mono text-sm text-rose-400/40 mr-3 align-middle">/ 03</span>
                     {t("title")}
                 </h2>
                 <div className="h-1 w-10 bg-rose-500 rounded-full mx-auto md:mx-0 mt-2 opacity-60"></div>
@@ -52,7 +53,7 @@ export default function Volunteering() {
                 {volunteers.map((item, index) => (
                     <div
                         key={index}
-                        className="group relative flex flex-col p-5 md:p-6 rounded-3xl bg-transparent border border-border-main hover:bg-surface/40 hover:border-rose-500/30 transition-all duration-500"
+                        className="group relative flex flex-col p-5 md:p-6 rounded-3xl bg-transparent border border-border-main hover:bg-surface/40 hover:border-rose-500/30 transition-all duration-500 card-glow"
                         style={{
                             opacity: isVisible ? 1 : 0,
                             transform: isVisible ? "translateY(0)" : "translateY(16px)",

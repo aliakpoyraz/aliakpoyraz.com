@@ -24,6 +24,7 @@ export default function Projects() {
         >
             <div className="mb-10 text-center md:text-left">
                 <h2 className="text-2xl md:text-3xl font-extrabold text-fg tracking-tight transition-colors">
+                    <span className="font-mono text-sm text-rose-400/40 mr-3 align-middle">/ 02</span>
                     {t("title")}
                 </h2>
                 <div className="h-1 w-10 bg-rose-500 rounded-full mx-auto md:mx-0 mt-2 opacity-60"></div>
@@ -35,7 +36,7 @@ export default function Projects() {
                     {publishedApps.map((app) => (
                         <div 
                             key={app.id} 
-                            className="group relative flex gap-6 md:gap-8 items-start p-5 sm:p-6 rounded-3xl bg-transparent border border-border-main hover:bg-surface/40 hover:border-rose-500/30 transition-all duration-500"
+                            className="group relative flex gap-6 md:gap-8 items-start p-5 sm:p-6 rounded-3xl bg-transparent border border-border-main hover:bg-surface/40 hover:border-rose-500/30 transition-all duration-500 card-glow"
                         >
                             {/* Logo */}
                             <div className="relative z-10 flex flex-col items-center mt-1">
@@ -107,7 +108,7 @@ export default function Projects() {
                     <Link
                         key={index}
                         href={`/projeler/${project.slug}`}
-                        className="group relative flex flex-col justify-between p-5 md:p-6 rounded-3xl bg-transparent border border-border-main hover:bg-surface/40 hover:border-rose-500/30 transition-all duration-500"
+                        className="group relative flex flex-col justify-between p-5 md:p-6 rounded-3xl bg-transparent border border-border-main hover:bg-surface/40 hover:border-rose-500/30 transition-all duration-500 card-glow"
                     >
                         {/* İçerik Üst Kısım */}
                         <div>

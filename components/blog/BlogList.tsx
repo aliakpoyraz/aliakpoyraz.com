@@ -12,6 +12,7 @@ interface Post {
     description: string;
     readingTime: string;
     content: string;
+    image?: string;
 }
 
 function useDebounce(value: string, delay: number): string {
@@ -50,6 +51,17 @@ export default function BlogList({ posts }: { posts: Post[] }) {
         >
             <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 transition-all duration-300">
                 
+                {/* Thumbnail */}
+                {post.image && (
+                    <div className="flex-shrink-0 w-full md:w-28 h-40 md:h-20 rounded-xl overflow-hidden border border-border-main group-hover:border-rose-500/30 transition-colors">
+                        <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </div>
+                )}
+
                 {/* Sol Taraf: Metin İçerik */}
                 <div className="flex-1">
                     <div className="flex items-start justify-between gap-4 mb-2">

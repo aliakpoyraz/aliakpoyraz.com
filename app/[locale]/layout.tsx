@@ -13,8 +13,12 @@ type Locale = (typeof routing.locales)[number];
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations("Site");
+
+  const canonicalUrl = locale === 'en' ? 'https://aliakpoyraz.com/en' : 'https://aliakpoyraz.com';
+  const ogLocale = locale === 'en' ? 'en_US' : 'tr_TR';
 
   return {
     metadataBase: new URL("https://aliakpoyraz.com"),
@@ -24,15 +28,16 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: "Ali Akpoyraz", url: "https://aliakpoyraz.com" }],
     creator: "Ali Akpoyraz",
     alternates: {
-      canonical: "/",
+      canonical: locale === 'en' ? '/en' : '/',
     },
+    manifest: '/manifest.json',
     icons: {
       icon: '/favicon.png',
     },
     openGraph: {
       type: "website",
-      locale: "tr_TR",
-      url: "https://aliakpoyraz.com",
+      locale: ogLocale,
+      url: canonicalUrl,
       title: t("title"),
       description: t("description"),
       siteName: "Ali Akpoyraz",

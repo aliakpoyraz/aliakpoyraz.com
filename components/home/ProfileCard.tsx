@@ -65,8 +65,9 @@ export default function ProfileCard() {
                             <p className="text-rose-400 text-sm md:text-xs font-bold tracking-[0.2em] uppercase animate-pulse">
                                 {t("greeting")}
                             </p>
-                            <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-fg transition-colors leading-[0.9]">
-                                Ali <span className="text-rose-500">AKPOYRAZ</span>
+                            <h1 className="text-6xl md:text-7xl tracking-tighter text-fg transition-colors leading-[0.9]">
+                                <span className="font-light">Ali</span>{" "}
+                                <span className="font-black">AKPOYRAZ</span>
                             </h1>
                             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
                                 <span className="text-muted text-sm md:text-base font-medium">
@@ -101,7 +102,7 @@ export default function ProfileCard() {
 
                 {/* Terminal: Sekmeli ve Animasyonlu İkon Grid */}
                 <div className="w-full max-w-xl mx-auto md:mx-0">
-                    <div className="bg-surface border border-border-main rounded-xl overflow-hidden shadow-2xl shadow-rose-500/5 transition-all duration-500 hover:border-rose-500/20">
+                    <div className="bg-surface border border-border-main rounded-xl overflow-hidden shadow-2xl shadow-rose-500/5 transition-all duration-500 hover:border-rose-500/20 card-glow">
 
                         {/* MacOS Style Header */}
                         <div className="bg-border-main/20 px-4 py-3 flex items-center gap-4 border-b border-border-main">

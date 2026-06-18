@@ -30,6 +30,7 @@ export interface PostListItem {
   description: string;
   readingTime: string;
   content: string;
+  image?: string;
 }
 
 export interface Heading {
@@ -158,6 +159,7 @@ export async function getBlogPosts(): Promise<PostListItem[]> {
         description: data.description || '',
         readingTime: calculateReadingTime(content),
         content,
+        image: data.image || undefined,
       };
     })
   );

@@ -1,6 +1,18 @@
 import Link from 'next/link';
 import { Frown } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: '404 | Ali Akpoyraz',
+        description: 'Sayfa bulunamadı.',
+        robots: {
+            index: false,
+            follow: false,
+        },
+    };
+}
 
 export default async function NotFound() {
     const t = await getTranslations("NotFound");

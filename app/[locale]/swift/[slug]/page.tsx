@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import { ArrowLeft, Calendar, ArrowLeft as ChevronLeft, ArrowRight as ChevronRight } from 'lucide-react';
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { getTranslations } from 'next-intl/server';
 
 type Props = {
@@ -21,9 +22,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         return { title: t("not_found_title") };
     }
 
+    const siteUrl = 'https://aliakpoyraz.com';
+    const pageUrl = `${siteUrl}/swift/${slug}`;
+
     return {
-        title: `${step.title} | ${step.step}. Adım`,
+        title: `${step.title} | Swift ${step.step}. Adım | Ali Akpoyraz`,
         description: step.description,
+        metadataBase: new URL(siteUrl),
+        alternates: {
+            canonical: `/swift/${slug}`,
+        },
+        openGraph: {
+            title: `${step.title} | Swift ${step.step}. Adım`,
+            description: step.description,
+            url: pageUrl,
+            siteName: 'Ali Akpoyraz',
+            locale: 'tr_TR',
+            type: 'article',
+            publishedTime: step.rawDate.toISOString(),
+            authors: ['Ali Akpoyraz'],
+            images: [
+                {
+                    url: '/og-image.png',
+                    width: 1200,
+                    height: 630,
+                    alt: step.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: step.title,
+            description: step.description,
+            images: ['/og-image.png'],
+        },
     };
 }
 
@@ -41,8 +73,33 @@ export default async function SwiftStepPage({ params }: Props) {
     const nextStep = allSteps[currentIndex + 1] || null;
     const prevStep = allSteps[currentIndex - 1] || null;
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'TechArticle',
+        headline: step.title,
+        description: step.description,
+        datePublished: step.rawDate.toISOString(),
+        author: {
+            '@type': 'Person',
+            name: 'Ali Akpoyraz',
+            url: 'https://aliakpoyraz.com',
+        },
+        educationalLevel: 'Beginner',
+        about: {
+            '@type': 'Thing',
+            name: 'Swift Programming',
+        },
+    };
+
     return (
         <article className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 mb-20">
+
+            <Script
+                id="swift-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <Link
                 href="/swift"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-rose-400 mb-10 bg-surface border border-border-main hover:border-rose-500/30 hover:bg-accent-10 transition-all duration-300 group"

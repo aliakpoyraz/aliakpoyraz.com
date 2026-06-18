@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/lib/mdx';
 import { getSwiftSteps } from '@/lib/swift';
-import { activeProjects, publishedApps } from '@/lib/projects';
+import { activeProjects } from '@/lib/projects';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const siteUrl = 'https://aliakpoyraz.com';
@@ -88,21 +88,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
     }));
 
-    // Yayındaki uygulamalar (harici web siteleri)
-    const appExternalPages: MetadataRoute.Sitemap = publishedApps
-        .filter((app) => app.stores.some((s) => s.type === 'web'))
-        .map((app) => ({
-            url: `${siteUrl}/#${app.id}`,
-            lastModified: now,
-            changeFrequency: 'monthly' as const,
-            priority: 0.5,
-        }));
-
     return [
         ...staticPages,
         ...blogPosts,
         ...swiftSteps,
         ...projectPages,
-        ...appExternalPages,
     ];
 }
