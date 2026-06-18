@@ -93,7 +93,7 @@ export default function Volunteering() {
                                 <h3 className="text-lg font-bold text-fg/90 group-hover:text-rose-400 transition-colors">
                                     {item.role}
                                 </h3>
-                                <span className="flex items-center text-[10px] md:text-xs font-semibold px-3 py-1 rounded-full border border-border-main text-muted whitespace-nowrap bg-surface group-hover:text-fg/80 transition-colors">
+                                <span className="flex items-center text-[10px] md:text-xs font-semibold px-3 py-1 rounded-full border border-border-main text-muted whitespace-nowrap bg-surface group-hover:text-fg/80 transition-colors self-start">
                                     {item.date}
                                 </span>
                             </div>
