@@ -2,59 +2,87 @@
 title: "Yol Haritası ve Başlangıç"
 date: "05-05-2026"
 step: 0
-description: "Swift ve iOS geliştirmeye başlarken kendime belirlediğim 5 aşamalı plan ve yol haritası."
+description: "Swift ve iOS geliştirmeye sıfırdan başlamak için ortam kurulumu ve 5 aşamalı öğrenme planı."
 ---
 
-# Yolculuk Başlıyor: 5 Aşamalı Plan
+# Yolculuk Başlıyor: Swift ile İlk Adımlar
 
-Uzun zamandır aklımda olan iOS geliştirme serüvenine resmi olarak başlıyorum. Amacım modern, performanslı ve harika görünen native uygulamalar geliştirebilmek. Bu süreci sistematik ve güçlü bir temelle ilerletmek için kendime **5 aşamalı bir yol haritası** belirledim.
+Swift, Apple'ın 2014 yılında duyurduğu modern ve güçlü bir programlama dili. iPhone, iPad, Mac, Apple Watch ve Apple TV uygulamaları geliştirmek için kullanılıyor. Eğer daha önce herhangi bir programlama diliyle çalıştıysan, Swift'in sözdizimini oldukça temiz ve okunabilir bulacaksın. İlk kez kod yazıyorsan da merak etme — Swift bu iş için iyi bir başlangıç noktası.
+
+Bu süreci sistematik ve güçlü bir temelle ilerletmek için kendime **5 aşamalı bir yol haritası** belirledim.
+
+---
+
+## Başlamadan Önce: Ortamı Kurmak
+
+Kod yazmaya başlamadan önce birkaç şeyin hazır olması gerekiyor.
+
+**Xcode'u Yükle**
+
+Xcode, Apple'ın resmi geliştirme ortamı (IDE). Swift kodu yazmak, test etmek ve uygulamaları simülatörde çalıştırmak için kullanıyoruz. Mac App Store'dan ücretsiz indirebilirsin. Boyutu büyük (~15 GB), bu yüzden yükleme biraz zaman alabilir.
+
+**Alternatif: Swift Playgrounds**
+
+Henüz bir uygulama geliştirmeye başlamadan önce Swift dilini keşfetmek istiyorsan, iPad veya Mac için **Swift Playgrounds** uygulaması mükemmel bir başlangıç noktası. Xcode'a kıyasla çok daha hafif ve öğrenmeye odaklı.
+
+---
 
 ## 1. Aşama: Temel Swift Programlama (Dilin Mantığı)
-SwiftUI ile arayüz tasarlamaya başlamadan önce, motorun nasıl çalıştığını anlamak çok önemli. Swift, "Type Safe" (Tip Güvenli) ve modern bir dil. İlk aşamadaki odak noktalarım:
 
-*   **Temel Kavramlar:** Değişkenler (`let`, `var`), veri tipleri (`String`, `Int`, `Double`, `Bool`).
-*   **Kontrol Akışları:** `if-else`, `switch-case`, `for` ve `while` döngüleri.
-*   **Koleksiyonlar:** Arrays, Dictionaries ve Sets.
-*   **Fonksiyonlar:** Parametre kullanımı, geri dönüş değerleri.
-*   **Optionals:** Swift'in en önemli özelliği olan `nil` güvenliği (`if let`, `guard let`).
+SwiftUI ile arayüz tasarlamaya başlamadan önce, motorun nasıl çalıştığını anlamak çok önemli. Tıpkı bir ev inşa etmeden önce temel atmak gibi — bu aşamayı atlarsan ilerleyen konular havada kalıyor.
+
+Swift, **"Type Safe"** (Tip Güvenli) bir dil. Bu, değişkenlerin türlerini önceden belirttiğin ve yanlış bir türle işlem yapmaya çalıştığında dilin seni önceden uyardığı anlamına geliyor. Başlangıçta biraz katı gelebilir ama zamanla bunun seni koruma altına aldığını görüyorsun.
+
+*   **Temel Kavramlar:** `let` (sabit) ve `var` (değişken) ile değer tanımlama; `String`, `Int`, `Double`, `Bool` gibi temel veri tipleri.
+*   **Kontrol Akışları:** Koşullu işlemler için `if-else` ve `switch-case`; tekrarlayan işlemler için `for` ve `while` döngüleri.
+*   **Koleksiyonlar:** Sıralı liste olan `Array`, anahtar-değer çifti tutan `Dictionary` ve benzersiz eleman saklayan `Set`.
+*   **Fonksiyonlar:** Tekrar kullanılabilen kod blokları; parametre alma ve değer döndürme.
+*   **Optionals:** Swift'in en dikkat çekici özelliği — bir değişkenin "boş olma ihtimalini" (`nil`) dile güvenli bir şekilde ifade etmek. `if let` ve `guard let` bu durumları kontrol etmenin temel yolları.
 
 ---
 
 ## 2. Aşama: Nesne Yönelimli ve Fonksiyonel Programlama
-Uygulamanın mimarisini temiz bir şekilde kurabilmek için bu yapıları adımı bilir gibi bilmem gerekiyor.
 
-*   **Structs vs. Classes:** SwiftUI'da neden çoğunlukla `struct` kullanıldığını kavramak.
-*   **Properties:** Computed properties, `didSet` ve `willSet` gözlemcileri.
-*   **Protocols & Extensions:** Swift'in asıl gücünü aldığı "Protocol Oriented Programming" mantığını oturtmak.
-*   **Closures:** Fonksiyon bloklarını birer değişken gibi taşımak ve kullanmak.
+Uygulamanın mimarisini temiz bir şekilde kurabilmek için bu yapıları iyi bilmek gerekiyor. Bu aşama biraz soyut gelebilir ama pratik yapıldıkça yerine oturuyor.
+
+*   **Structs vs. Classes:** İkisi de veri gruplamanın yolları, ama davranışları farklı. SwiftUI'da çoğunlukla `struct` kullanılır çünkü kopyalama (value type) mantığıyla çalışır ve SwiftUI'ın reaktif yapısına daha uygun.
+*   **Properties:** Bir değerden başka bir değer hesaplayan "computed properties"; değer değiştiğinde otomatik tetiklenen `didSet` ve `willSet` gözlemcileri.
+*   **Protocols & Extensions:** Swift'in asıl gücü burada — "Protocol Oriented Programming" mantığı, kodun farklı parçalarını birbirine bağlamanın esnek bir yolunu sunuyor.
+*   **Closures:** Fonksiyon bloklarını birer değişken gibi saklama ve taşıma. Özellikle async işlemler ve SwiftUI'daki aksiyonlarda sıkça karşına çıkıyor.
 
 ---
 
 ## 3. Aşama: SwiftUI Temelleri (Arayüz İnşası)
-Bu aşamada artık yazdığım kodların ekranda nasıl göründüğüne, yani görsel inşaya geçiyorum.
 
-*   **Temel View Bileşenleri:** `Text`, `Image`, `Button`, `TextField`.
-*   **Layout Sistemleri:** Sayfa dizilimini sağlayan `HStack`, `VStack`, `ZStack` ve `Spacer`.
-*   **Listeler:** `List` ve `LazyVStack` ile verimli veri listeleme algoritmaları.
-*   **Modifiers:** Görünümü özelleştirmek için kullanılan `.padding()`, `.background()`, `.font()` gibi zincirleme yapılar.
+Bu aşamada yazdığın kodların ekranda nasıl göründüğünü görmeye başlıyorsun. SwiftUI, arayüzleri **bildirici (declarative)** bir yaklaşımla yazmanı sağlıyor — "şu veri şuysa, ekran böyle görünsün" diyorsun ve gerisini SwiftUI hallediyor.
+
+*   **Temel View Bileşenleri:** Metin için `Text`, görsel için `Image`, tıklanabilir alan için `Button`, metin girişi için `TextField`.
+*   **Layout Sistemleri:** Yatay dizilim için `HStack`, dikey dizilim için `VStack`, üst üste bindirme için `ZStack`; boşluk kontrolü için `Spacer`.
+*   **Listeler:** `List` ve `LazyVStack` ile veri koleksiyonlarını verimli şekilde ekranda gösterme.
+*   **Modifiers:** Görünümü özelleştiren `.padding()`, `.background()`, `.font()`, `.cornerRadius()` gibi zincirleme yapılar — bu "zincir" mantığını kavramak SwiftUI'ı anlamanın anahtarı.
 
 ---
 
 ## 4. Aşama: State Management (Veri Yönetimi)
-Burası SwiftUI'ın en kritik kısmı ve kalbidir. Ekrandaki bir veri değiştiğinde arayüzün buna nasıl tepki verip güncelleneceğini yöneteceğim.
 
-*   **@State ve @Binding:** Basit, görünüm içi (lokal) veri yönetimi.
-*   **@StateObject ve @ObservedObject:** Daha karmaşık veri modelleri ve sınıflar için kullanılan yöntemler.
-*   **@EnvironmentObject:** Uygulama genelinde (global) paylaşılan verilerin pratik bir şekilde yönetimi.
+SwiftUI'ın kalbi burası. Ekrandaki bir veri değiştiğinde arayüzün otomatik olarak güncellendiği reaktif sistemi anlamak, gerçek uygulamalar geliştirmenin önkoşulu.
+
+*   **@State:** Bir view içinde tutulan basit, lokal veriler için. Örneğin bir butonun kaç kez tıklandığını saymak.
+*   **@Binding:** Bir verinin alt bileşenle paylaşılması — üst bileşen sahibi, alt bileşen kullanıcısı.
+*   **@StateObject ve @ObservedObject:** Daha karmaşık veri modelleri için, özellikle birden fazla view'in aynı veriyi kullandığı durumlarda.
+*   **@EnvironmentObject:** Uygulama genelinde erişilmesi gereken global veriler için — her view'e tek tek geçirmek zorunda kalmadan.
 
 ---
 
 ## 5. Aşama: Mimari ve İleri Seviye Konular
-Profesyonel uygulamalar geliştirmek için sadece kod yazmak yetmez; kodu organize etmek ve dış dünyayla bağlantılı hale getirmek gerekir.
 
-*   **MVVM Mimarisi:** Model-View-ViewModel yapısını SwiftUI ile sorunsuz bir şekilde birleştirmek.
-*   **Networking:** `URLSession` ile REST API'lardan veri çekme ve JSON verisini işleme (`Codable`).
-*   **Swift Concurrency:** Modern `async`/`await` yapısı ile arayüzü dondurmadan arka planda işlem yapma.
-*   **Navigation:** Yeni `NavigationStack` ile ekranlar arası modern ve verimli geçişler kurgulama.
+Profesyonel uygulamalar geliştirmek için sadece çalışan kod yazmak yetmez; kodu organize etmek, dış dünyayla (API, veritabanı) bağlantı kurmak ve yönetilebilir bir yapı oluşturmak gerekir.
 
-Bu planı adım adım takip ederek ilerleyecek ve edindiğim tecrübeleri, karşılaştığım sorunları bu serüven günlüğünde (burada) paylaşmaya devam edeceğim!
+*   **MVVM Mimarisi:** Model-View-ViewModel. Veriyi, arayüzü ve bu ikisi arasındaki mantığı birbirinden ayırmanın SwiftUI'a en uygun yolu.
+*   **Networking:** `URLSession` ile REST API'lardan veri çekme ve JSON verisini Swift nesnelerine dönüştürme (`Codable` protokolü).
+*   **Swift Concurrency:** `async`/`await` ile arayüzü dondurmadan arka planda işlem yapma — modern ve okunması kolay eşzamansız programlama.
+*   **Navigation:** `NavigationStack` ile ekranlar arası geçişleri yönetme; deep link ve programatik navigasyon.
+
+---
+
+Bu planı adım adım takip ederek ilerleyecek ve edindiğim tecrübeleri, karşılaştığım sorunları bu serüven günlüğünde paylaşmaya devam edeceğim.

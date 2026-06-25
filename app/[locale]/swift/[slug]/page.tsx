@@ -8,6 +8,8 @@ import { ArrowLeft, Calendar, ArrowLeft as ChevronLeft, ArrowRight as ChevronRig
 import { Metadata } from 'next';
 import Script from 'next/script';
 import PreBlock from '@/components/blog/PreBlock';
+import Callout from '@/components/blog/Callout';
+import ProsCons from '@/components/blog/ProsCons';
 import { getTranslations } from 'next-intl/server';
 
 type Props = {
@@ -144,7 +146,7 @@ export default async function SwiftStepPage({ params }: Props) {
             ">
                 <MDXRemote
                     source={step.content}
-                    components={{ pre: PreBlock }}
+                    components={{ pre: PreBlock, Callout, ProsCons }}
                     options={{
                         mdxOptions: {
                             remarkPlugins: [remarkGfm],

@@ -1,0 +1,506 @@
+---
+title: "Temel Swift: Dilin Yapı Taşları"
+date: "10-06-2026"
+step: 1
+description: "Değişkenler, veri tipleri, kontrol akışları, koleksiyonlar, fonksiyonlar ve Swift'in en kritik özelliği olan Optionals — hepsini örneklerle."
+---
+
+SwiftUI'a geçmeden önce en az birkaç hafta sadece Swift dilinin kendisiyle zaman geçirmek gerektiğini çeşitli kaynaklarda okumuştum. Başta bu beni biraz yavaşlatacak gibi hissettirse de, ilerledikçe bunun ne kadar doğru bir tavsiye olduğunu anladım. Bu yazı, 1. aşamada öğrendiklerimin bir özeti — hem kendim için bir referans, hem de aynı yolda olan biri için belki faydalı bir kaynak.
+
+Tüm örnekleri Xcode'daki bir **Playground** dosyasında denedim. Yeni bir şey öğrenirken anında sonuç görmek motivasyonu ciddi artırıyor.
+
+---
+
+## 1. Değişkenler ve Sabitler: `let` ve `var`
+
+Swift'te bir değer tanımlamanın iki yolu var. Bu ayrım diğer dillerde de var ama Swift bunu çok daha ön plana çıkarıyor.
+
+```swift
+// let: Sabit. Bir kez atandı mı, değiştirilemez.
+let myName = "Ali"
+let pi = 3.14159
+
+// var: Değişken. Sonradan güncellenebilir.
+var score = 0
+score = 100
+score += 50
+```
+
+Temel kural: **Eğer değer değişmeyecekse `let` kullan.** Bu sadece bir alışkanlık değil — derleyici de bunu zorluyor. `let` ile tanımlanmış bir değeri değiştirmeye çalışırsan Xcode anında hata veriyor.
+
+```swift
+let city = "İstanbul"
+city = "Ankara" // HATA: Cannot assign to value: 'city' is a 'let' constant
+```
+
+<Callout type="info" title="Neden bu kadar önemli?">
+`let` kullanmak kodunu daha tahmin edilebilir yapıyor. Bir değerin beklenmedik bir yerde değişip değişmediğini takip etmek zorunda kalmıyorsun. SwiftUI'da bunu çok daha fazla hissedeceksin — framework'ün reaktif yapısı büyük ölçüde değişmeyen (immutable) veri üzerine kurulu.
+</Callout>
+
+---
+
+## 2. Veri Tipleri
+
+Swift **tip güvenli** (type-safe) bir dil. Her değişkenin bir tipi var ve o tipten farklı bir şey atayamazsın. Neyse ki Swift çoğu zaman tipi **otomatik çıkarıyor** (type inference) — her yere tip yazmak zorunda değilsin.
+
+```swift
+// Swift tipi kendisi çıkarıyor
+let message = "Merhaba, Swift!"   // String
+let age = 25                       // Int
+let price = 29.99                  // Double
+let isLoggedIn = true              // Bool
+
+// Açıkça belirtmek de mümkün
+let username: String = "aliakpoyraz"
+let followerCount: Int = 1_204     // Alt çizgi okunabilirlik için kullanılabilir
+```
+
+### String İşlemleri
+
+String'ler Swift'te oldukça güçlü. En sık kullandığım özellik **string interpolation** — değişkenleri doğrudan metin içine gömmek.
+
+```swift
+let name = "Ali"
+let language = "Swift"
+let weekNumber = 3
+
+// String interpolation: \() içine herhangi bir ifade yazabilirsin
+let message = "Ben \(name) ve \(language) öğreniyorum. \(weekNumber). haftadayım."
+// "Ben Ali ve Swift öğreniyorum. 3. haftadayım."
+
+// Temel String metodları
+let title = "  swift öğreniyorum  "
+print(title.uppercased())     // "  SWIFT ÖĞRENIYORUM  "
+print(title.trimmingCharacters(in: .whitespaces)) // "swift öğreniyorum"
+print(title.contains("swift")) // true
+print(title.count)              // 21 (boşluklar dahil)
+```
+
+### Int ve Double Arasındaki Sert Sınır
+
+Bu beni ilk başta şaşırttı. Diğer dillerde sayı tiplerini kolayca karıştırabiliyorsun ama Swift'te `Int` ile `Double`'ı doğrudan işleme sokamazsın.
+
+```swift
+let a: Int = 10
+let b: Double = 3.5
+
+// let sonuc = a + b  // HATA! Int ve Double toplanamaz
+
+// Açık dönüşüm gerekli
+let sonuc = Double(a) + b  // 13.5
+let tamSayi = Int(b)       // 3 (ondalık kısım atılır, yuvarlanmaz)
+```
+
+<Callout type="warning" title="Int(Double) kesiyor, yuvarlaMIyor">
+`Int(3.9)` sonucu `4` değil, `3`'tür. Swift ondalık kısmı atar. Yuvarlamak istiyorsan `Int(b.rounded())` kullanman gerekiyor.
+</Callout>
+
+---
+
+## 3. Kontrol Akışları
+
+### if-else
+
+Swift'in `if-else` yapısı tanıdık, ama parantez zorunlu değil — bu küçük detay kodu daha temiz hissettiriyor.
+
+```swift
+let temperature = 28
+
+if temperature > 30 {
+    print("Çok sıcak!")
+} else if temperature > 20 {
+    print("Güzel bir hava.")
+} else {
+    print("Biraz serin.")
+}
+// "Güzel bir hava."
+```
+
+### switch-case
+
+Swift'in `switch`'i diğer dillerden çok daha güçlü. `break` yazmak zorunlu değil (her case otomatik çıkıyor), aralıkları doğrudan kullanabiliyorsun ve `default` her zaman zorunlu.
+
+```swift
+let score = 85
+
+switch score {
+case 90...100:
+    print("A — Harika!")
+case 80..<90:
+    print("B — İyi iş.")
+case 70..<80:
+    print("C — Geçer.")
+case 0..<70:
+    print("Tekrar dene.")
+default:
+    print("Geçersiz puan.")
+}
+// "B — İyi iş."
+```
+
+Birden fazla değer aynı case'de ele alınabiliyor:
+
+```swift
+let day = "Cumartesi"
+
+switch day {
+case "Cumartesi", "Pazar":
+    print("Hafta sonu!")
+case "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma":
+    print("İş günü.")
+default:
+    print("Geçersiz gün.")
+}
+```
+
+### for-in Döngüsü
+
+```swift
+// Aralık üzerinde döngü
+for i in 1...5 {
+    print("Adım \(i)")
+}
+// Adım 1, Adım 2, ... Adım 5
+
+// Sayıyı kullanmıyorsan _ ile görmezden gel
+for _ in 1...3 {
+    print("Tekrar!")
+}
+
+// Stride ile adım atlama
+for i in stride(from: 0, to: 10, by: 2) {
+    print(i)  // 0, 2, 4, 6, 8
+}
+```
+
+### while Döngüsü
+
+```swift
+var countdown = 5
+
+while countdown > 0 {
+    print("\(countdown)...")
+    countdown -= 1
+}
+print("Kalkış!")
+// 5... 4... 3... 2... 1... Kalkış!
+```
+
+---
+
+## 4. Koleksiyonlar
+
+### Array
+
+Sıralı, aynı tipte elemanların listesi.
+
+```swift
+// Tanımlama
+var fruits = ["elma", "muz", "kiraz"]
+var emptyArray: [Int] = []
+
+// Temel işlemler
+fruits.append("üzüm")           // Sona ekle
+fruits.insert("armut", at: 1)   // Belirtilen indekse ekle
+fruits.remove(at: 0)             // İndekse göre sil
+fruits.removeLast()              // Sonuncuyu sil
+
+print(fruits.count)              // Eleman sayısı
+print(fruits.isEmpty)            // Boş mu?
+print(fruits.contains("muz"))    // İçeriyor mu?
+print(fruits.sorted())           // Sıralanmış kopyası
+
+// Döngüyle gezmek
+for fruit in fruits {
+    print(fruit)
+}
+
+// Index ile birlikte gezmek
+for (index, fruit) in fruits.enumerated() {
+    print("\(index + 1). \(fruit)")
+}
+```
+
+### Dictionary
+
+Anahtar-değer çiftleri. Anahtarlar benzersiz olmak zorunda.
+
+```swift
+// Tanımlama
+var scores: [String: Int] = [
+    "Ali": 95,
+    "Mehmet": 78,
+    "Ayşe": 88
+]
+
+// Erişim — Optional döner çünkü anahtar olmayabilir
+let aliScore = scores["Ali"]        // Optional(95)
+let unknownScore = scores["Zeynep"] // nil
+
+// Güvenli erişim için varsayılan değer
+let safeScore = scores["Zeynep", default: 0]  // 0
+
+// Ekleme ve güncelleme
+scores["Zeynep"] = 91
+scores["Ali"] = 97  // Güncelleme
+
+// Silme
+scores.removeValue(forKey: "Mehmet")
+
+// Gezme
+for (name, score) in scores {
+    print("\(name): \(score)")
+}
+```
+
+### Set
+
+Benzersiz elemanlar, sırasız. Özellikle "bu eleman var mı?" kontrolünde Array'den çok daha hızlı.
+
+```swift
+var tags: Set<String> = ["swift", "ios", "mobile"]
+
+tags.insert("xcode")
+tags.insert("swift")  // Zaten var, eklenmez
+
+print(tags.count)  // 4 (tekrar eklenmedi)
+print(tags.contains("ios"))  // true
+
+// Küme işlemleri
+let setA: Set = [1, 2, 3, 4]
+let setB: Set = [3, 4, 5, 6]
+
+print(setA.union(setB))        // {1, 2, 3, 4, 5, 6}
+print(setA.intersection(setB)) // {3, 4}
+print(setA.subtracting(setB))  // {1, 2}
+```
+
+<ProsCons
+  pros={[
+    "Array: Sıra önemli olduğunda ve aynı eleman birden fazla kez olabildiğinde kullan.",
+    "Dictionary: Bir anahtarla hızlıca değer bulmak gerektiğinde kullan.",
+    "Set: Tekrar istemediğinde veya iki koleksiyon arasında küme işlemleri yapacağında kullan."
+  ]}
+  cons={[
+    "Array: Büyük dizilerde 'contains' yavaş — her elemanı tek tek kontrol eder.",
+    "Dictionary: Sıra garantisi yok, yani eklenme sırasına göre gezilmez.",
+    "Set: Elemanlara indeksle erişemezsin, sıra önemli değil."
+  ]}
+/>
+
+---
+
+## 5. Fonksiyonlar
+
+```swift
+// Temel fonksiyon
+func greet(name: String) -> String {
+    return "Merhaba, \(name)!"
+}
+
+let message = greet(name: "Ali")
+print(message) // "Merhaba, Ali!"
+```
+
+### Parametre Etiketleri
+
+Swift'in fonksiyonlarında iki tür isim var: **dış etiket** (çağırırken kullanılan) ve **iç isim** (fonksiyon içinde kullanılan). Bu başta garip gelebilir ama kodun okunmasını çok doğallaştırıyor.
+
+```swift
+// İlk parametre: dışarıda "for", içeride "player"
+func calculateBonus(for player: String, multiplier: Double) -> Double {
+    print("Hesaplanıyor: \(player)")  // iç isim
+    return 100.0 * multiplier
+}
+
+// Çağırırken İngilizce bir cümle gibi okunuyor
+let bonus = calculateBonus(for: "Ali", multiplier: 1.5)
+
+// Dış etiketi tamamen kaldırmak için _ kullan
+func add(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+let result = add(3, 5)  // add(3, 5) — daha temiz
+```
+
+### Varsayılan Parametre Değerleri ve Birden Fazla Dönüş
+
+```swift
+// Varsayılan değer
+func sendMessage(_ text: String, urgency: String = "normal") {
+    print("[\(urgency.uppercased())] \(text)")
+}
+
+sendMessage("Toplantı var.")              // [NORMAL] Toplantı var.
+sendMessage("Sunucu çöktü!", urgency: "kritik") // [KRİTİK] Sunucu çöktü!
+
+// Tuple ile birden fazla değer döndürme
+func minMax(in array: [Int]) -> (min: Int, max: Int) {
+    return (array.min()!, array.max()!)
+}
+
+let result = minMax(in: [3, 1, 8, 2, 7])
+print("Min: \(result.min), Max: \(result.max)")  // Min: 1, Max: 8
+```
+
+---
+
+## 6. Optionals — Swift'in Süper Gücü
+
+Bu kısım en önemli bölüm. Swift'i ilk kez gören herkes `?` ve `!` işaretleriyle kafası karışıyor. Ama anladıktan sonra "bunu her dil neden yapmıyor?" diye soruyorsun.
+
+### Problem: nil Değerleri
+
+Birçok dilde bir değişken hiçbir değer tutmayabilir (`null`, `nil`, `None` gibi). Bu sessiz bir tehlike çünkü null değerini farkında olmadan kullanmak programı çöküştürür — ve bu hatayı derleme zamanında değil, çalışma zamanında görürsün.
+
+Swift'in çözümü: **Bir değişkenin `nil` olabileceğini tip sisteminin parçası haline getir.** Böylece derleyici seni önceden uyarıyor.
+
+```swift
+// Normal tip: nil olamaz, mutlaka bir değer içermeli
+var name: String = "Ali"
+
+// Optional tip: nil olabilir, ? ile belirtiliyor
+var nickname: String? = "ak"
+var middleName: String? = nil  // Tamamen geçerli
+```
+
+### Optional Unwrapping
+
+Optional bir değeri kullanmadan önce içinde gerçekten bir şey olup olmadığını kontrol etmek gerekiyor. Buna **unwrapping** deniyor.
+
+**Yöntem 1: `if let` — Güvenli Açma**
+
+```swift
+var email: String? = "ali@example.com"
+
+if let unwrappedEmail = email {
+    // Bu blok sadece email nil değilse çalışır
+    print("E-posta: \(unwrappedEmail)")
+} else {
+    print("E-posta girilmemiş.")
+}
+// "E-posta: ali@example.com"
+
+// Swift 5.7+ kısaltma: aynı ismi tekrar yazmak zorunda değilsin
+if let email {
+    print("E-posta: \(email)")
+}
+```
+
+**Yöntem 2: `guard let` — Erken Çıkış**
+
+`guard let`, koşul sağlanmazsa fonksiyondan erken çıkar. Fonksiyonun geri kalanında nil kontrolü yapmak zorunda kalmıyorsun — değer garantili şekilde var.
+
+```swift
+func showProfile(for username: String?) {
+    guard let username = username else {
+        print("Kullanıcı adı gerekli.")
+        return  // Fonksiyondan çık
+    }
+    
+    // Buraya geldiysek username kesinlikle nil değil
+    print("Profil yükleniyor: \(username)")
+    print("Uzunluk: \(username.count)")
+}
+
+showProfile(for: "aliakpoyraz")  // Profil yükleniyor: aliakpoyraz
+showProfile(for: nil)             // Kullanıcı adı gerekli.
+```
+
+**Yöntem 3: Nil Birleştirme Operatörü `??`**
+
+"Eğer nil ise şunu kullan" mantığı için tek satır çözüm.
+
+```swift
+var savedTheme: String? = nil
+let activeTheme = savedTheme ?? "dark"  // "dark"
+
+var userScore: Int? = 42
+let displayScore = userScore ?? 0       // 42
+```
+
+**Kaçınılması Gereken: Force Unwrap `!`**
+
+```swift
+var value: String? = "merhaba"
+print(value!)  // Çalışır, ama...
+
+var nothing: String? = nil
+print(nothing!)  // CRASH! Fatal error: unexpectedly found nil while unwrapping
+```
+
+<Callout type="danger" title="! kullanmaktan kaçın">
+Force unwrap (`!`) değerin kesinlikle nil olmadığından emin olduğun nadirde bir durumda kullanılabilir. Ama çoğu durumda `if let` veya `guard let` kullanmak çok daha güvenli. Özellikle öğrenme sürecinde `!` görürsen dur ve "burada `if let` kullansam olmaz mı?" diye sor.
+</Callout>
+
+### Optional Chaining
+
+Bir optional üzerinde bir özelliğe veya metoda erişmeye çalışırken tüm zinciri güvenle gezebilirsin.
+
+```swift
+struct Address {
+    var city: String
+}
+
+struct User {
+    var name: String
+    var address: Address?
+}
+
+let user = User(name: "Ali", address: Address(city: "İstanbul"))
+let userWithNoAddress = User(name: "Mehmet", address: nil)
+
+// ? ile güvenle zinciri gez — nil ise tüm ifade nil döner
+print(user.address?.city)              // Optional("İstanbul")
+print(userWithNoAddress.address?.city) // nil — crash yok!
+
+// ?? ile varsayılan değer
+let city = user.address?.city ?? "Bilinmiyor"
+print(city)  // "İstanbul"
+```
+
+---
+
+## Birleşik Bir Örnek
+
+Öğrendiklerimi birleştiren küçük bir senaryo:
+
+```swift
+// Bir kullanıcı puanını formatlı şekilde döndüren fonksiyon
+func formatScore(name: String?, points: Int, maxPoints: Int = 100) -> String {
+    guard let name = name else {
+        return "İsimsiz kullanıcı"
+    }
+    
+    let percentage = Double(points) / Double(maxPoints) * 100
+    
+    let grade: String
+    switch percentage {
+    case 90...100: grade = "A"
+    case 80..<90:  grade = "B"
+    case 70..<80:  grade = "C"
+    default:       grade = "F"
+    }
+    
+    return "\(name) — \(points)/\(maxPoints) (\(grade))"
+}
+
+var players = ["Ali", "Mehmet", nil, "Ayşe"]
+var scores = [87, 92, 45, 78]
+
+for (index, player) in players.enumerated() {
+    let result = formatScore(name: player, points: scores[index])
+    print(result)
+}
+
+// Ali — 87/100 (B)
+// Mehmet — 92/100 (A)
+// İsimsiz kullanıcı
+// Ayşe — 78/100 (C)
+```
+
+---
+
+Bu aşamanın en çok kafamı kurcalayan kısmı Optionals oldu — özellikle `if let` ile `guard let` arasındaki farkı oturtmak zaman aldı. Ama şunu fark ettim: hangi yöntemi kullanacağına karar vermek aslında oldukça basit. Eğer değer yoksa fonksiyon devam etmemeliyse `guard let`, devam edebiliyorsa `if let`.
+
+Bir sonraki adım Structs, Classes, Protocols ve Closures — Swift'in gerçek gücünün görünmeye başladığı yer.

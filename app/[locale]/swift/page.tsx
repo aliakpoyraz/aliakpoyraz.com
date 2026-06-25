@@ -2,7 +2,7 @@ import { getSwiftSteps } from '@/lib/swift';
 import { Link } from '@/routing';
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
-import { Calendar, ArrowUpRight } from 'lucide-react';
+import { Calendar, ArrowUpRight, Target } from 'lucide-react';
 
 export async function generateMetadata(): Promise<Metadata> {
     const t = await getTranslations("SwiftPage");
@@ -19,104 +19,101 @@ export default async function SwiftJourneyPage() {
     const progressPercent = 1;
 
     return (
-        <main className="w-full max-w-2xl mx-auto mt-12 md:mt-24 px-4 pb-24 transition-all duration-700 ease-out opacity-100 translate-y-0">
+        <main className="w-full max-w-2xl mx-auto mt-8 md:mt-16 px-4 pb-24">
 
-            {/* Başlık Alanı */}
-            <div className="mb-10 text-center md:text-left">
-                <h1 className="text-3xl sm:text-5xl font-extrabold text-fg tracking-tight transition-colors mb-2">
-                    {t("title")}
-                </h1>
-                <div className="h-1 w-10 bg-rose-500 rounded-full mx-auto md:mx-0 mt-3 opacity-60 mb-6"></div>
-                <p className="text-base md:text-lg text-muted text-balance leading-relaxed">
+            {/* Başlık */}
+            <div className="flex items-center gap-4 mb-12 pb-6 border-b border-border-main">
+                <div>
+                    <h1 className="text-3xl sm:text-4xl font-bold text-fg tracking-tight transition-colors">
+                        {t("title")}
+                    </h1>
+                </div>
+            </div>
+
+            {/* Meta Bilgiler */}
+            <div className="flex flex-col gap-6 mb-12">
+                <p className="text-base text-fg/70 leading-relaxed">
                     {t("description")}
                 </p>
-            </div>
 
-            {/* İstatistik / İlerleme Kartı */}
-            <div className="bg-surface border border-border-main rounded-2xl p-6 shadow-sm mb-16 hover:border-accent-30 transition-colors">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <h3 className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-muted mb-2">
-                            {t("goal_label")}
-                        </h3>
-                        <p className="text-fg/90 text-sm md:text-base font-medium">
-                            {t("goal_text")}
-                        </p>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-muted">
+                    <div className="flex items-center gap-1.5">
+                        <Target size={14} className="text-rose-400" />
+                        <span>{t("goal_text")}</span>
                     </div>
-                    <div className="flex flex-col md:items-end justify-center space-y-3">
-                        <div className="flex items-center space-x-2">
-                            <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-muted">
-                                {t("start_label")}
-                            </span>
-                            <span className="text-fg/90 font-medium text-sm">{t("start_date")}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-muted">
-                                {t("end_label")}
-                            </span>
-                            <span className="text-rose-400 font-medium bg-accent-10 px-2 py-0.5 rounded-md text-sm border border-accent-20">
-                                {t("end_date")}
-                            </span>
-                        </div>
+                    <div className="flex items-center gap-1.5">
+                        <span className="text-muted/50 text-xs uppercase tracking-wider">{t("start_label")}</span>
+                        <span className="text-fg/80">{t("start_date")}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                        <span className="text-muted/50 text-xs uppercase tracking-wider">{t("end_label")}</span>
+                        <span className="text-rose-400 font-semibold">{t("end_date")}</span>
                     </div>
                 </div>
 
+                {/* İlerleme Çubuğu */}
                 <div>
-                    <div className="flex justify-between items-end mb-3">
-                        <h3 className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-muted">
+                    <div className="flex justify-between items-center mb-2">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-muted">
                             {t("progress_label")}
-                        </h3>
-                        <span className="text-sm font-bold text-rose-400">
-                            %{progressPercent}
                         </span>
+                        <span className="text-xs font-bold text-rose-400">%{progressPercent}</span>
                     </div>
-                    <div className="w-full bg-border-main rounded-full h-2.5 overflow-hidden border border-border-main">
+                    <div className="w-full bg-border-main rounded-full h-1.5 overflow-hidden">
                         <div
-                            className="bg-rose-500 h-2.5 rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(251,113,133,0.3)]"
+                            className="bg-rose-500 h-1.5 rounded-full transition-all duration-1000 ease-out"
                             style={{ width: `${progressPercent}%` }}
-                        ></div>
+                        />
                     </div>
                 </div>
             </div>
 
-            {/* Zaman Çizelgesi (Timeline) */}
-            <div className="relative flex flex-col gap-12">
-                {/* Sürekli Dikey Çizgi */}
-                <div className="absolute left-[7px] top-6 bottom-8 w-px bg-border-main z-0 hidden sm:block"></div>
-
+            {/* Adımlar */}
+            <div className="flex flex-col">
                 {steps.map((step) => (
                     <Link
                         key={step.slug}
                         href={`/swift/${step.slug}`}
-                        className="group relative flex gap-6 md:gap-8 items-start"
+                        className="group relative w-full block py-6 sm:py-8 border-b border-border-main last:border-none"
                     >
-                        {/* Zaman Noktası */}
-                        <div className="relative z-10 hidden sm:flex flex-col items-center mt-2.5">
-                            <div className="relative flex h-3.5 w-3.5 shrink-0 rounded-full bg-surface border-2 border-border-main group-hover:bg-rose-500/50 group-hover:border-rose-400 transition-all duration-500"></div>
-                        </div>
+                        <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 transition-all duration-300">
 
-                        {/* Kart İçeriği */}
-                        <div className="flex-1 pb-4">
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                                <div className="flex items-center gap-2">
-                                    <span className="text-sm md:text-base font-extrabold px-3 py-1 rounded-lg bg-surface border-2 border-border-main text-muted group-hover:border-accent-30 group-hover:text-rose-400 transition-colors shadow-sm">
-                                        #{step.step}
-                                    </span>
-                                    <h3 className="text-lg md:text-xl font-bold text-fg/90 group-hover:text-rose-400 transition-colors flex items-center">
-                                        {step.title}
-                                        <ArrowUpRight size={16} className="text-muted opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-rose-400 transition-all duration-300 ml-1" />
-                                    </h3>
+                            {/* Metin İçerik */}
+                            <div className="flex-1">
+                                <div className="flex items-start justify-between gap-4 mb-2">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-xs font-bold font-mono text-rose-400/70">
+                                            #{step.step}
+                                        </span>
+                                        <h2 className="text-xl sm:text-2xl font-bold text-fg/90 group-hover:text-rose-400 transition-colors leading-tight">
+                                            {step.title}
+                                        </h2>
+                                    </div>
+                                    <ArrowUpRight
+                                        size={22}
+                                        className="text-muted md:hidden group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0 mt-1"
+                                    />
                                 </div>
 
-                                <div className="flex items-center gap-1.5 text-[10px] md:text-xs font-semibold px-3 py-1 rounded-full w-fit backdrop-blur-md bg-surface border border-border-main text-muted group-hover:text-fg/80 transition-all">
-                                    <Calendar size={12} className="text-muted" />
-                                    {step.date}
+                                {step.description && (
+                                    <p className="text-base text-fg/70 leading-relaxed line-clamp-2 mb-4 group-hover:text-fg/90 transition-colors">
+                                        {step.description}
+                                    </p>
+                                )}
+
+                                <div className="flex items-center gap-1.5 text-xs font-medium text-muted font-mono">
+                                    <Calendar size={13} className="text-muted" />
+                                    <span>{step.date}</span>
                                 </div>
                             </div>
 
-                            <p className="text-sm md:text-base text-muted group-hover:text-fg/70 transition-colors text-balance leading-relaxed">
-                                {step.description}
-                            </p>
+                            {/* Sağ Ok (Masaüstü) */}
+                            <div className="hidden md:flex flex-shrink-0 mt-1">
+                                <ArrowUpRight
+                                    size={28}
+                                    className="text-muted/40 group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                                />
+                            </div>
                         </div>
                     </Link>
                 ))}
